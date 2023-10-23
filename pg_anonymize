@@ -1,0 +1,95 @@
+
+
+git clone https://github.com/rjuju/pg_anonymize.git
+cd pg_anonymize/
+
+sudo apt install postgresql-server-dev-10
+cd ~/pg_anonymize/
+sudo apt install make
+make clean
+make
+sudo make install
+
+
+Para poder ejecutar la funcion pg_anonymize correctamente hay que tener varias cosas en cuenta.
+Con un usuario con privilegios, se tiene que crear un nuevo rol en la base de datos que queramos anonimizar.
+Le aplicaremos a este rol el modo anonimizar y por lo tanto el rol con privilegios decidira qué datos se veran anonimizados.
+Hace falta cargar la funcion antes de aplicar las security labels, que son los anonimizados de cada dato.
+Las security labels ejecutaran una funcion al campo indicado en una columna concreta, ya sea sustituir la cadena por caracteres determinados, truncar valores,
+o expresiones regulares.
+Una vez aplicados los labels de anonimizado estos afectaran a los futuros usuarios etiquetados con anonymize. 
+De ahora en adelante los datos mostrados por los selects o los pg_dumps se mostraran censurados.
+
+
+Este es el orden de las instrucciones necesarias:
+
+
+
+ALTER ROLE diego SET session_preload_libraries = 'pg_anonymize';
+
+LOAD 'pg_anonymize';
+
+SECURITY LABEL FOR pg_anonymize ON ROLE diego IS 'anonymize';
+
+CREATE TABLE public.customer(id integer,
+    first_name text,
+    last_name text,
+    birthday date,
+    phone_number text);
+
+INSERT INTO public.customer VALUES (1, 'Nice', 'Customer', '1970-03-04', '+886 1234 5678');
+
+GRANT SELECT ON TABLE public.customer TO diego;
+
+SECURITY LABEL FOR pg_anonymize ON COLUMN public.customer.last_name
+    IS $$substr(last_name, 1, 1) || '*****'$$;
+    
+SECURITY LABEL FOR pg_anonymize ON COLUMN public.customer.birthday
+    IS $$date_trunc('year', birthday)::date$$;
+    
+SECURITY LABEL FOR pg_anonymize ON COLUMN public.customer.phone_number
+    IS $$regexp_replace(phone_number, '\d', 'X', 'g')$$;
+
+
+SECURITY LABEL FOR pg_anonymize ON COLUMN public.ic_md5_pass.password
+    IS $$substr(password, 0, 1) || '*****'$$;
+
+    
+Exportamos la bbdd anonimizada para el usuario seleccionado:
+	pg_dump -h 127.0.0.1 -E UTF8 -p 5432 -U diego diego > /home/dcalvo/anonymization.sql
+	
+	(el usuario debe tener acceso a toda la base de datos)
+	
+	
+GRANT CONNECT ON DATABASE diego TO diego;
+GRANT USAGE ON SCHEMA public TO diego;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA camunda TO diego;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA camunda TO diego;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA camunda TO diego;
+GRANT ALL PRIVILEGES ON DATABASE diego TO diego;
+ALTER USER diego CREATEDB;
+
+
+
+DO $$
+DECLARE
+    table_name text;
+    column_name text;
+BEGIN
+    FOR table_name, column_name IN
+        SELECT table_name, column_name
+        FROM information_schema.columns
+        WHERE table_schema = 'public'
+            AND data_type = 'varchar'
+            AND column_name ILIKE '%phone%'
+    LOOP
+        EXECUTE format('SECURITY LABEL FOR pg_anonymize ON COLUMN %I.%I IS $$date_trunc(''year'', %I)::date$$', table_name, column_name, column_name);
+    END LOOP;
+END $$;
+
+
+
+
+
+
+
