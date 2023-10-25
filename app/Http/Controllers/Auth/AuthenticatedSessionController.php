@@ -27,6 +27,13 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Cambia la conexión a la base de datos en función del usuario autenticado
+        if (auth()->user()->username === 'admin') {
+            database::connection('pgsql');
+        } else {
+            database::connection('pgsql_low');
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);

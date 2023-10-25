@@ -32,7 +32,6 @@
                                     <th>Delete</th>
                                 </tr>
                                 @foreach($products as $product )
-                                @if($product->qty > 2)
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
@@ -40,18 +39,23 @@
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>
-                                        <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
+                                        <a href="{{route('product.edit', ['product' => $product])}}">
+                                            <x-secondary-button class="ml-3">
+                                                {{ __('Edit') }}
+                                            </x-secondary-button>
+                                        </a>
                                     </td>
                                     <td>
                                         <form method="post"
                                             action="{{route('product.destroy', ['product' => $product])}}">
                                             @csrf
                                             @method('delete')
-                                            <input type="submit" value="Delete" />
+                                            <x-danger-button class="ml-3">
+                                                {{ __('Delete') }}
+                                            </x-danger-button>
                                         </form>
                                     </td>
                                 </tr>
-                                @endif
                                 @endforeach
                             </table>
                         </div>
@@ -60,5 +64,4 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>
