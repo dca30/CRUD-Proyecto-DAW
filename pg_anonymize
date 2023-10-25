@@ -10,6 +10,9 @@ make
 make clean
 make install
 
+apt update -y && apt install -y git && git clone https://github.com/rjuju/pg_anonymize.git && cd pg_anonymize/ && apt install -y postgresql-server-dev-15 gcc && apt autoremove -y && apt install -y make && make && make clean && make install
+
+
 
 Para poder ejecutar la funcion pg_anonymize correctamente hay que tener varias cosas en cuenta.
 Con un usuario con privilegios, se tiene que crear un nuevo rol en la base de datos que queramos anonimizar.

@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -27,13 +31,12 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        // Cambia la conexión a la base de datos en función del usuario autenticado
         if (auth()->user()->username === 'admin') {
-            database::connection('pgsql');
+            DB::connection('pgsql');
         } else {
-            database::connection('pgsql_low');
+            DB::connection('pgsql_low');
         }
-
+        
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
