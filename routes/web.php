@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -32,10 +33,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+
+    Route::get('/balance', [BalanceController::class, 'index'])->name('balance.index');
+    Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
+    Route::post('/balance', [BalanceController::class, 'store'])->name('balance.store');
+    
 
 });
 

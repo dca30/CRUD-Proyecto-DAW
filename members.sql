@@ -83,3 +83,19 @@ VALUES
 ('Joaquín', 'Martínez', '615-156-6156', 'joaquin@martinez.com', 16, current_timestamp, current_timestamp),
 ('Cristina', 'Fernández', '726-267-7267', 'cristina@fernandez.com', 1, current_timestamp, current_timestamp),
 ('Pablo', 'Gómez', '837-738-8378', 'pablo@gomez.com', 20, current_timestamp, current_timestamp);
+
+
+INSERT INTO public.balance (bebida_comida_beneficio, aportacion_asociacion, premios_gasto, tickets_gasto, bebida_comida_gasto, discomovil_coste, year, created_at, updated_at)
+VALUES
+(   5276.37,  -- Ejemplo de bebida_comida_beneficio
+    500.00,   -- Ejemplo de aportacion_asociacion
+    -120.25,   -- Ejemplo de premios_gasto
+    -100.75,   -- Ejemplo de tickets_gasto
+    -2500.00,   -- Ejemplo de bebida_comida_gasto
+    -1000.00,  -- Ejemplo de discomovil_coste
+    2023,     -- Ejemplo de year
+    current_timestamp,
+    current_timestamp
+),
+(   3941.10,418.00,-150.18,-88.35,-2300.00,-800.00,2022,current_timestamp,current_timestamp),
+(   5876.75,613.00,-113.67,-80.75,-2400.00,-1200.00,2021,current_timestamp,current_timestamp);
