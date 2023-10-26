@@ -10,11 +10,16 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex">
                     <div class="p-6 text-gray-900">
-                        {{ __("You're logged in!") }}
-                        <br>
-                        <a href="{{ route('product.index') }}" class="text-blue-500 hover:text-blue-950">Product page</a>
-                        <br>
-                        <a href="{{ route('member.index') }}" class="text-blue-500 hover:text-blue-950">Members page</a>
+                        @foreach($balances as $balance )
+                        <x-card :title="$balance->year">
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">
+                                Se obtuvo un beneficio neto de {{  $balance->total  }}</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </x-card>
+
+                        @endforeach
                     </div>
                 </div>
             </div>

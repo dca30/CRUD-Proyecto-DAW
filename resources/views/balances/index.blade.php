@@ -10,8 +10,8 @@
                 <div class="flex">
                     <div class="p-6 text-gray-900">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="text-primary mb-3">Balance</h1>
-                            
+                            <!--<h1 class="text-primary mb-3">Balance</h1>-->
+
                         </div>
 
                         <div>
@@ -45,13 +45,15 @@
                                         <td>{{$balance->gasto_tickets}}</td>
                                         <td>{{$balance->gasto_c_b}}</td>
                                         <td>{{$balance->gasto_disco}}</td>
-                                        <td class="fw-bold">
-                                            {{ $balance->ingreso_c_b +
-                                                $balance->ingreso_aso +
-                                                $balance->gasto_premios +
-                                                $balance->gasto_tickets +
-                                                $balance->gasto_c_b +
-                                                $balance->gasto_disco }} €
+                                        <td class="fw-bold">{{$balance->total}} €</td>
+                                        <td>
+                                            @if (auth()->id() === 1)
+                                            <a href="{{ route('balance.edit', ['balance' => $balance]) }}">
+                                                <x-secondary-button class="ml-3">
+                                                    {{ __('Edit') }}
+                                                </x-secondary-button>
+                                            </a>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -62,7 +64,7 @@
                                 <x-success-button>
                                     {{ __('Add new') }}
                                 </x-success-button>
-                            </a>    
+                            </a>
                         </div>
                     </div>
                 </div>

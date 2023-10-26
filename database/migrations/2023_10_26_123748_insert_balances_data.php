@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         $sql = "
-        INSERT INTO public.balance (ingreso_c_b, ingreso_aso, gasto_premios, gasto_tickets, gasto_c_b, gasto_disco, year, created_at, updated_at)
+        INSERT INTO public.balances (ingreso_c_b, ingreso_aso, gasto_premios, gasto_tickets, gasto_c_b, gasto_disco, year, created_at, updated_at)
         VALUES
         (   5276.37,  -- Bebida_comida_beneficio
             500.00,   -- Aportacion_asociacion

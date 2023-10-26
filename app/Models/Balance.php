@@ -9,12 +9,12 @@ class Balance extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'bebida_comida_beneficio',
-        'aportacion_asociacion',
-        'premios_gasto',
-        'tickets_gasto',
-        'bebida_comida_gasto',
-        'discomovil_coste',
+        'ingreso_c_b',
+        'ingreso_aso',
+        'gasto_premios',
+        'gasto_tickets',
+        'gasto_c_b',
+        'gasto_disco',
         'year'
     ];
 }

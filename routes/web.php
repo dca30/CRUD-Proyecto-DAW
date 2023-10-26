@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -22,9 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
@@ -43,8 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/balance', [BalanceController::class, 'index'])->name('balance.index');
     Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
     Route::post('/balance', [BalanceController::class, 'store'])->name('balance.store');
-    
+    Route::get('/balance/{balance}/edit', [BalanceController::class, 'edit'])->name('balance.edit');
+    Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
 
+    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('balance.index');
 });
 
 require __DIR__.'/auth.php';
