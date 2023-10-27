@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/balance/{balance}/edit', [BalanceController::class, 'edit'])->name('balance.edit');
     Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
 
+    Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
     //Route::get('/dashboard', [DashboardController::class, 'index'])->name('balance.index');
 });
 

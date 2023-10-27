@@ -18,3 +18,11 @@ https://laravel-bootstrap-components.com/components/cards
 chart libraries:
 blog.logrocket.com/exploring-best-laravel-chart-libraries/
 dev.to/arielmejiadev/use-laravel-charts-in-laravel-5bbm
+
+en las cartas del dashboard hacer una barra que salga en verde si es beneficio y en rojo si es perdida
+CARDS:
+https://bbbootstrap.com/snippets/bootstrap-5-jobs-card-listing-59188500
+https://www.bootdey.com/snippets/view/events-card-widget
+https://www.bootdey.com/snippets/view/bs4-card-widget
+https://codepen.io/lesliesamafful/pen/oNXgmBG
+https://www.bootdey.com/snippets/view/Gradients-dashboard-cards

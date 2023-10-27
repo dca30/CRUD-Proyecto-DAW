@@ -8,15 +8,22 @@ use App\Models\Balance;
 
 class BalanceController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $balances = Balance::all();
         return view('balances.index', ['balances' => $balances]);
     }
+    public function info(Balance $balance)
+    {
+        return view('balances.info', ['balance' => $balance]);
+    }
 
-    public function create(){
+    public function create()
+    {
         return view('balances.create');
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate([
             'ingreso_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'ingreso_aso' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
@@ -25,7 +32,7 @@ class BalanceController extends Controller
             'gasto_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'gasto_disco' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'year' => 'required|integer|digits:4',
-            
+
         ]);
 
         $newBalance = Balance::create($data);
@@ -34,15 +41,17 @@ class BalanceController extends Controller
 
     }
 
-    public function edit(Balance $balance){
+    public function edit(Balance $balance)
+    {
         if (auth()->id() === 1) {
             return view('balances.edit', ['balance' => $balance]);
         } else {
             abort(403);
         }
     }
-    
-    public function update(Balance $balance, Request $request){
+
+    public function update(Balance $balance, Request $request)
+    {
         $data = $request->validate([
             'ingreso_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'ingreso_aso' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',

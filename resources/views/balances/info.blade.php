@@ -10,8 +10,6 @@
                 <div class="flex">
                     <div class="p-6 text-gray-900">
                         <div class="d-flex justify-content-between align-items-center">
-                            <!--<h1 class="text-primary mb-3">Balance</h1>-->
-
                         </div>
 
                         <div>
@@ -36,7 +34,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($balances as $balance )
                                     <tr>
                                         <th scope="row">{{$balance->year}}</th>
                                         <td>{{$balance->ingreso_c_b}}</td>
@@ -46,32 +43,9 @@
                                         <td>{{$balance->gasto_c_b}}</td>
                                         <td>{{$balance->gasto_disco}}</td>
                                         <td class="fw-bold">{{$balance->total}} €</td>
-                                        <td>
-                                            @if (auth()->id() === 1)
-                                            <a href="{{ route('balance.edit', ['balance' => $balance]) }}">
-                                                <x-secondary-button class="ml-3">
-                                                    {{ __('Edit') }}
-                                                </x-secondary-button>
-                                            </a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                        <a href="{{ route('balance.info', ['balance' => $balance]) }}">
-                                                <x-secondary-button class="ml-3">
-                                                    {{ __('See more') }}
-                                                </x-secondary-button>
-                                            </a>
-                                        </td>
-
                                     </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
-                            <a href="{{ route('balance.create') }}">
-                                <x-success-button>
-                                    {{ __('Add new') }}
-                                </x-success-button>
-                            </a>
                         </div>
                     </div>
                 </div>
