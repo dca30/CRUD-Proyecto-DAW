@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -50,9 +52,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/balance', [BalanceController::class, 'store'])->name('balance.store');
     Route::get('/balance/{balance}/edit', [BalanceController::class, 'edit'])->name('balance.edit');
     Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
-
     Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
-    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('balance.index');
+
+    Route::get('/task', [TaskController::class, 'index'])->name('task.index');
+    Route::post('/join-group/{task}', [TaskController::class, 'joinGroup'])->name('task.joinGroup');
+    Route::delete('/task/{task}/leave-group', [TaskController::class, 'leaveGroup'])->name('task.leaveGroup');
+
+
 });
 
 require __DIR__.'/auth.php';

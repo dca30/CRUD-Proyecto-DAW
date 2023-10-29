@@ -16,7 +16,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex">
+                <div class="">
                     <div class="p-6 text-gray-900">
                         <form method="post" action="{{route('balance.store')}}">
                             @csrf
@@ -24,33 +24,35 @@
                             <div class="row">
                                 <div class="col">
                                     <h1 class="mb-3">GASTOS</h1>
-                                    
+
                                     <x-input-label>Premios</x-input-label>
-                                    <input type="text" name="gasto_premios" placeholder="Premios" />
+                                    <x-text-input class="mb-3" name="gasto_premios" placeholder="Premios" />
 
                                     <x-input-label>Tickets</x-input-label>
-                                    <input type="text" name="gasto_tickets" placeholder="Tickets" />
+                                    <x-text-input class="mb-3" name="gasto_tickets" placeholder="Tickets" />
 
                                     <x-input-label>Bebida y comida</x-input-label>
-                                    <input type="text" name="gasto_c_b" placeholder="Bebida y comida" />
+                                    <x-text-input class="mb-3" name="gasto_c_b" placeholder="Bebida y comida" />
 
                                     <x-input-label>Discomovil</x-input-label>
-                                    <input type="text" name="gasto_disco" placeholder="Discomovil" />
+                                    <x-text-input class="mb-3" name="gasto_disco" placeholder="Discomovil" />
                                 </div>
                                 <div class="col">
                                     <h1 class="mb-3">INGRESOS</h1>
                                     <x-input-label>Año</x-input-label>
-                                    <input type="text" name="year" placeholder="Año" />
+                                    <x-text-input class="mb-3" name="year" placeholder="Año" />
 
                                     <x-input-label>Comida y bebida</x-input-label>
-                                    <input type="text" name="ingreso_c_b" placeholder="Comida y bebida" />
+                                    <x-text-input class="mb-3" name="ingreso_c_b" placeholder="Comida y bebida" />
 
-                                    <x-input-label>Aporte asociacion</x-input-label>
-                                    <input type="text" name="ingreso_aso" placeholder="Aporte Asociación" />
+                                    <x-input-label>Aporte asociación</x-input-label>
+                                    <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
 
-                                    <x-input-label> </x-input-label>
-                                    <input type="submit" value="Enviar">
-                                        
+                                    <x-input-label></x-input-label>
+                                    <input type="submit" value=""><x-success-button>
+                                    {{ __('Submit') }}
+                                </x-success-button>
+
                                     </input>
                                 </div>
                             </div>

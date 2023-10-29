@@ -9,7 +9,7 @@ use App\Models\Balance;
 class DashboardController extends Controller
 {
     public function index(){
-        $balances = Balance::all();
+        $balances = Balance::orderBy('year','desc')->get();
         return view('dashboard', compact('balances'));
     }
 }

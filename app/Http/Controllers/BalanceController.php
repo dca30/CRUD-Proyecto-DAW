@@ -10,8 +10,9 @@ class BalanceController extends Controller
 {
     public function index()
     {
-        $balances = Balance::all();
+        $balances = Balance::orderBy('year','desc')->get();
         return view('balances.index', ['balances' => $balances]);
+
     }
     public function info(Balance $balance)
     {

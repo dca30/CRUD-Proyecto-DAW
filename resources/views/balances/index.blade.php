@@ -50,15 +50,17 @@
                                             @if (auth()->id() === 1)
                                             <a href="{{ route('balance.edit', ['balance' => $balance]) }}">
                                                 <x-secondary-button class="ml-3">
-                                                    {{ __('Edit') }}
+                                                    <i class="fa fa-pencil"></i>
+                                                    
                                                 </x-secondary-button>
                                             </a>
                                             @endif
                                         </td>
                                         <td>
-                                        <a href="{{ route('balance.info', ['balance' => $balance]) }}">
+                                            <a href="{{ route('balance.info', ['balance' => $balance]) }}">
                                                 <x-secondary-button class="ml-3">
-                                                    {{ __('See more') }}
+                                                    <i class="fa fa-eye"></i>
+                                                    
                                                 </x-secondary-button>
                                             </a>
                                         </td>
