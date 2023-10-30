@@ -57,6 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/task', [TaskController::class, 'index'])->name('task.index');
     Route::post('/join-group/{task}', [TaskController::class, 'joinGroup'])->name('task.joinGroup');
     Route::delete('/task/{task}/leave-group', [TaskController::class, 'leaveGroup'])->name('task.leaveGroup');
+    Route::post('/task', [TaskController::class, 'store'])->name('task.store');
+
+    Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 
 
 });

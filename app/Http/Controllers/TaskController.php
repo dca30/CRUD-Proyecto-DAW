@@ -59,7 +59,38 @@ class TaskController extends Controller
         // Redirige a donde desees después de abandonar el grupo
         return redirect()->back()->with('success', 'Has abandonado el grupo exitosamente.');
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'descripcion' => 'required',
+            'dificultad' => 'required',
+        ]);
 
+        // Comprueba si el campo 'responsables' está vacío y cámbialo a una cadena vacía
+        $responsables = $request->input('responsables', ''); // Si no se ingresa, se asigna una cadena vacía
+
+        // Crea una nueva tarea con los datos ingresados
+        Task::create([
+            'descripcion' => $request->input('descripcion'),
+            'dificultad' => $request->input('dificultad'),
+            'responsables' => $responsables,
+        ]);
+
+        return redirect()->route('task.index')
+            ->with('success', 'Tarea creada con éxito');
+    }
+    public function destroy(Task $task)
+    {
+        // Verifica si el usuario autenticado tiene permisos para eliminar la tarea (por ejemplo, si es el creador de la tarea).
+        if (auth()->id() === 1) {
+            // Elimina la tarea de la base de datos.
+            $task->delete();
+
+            return redirect()->back()->with('success', 'Tarea eliminada exitosamente.');
+        } else {
+            return redirect()->back()->with('error', 'No tienes permisos para eliminar esta tarea.');
+        }
+    }
 
 
 }
