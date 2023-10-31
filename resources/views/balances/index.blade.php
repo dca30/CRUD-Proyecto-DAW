@@ -3,6 +3,11 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Balance') }}
         </h2>
+        <a href="{{ route('balance.chart') }}">
+            <x-primary-button>
+                {{ __('Ver gráfico') }}
+            </x-primary-button>
+        </a>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -51,7 +56,7 @@
                                             <a href="{{ route('balance.edit', ['balance' => $balance]) }}">
                                                 <x-secondary-button class="ml-3">
                                                     <i class="fa fa-pencil"></i>
-                                                    
+
                                                 </x-secondary-button>
                                             </a>
                                             @endif
@@ -60,7 +65,7 @@
                                             <a href="{{ route('balance.info', ['balance' => $balance]) }}">
                                                 <x-secondary-button class="ml-3">
                                                     <i class="fa fa-eye"></i>
-                                                    
+
                                                 </x-secondary-button>
                                             </a>
                                         </td>

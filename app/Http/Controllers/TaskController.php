@@ -66,19 +66,19 @@ class TaskController extends Controller
             'dificultad' => 'required',
         ]);
 
-        // Comprueba si el campo 'responsables' está vacío y cámbialo a una cadena vacía
-        $responsables = $request->input('responsables', ''); // Si no se ingresa, se asigna una cadena vacía
-
-        // Crea una nueva tarea con los datos ingresados
+        // Crea una nueva tarea con los datos ingresados y el campo 'responsables' vacío
         Task::create([
             'descripcion' => $request->input('descripcion'),
             'dificultad' => $request->input('dificultad'),
-            'responsables' => $responsables,
+            'responsables' => '',
+            // Cadena vacía por defecto
         ]);
 
         return redirect()->route('task.index')
             ->with('success', 'Tarea creada con éxito');
     }
+
+
     public function destroy(Task $task)
     {
         // Verifica si el usuario autenticado tiene permisos para eliminar la tarea (por ejemplo, si es el creador de la tarea).

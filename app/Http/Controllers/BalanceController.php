@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Balance;
 
+use App\Charts\BalanceChart;
+use Illuminate\Support\Facades\DB;
+
+
 
 class BalanceController extends Controller
 {
     public function index()
     {
-        $balances = Balance::orderBy('year','desc')->get();
+        $balances = Balance::orderBy('year', 'desc')->get();
         return view('balances.index', ['balances' => $balances]);
 
     }
@@ -68,4 +72,12 @@ class BalanceController extends Controller
         return redirect(route('balance.index'))->with('success', 'Balance Updated Succesffully');
 
     }
-}
+    public function chart(BalanceChart $chart)
+    {
+        $balanceData = DB::table('balances')->select('total', 'year')->orderBy('year', 'asc')->get();
+        $totals = $balanceData->pluck('total');
+        $years = $balanceData->pluck('year')->unique();
+
+        return view('balances.chart', ['chart' => $chart->build($totals, $years)]);
+    }
+}   

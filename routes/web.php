@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExpensesController;
 
 
 /*
@@ -58,8 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/join-group/{task}', [TaskController::class, 'joinGroup'])->name('task.joinGroup');
     Route::delete('/task/{task}/leave-group', [TaskController::class, 'leaveGroup'])->name('task.leaveGroup');
     Route::post('/task', [TaskController::class, 'store'])->name('task.store');
-
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
+
+    Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
+
+    Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
+
 
 
 });

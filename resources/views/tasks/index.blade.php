@@ -54,7 +54,7 @@
                                                 method="POST">
                                                 @csrf
                                                 <x-secondary-button type="submit" class="ml-3">
-                                                    {{ __('Join Group') }}
+                                                    {{ __('Join') }}
                                                 </x-secondary-button>
                                             </form>
                                         </td>
@@ -64,7 +64,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <x-danger-button type="submit" class="ml-3">
-                                                    {{ __('Leave Group') }}
+                                                    {{ __('Leave') }}
                                                 </x-danger-button>
                                             </form>
                                         </td>
@@ -134,11 +134,11 @@
                                                         </x-input-label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <!--<div class="form-group">
                                                     <x-input-label for="responsables" :value="__('Responsable(s')" />
                                                     <x-text-input id="responsables" class="block mt-1 w-full"
                                                         type="text" name="responsables" :value="old('responsables')" />
-                                                </div>
+                                                </div>-->
 
                                                 <div class="flex items-center justify-end mt-4">
                                                     <x-primary-button class="ml-3">
