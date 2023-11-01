@@ -3,7 +3,7 @@ namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class BalanceChart
+class BalanceTotalChart
 {
     protected $chart;
     public function __construct(LarapexChart $chart)
@@ -19,5 +19,4 @@ class BalanceChart
             ->addData('Total', $totals->all())
             ->setXAxis($years->all());
     }
-
 }

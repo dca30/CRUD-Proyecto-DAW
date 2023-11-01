@@ -5,7 +5,12 @@
         </h2>
         <a href="{{ route('balance.chart') }}">
             <x-primary-button>
-                {{ __('Ver gráfico') }}
+                {{ __('Ver gráfico total') }}
+            </x-primary-button>
+        </a>
+        <a href="{{ route('balance.chart') }}">
+            <x-primary-button>
+                {{ __('Ver gráfico no se que') }}
             </x-primary-button>
         </a>
     </x-slot>
@@ -16,7 +21,6 @@
                     <div class="p-6 text-gray-900">
                         <div class="d-flex justify-content-between align-items-center">
                             <!--<h1 class="text-primary mb-3">Balance</h1>-->
-
                         </div>
 
                         <div>
@@ -65,7 +69,7 @@
                                             <a href="{{ route('balance.info', ['balance' => $balance]) }}">
                                                 <x-secondary-button class="ml-3">
                                                     <i class="fa fa-eye"></i>
-
+                                                    <!--<i class="fa fa-search-plus"></i>-->
                                                 </x-secondary-button>
                                             </a>
                                         </td>
@@ -74,11 +78,13 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @if (auth()->id() === 1)
                             <a href="{{ route('balance.create') }}">
                                 <x-success-button>
                                     {{ __('Add new') }}
                                 </x-success-button>
                             </a>
+                            @endif
                         </div>
                     </div>
                 </div>

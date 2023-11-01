@@ -61,11 +61,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/task', [TaskController::class, 'store'])->name('task.store');
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 
-    Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
+    //Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
 
-    Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
+    //Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
 
+    Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
 
+    
 
 });
 

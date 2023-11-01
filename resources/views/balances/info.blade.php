@@ -5,51 +5,84 @@
         </h2>
     </x-slot>
     <div class="py-12">
+        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex">
-                    <div class="p-6 text-gray-900">
-                        <div class="d-flex justify-content-between align-items-center">
+                <div class="p-6 text-gray-900">
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+
+                    @if(session()->has('success'))
+                    <div>
+                        {{session('success')}}
+                    </div>
+                    @endif
+
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="col-span-4 sm:col-span-2">
+                            <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                                <h3 class="text-lg font-semibold">Ingresos</h3>
+                                <div class="flex justify-between mt-2">
+                                    <p>Bebida Beneficio:</p>
+                                    <p>{{$balance->ingreso_c_b}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>Aporte Asociacion:</p>
+                                    <p>{{$balance->ingreso_aso}}€</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            @if(session()->has('success'))
-                            <div>
-                                {{session('success')}}
+                        <div class="col-span-4 sm:col-span-2">
+                            <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                                <h3 class="text-lg font-semibold">Gastos</h3>
+                                <div class="flex justify-between mt-2">
+                                    <p>Premios gasto:</p>
+                                    <p>{{$balance->gasto_premios}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>Tickets gasto:</p>
+                                    <p>{{$balance->gasto_tickets}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>Bebida gasto:</p>
+                                    <p>{{$balance->gasto_c_b}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>Discomovil:</p>
+                                    <p>{{$balance->gasto_disco}}€</p>
+                                </div>
                             </div>
-                            @endif
                         </div>
-                        <div>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Bebida Beneficio</th>
-                                        <th scope="col">Aporte Asociacion</th>
-                                        <th scope="col">Premios gasto</th>
-                                        <th scope="col">Tickets gasto</th>
-                                        <th scope="col">Bebida gasto</th>
-                                        <th scope="col">Discomovil</th>
-                                        <th scope="col">TOTAL</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">{{$balance->year}}</th>
-                                        <td>{{$balance->ingreso_c_b}}</td>
-                                        <td>{{$balance->ingreso_aso}}</td>
-                                        <td>{{$balance->gasto_premios}}</td>
-                                        <td>{{$balance->gasto_tickets}}</td>
-                                        <td>{{$balance->gasto_c_b}}</td>
-                                        <td>{{$balance->gasto_disco}}</td>
-                                        <td class="fw-bold">{{$balance->total}} €</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <div class="col-span-4 sm:col-span-4">
+                            <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                                <h3 class="text-lg font-semibold">TOTAL</h3>
+                                <p class="text-2xl font-bold text-center">{{$balance->total}} €</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="container px-4 mx-auto">
+                <div class="p-6 m-20 bg-white rounded shadow">
+                    {!! $chart1->container() !!}
+                </div>
+                <div class="p-6 m-20 bg-white rounded shadow">
+                    {!! $chart2->container() !!}
+                </div>
+            </div>
+            <script src="{{ $chart1->cdn() }}"></script>
+            {{ $chart1->script() }}
+
+            <script src="{{ $chart2->cdn() }}"></script>
+            {{ $chart2->script() }}
+        </div>
+    </div>
+    
 </x-app-layout>

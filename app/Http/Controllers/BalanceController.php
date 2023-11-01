@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\PieChart;
 use Illuminate\Http\Request;
 use App\Models\Balance;
 
-use App\Charts\BalanceChart;
+use App\Charts\BalanceTotalChart;
 use Illuminate\Support\Facades\DB;
 
 
@@ -18,10 +19,7 @@ class BalanceController extends Controller
         return view('balances.index', ['balances' => $balances]);
 
     }
-    public function info(Balance $balance)
-    {
-        return view('balances.info', ['balance' => $balance]);
-    }
+
 
     public function create()
     {
@@ -72,7 +70,7 @@ class BalanceController extends Controller
         return redirect(route('balance.index'))->with('success', 'Balance Updated Succesffully');
 
     }
-    public function chart(BalanceChart $chart)
+    public function chart(BalanceTotalChart $chart)
     {
         $balanceData = DB::table('balances')->select('total', 'year')->orderBy('year', 'asc')->get();
         $totals = $balanceData->pluck('total');
@@ -80,4 +78,41 @@ class BalanceController extends Controller
 
         return view('balances.chart', ['chart' => $chart->build($totals, $years)]);
     }
-}   
+
+    public function chartDisco(BalanceTotalChart $chart)
+    {
+        $balanceData = DB::table('balances')->select('gasto_disco', 'year')->orderBy('year', 'asc')->get();
+        $disco = $balanceData->pluck('gasto_disco');
+        $years = $balanceData->pluck('year')->unique();
+
+        return view('balances.chart', ['chart' => $chart->build($disco, $years)]);
+    }
+    public function infoChart(Balance $balance, PieChart $chart1, PieChart $chart2)
+    {
+        $gastos = [
+            abs($balance->gasto_premios),
+            abs($balance->gasto_tickets),
+            abs($balance->gasto_c_b),
+            abs($balance->gasto_disco),
+        ];
+
+        $ingresos = [
+            abs($balance->ingreso_c_b),
+            abs($balance->ingreso_aso),
+        ];
+
+        $labelsGastos = ['Premios', 'Tickets', 'Bebida', 'Discomovil'];
+        $labelsIngresos = ['Bebida Beneficio', 'Aporte Asociacion'];
+
+        return view('balances.info', [
+            'balance' => $balance,
+            'chart1' => $chart1->build($gastos, $labelsGastos),
+            'chart2' => $chart2->build($ingresos, $labelsIngresos),
+        ]);
+    }
+
+    /*public function info(Balance $balance)
+    {
+        return view('balances.info', ['balance' => $balance]);
+    }*/
+}
