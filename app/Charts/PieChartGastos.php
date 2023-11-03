@@ -4,7 +4,7 @@ namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class PieChart
+class PieChartGastos
 {
     protected $chart;
 

@@ -48,7 +48,6 @@
                     <div class="progress rounded-0 rounded-start border-dark border-end" style="direction: rtl;">
                         @if ($total<=0) <div class="progress-bar bg-danger border-end-0" role="progressbar"
                             style="width: {{ abs($total)*100/6000  }}%;" aria-valuemin="0" aria-valuemax="100">
-                            {{ abs($total)  }}€
                     </div>
                     @else
                     <div class="progress-bar bg-danger border-end-0" role="progressbar" style="width: 0%;"

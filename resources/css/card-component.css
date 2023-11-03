@@ -38,7 +38,7 @@
 }
 
 .badge-percentage-up span {
-    background-color: #fffbec;
+    background-color: #f7f7f7;
     width: fit-content;
     height: 25px;
     padding-bottom: 3px;
@@ -49,7 +49,7 @@
 }
 
 .badge-percentage-down span {
-    background-color: #fffbec;
+    background-color: #f7f7f7;
     width: fit-content;
     height: 25px;
     padding-bottom: 3px;

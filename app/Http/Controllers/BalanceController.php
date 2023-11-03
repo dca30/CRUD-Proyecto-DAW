@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Charts\PieChart;
+use App\Charts\PieChartGastos;
+use App\Charts\PieChartIngresos;
+use App\Charts\TicketsBarChart;
 use Illuminate\Http\Request;
 use App\Models\Balance;
+use App\Models\Ticket;
 
 use App\Charts\BalanceTotalChart;
 use Illuminate\Support\Facades\DB;
@@ -72,23 +75,32 @@ class BalanceController extends Controller
     }
     public function chart(BalanceTotalChart $chart)
     {
-        $balanceData = DB::table('balances')->select('total', 'year')->orderBy('year', 'asc')->get();
-        $totals = $balanceData->pluck('total');
+        $balanceData = DB::table('balances') /*->select('total', 'year')*/->orderBy('year', 'asc')->get();
+        $total = $balanceData->pluck('total');
         $years = $balanceData->pluck('year')->unique();
+        $ingreso_c_b = $balanceData->pluck('ingreso_c_b');
+        $ingreso_aso = $balanceData->pluck('ingreso_aso');
+        $gasto_premios = $balanceData->pluck('gasto_premios');
+        $gasto_tickets = $balanceData->pluck('gasto_tickets');
+        $gasto_c_b = $balanceData->pluck('gasto_c_b');
+        $gasto_disco = $balanceData->pluck('gasto_disco');
 
-        return view('balances.chart', ['chart' => $chart->build($totals, $years)]);
+        return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b,$ingreso_aso,$gasto_premios,$gasto_tickets,$gasto_c_b,$gasto_disco)]);
     }
 
-    public function chartDisco(BalanceTotalChart $chart)
+    /*public function chartDisco(BalanceTotalChart $chart)
     {
         $balanceData = DB::table('balances')->select('gasto_disco', 'year')->orderBy('year', 'asc')->get();
         $disco = $balanceData->pluck('gasto_disco');
         $years = $balanceData->pluck('year')->unique();
 
         return view('balances.chart', ['chart' => $chart->build($disco, $years)]);
-    }
-    public function infoChart(Balance $balance, PieChart $chart1, PieChart $chart2)
+    }*/
+    public function infoChart(Balance $balance, PieChartIngresos $chart1, PieChartGastos $chart2, TicketsBarChart $chart3)
     {
+        /*$ticket = Ticket::where('year', $balance->year)->get();
+        $ticket = DB::table('tickets')->where('year', $balance->year)->get();*/
+        $ticket = Ticket::where('year', $balance->year)->first();
         $gastos = [
             abs($balance->gasto_premios),
             abs($balance->gasto_tickets),
@@ -100,14 +112,16 @@ class BalanceController extends Controller
             abs($balance->ingreso_c_b),
             abs($balance->ingreso_aso),
         ];
+        $labelsIngresos = ['Bebida Beneficio', 'Aporte Asociacion']; //Añadir beneficio bingo
 
         $labelsGastos = ['Premios', 'Tickets', 'Bebida', 'Discomovil'];
-        $labelsIngresos = ['Bebida Beneficio', 'Aporte Asociacion'];
 
         return view('balances.info', [
             'balance' => $balance,
-            'chart1' => $chart1->build($gastos, $labelsGastos),
-            'chart2' => $chart2->build($ingresos, $labelsIngresos),
+            'ticket' => $ticket,
+            'chart1' => $chart1->build($ingresos, $labelsIngresos),
+            'chart2' => $chart2->build($gastos, $labelsGastos),
+            'chart3' => $chart3->build($ticket),
         ]);
     }
 

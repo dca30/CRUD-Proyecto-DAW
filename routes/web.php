@@ -35,12 +35,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+    /*Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');
     Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');*/
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -63,7 +63,7 @@ Route::middleware('auth')->group(function () {
 
     //Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
 
-    //Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
+    Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
 
     Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
 
