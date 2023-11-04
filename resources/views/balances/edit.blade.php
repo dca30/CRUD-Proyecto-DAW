@@ -55,10 +55,15 @@
                                     <x-text-input class="mb-3" name="ingreso_aso" :value="$balance->ingreso_aso"
                                         placeholder="Aporte Asociación" />
 
+                                    <x-input-label>Fechas</x-input-label>
+                                    <x-text-input class="mb-3" name="fechas" :value="$balance->fechas"
+                                        placeholder="Fechas" />
+
                                     <x-input-label></x-input-label>
-                                    <input type="submit" value=""><x-success-button>
-                                    {{ __('Submit') }}
-                                </x-success-button></input>
+                                    <input type="submit" value="">
+                                    <x-success-button>
+                                        {{ __('Submit') }}
+                                    </x-success-button></input>
                                 </div>
                             </div>
                         </form>

@@ -7,7 +7,7 @@
         <div class="d-flex flex-row align-items-center">
             <!--<div class="icon"> <i class="fa fa-regular fa-circle"></i> </div>-->
             <div class="ms-2 c-details">
-                <div class="mb-0 h3 text-decoration-underline">{{ $title  }}</div> <span>18 Ago - 22 Ago</span>
+                <div class="mb-0 h3 text-decoration-underline">{{ $title  }}</div> <span>{{ substr($balance->fechas, 0, 2)}} Ago - {{ substr($balance->fechas, 2, 2)}} Ago</span>
             </div>
         </div>
         <div class="badge">
@@ -19,24 +19,20 @@
     <div class="mt-2 row">
     <div class="row g-2">
     <div class="col-4 d-flex justify-content-left align-items-center ps-4">
-            @if ($nextBalance && !$nextBalance->total == null)
-                @php
-                    $percentage = number_format((($total - $nextBalance->total) / $nextBalance->total) * 100, 2);
-                @endphp
-                @if($percentage>0)
+            
+                @if($balance->incremento>0)
                 <div class="badge-percentage-up">
                     <span class="fw-bold">
-                        <i class="fa fa-arrow-up danger font-large-2"></i>+{{ $percentage }}%
+                        <i class="fa fa-arrow-up danger font-large-2"></i>+{{ $balance->incremento }}%
                     </span>
                 </div>
-                @else
+                @elseif($balance->incremento<0)
                 <div class="badge-percentage-down">
                     <span class="fw-bold">
-                        <i class="fa fa-arrow-down danger font-large-2"></i>{{ $percentage }}%
+                        <i class="fa fa-arrow-down danger font-large-2"></i>{{ $balance->incremento }}%
                     </span>
                 </div>
                 @endif
-            @endif
             </div>
             <div class="col h1 heading fuente-montserrat">{{ $total  }}€</div>
         </div>

@@ -48,10 +48,14 @@
                                     <x-input-label>Aporte asociación</x-input-label>
                                     <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
 
+                                    <x-input-label>Fechas</x-input-label>
+                                    <x-text-input class="mb-3" name="fechas" placeholder="Fechas" />
+
                                     <x-input-label></x-input-label>
-                                    <input type="submit" value=""><x-success-button>
-                                    {{ __('Submit') }}
-                                </x-success-button>
+                                    <input type="submit" value="">
+                                    <x-success-button>
+                                        {{ __('Submit') }}
+                                    </x-success-button>
 
                                     </input>
                                 </div>

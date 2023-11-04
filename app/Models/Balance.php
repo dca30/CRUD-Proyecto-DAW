@@ -15,6 +15,7 @@ class Balance extends Model
         'gasto_tickets',
         'gasto_c_b',
         'gasto_disco',
-        'year'
+        'year',
+        'fechas'
     ];
 }

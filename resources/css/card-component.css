@@ -81,3 +81,23 @@
 .fuente-montserrat {
     font-family: 'Montserrat', sans-serif;
   }
+/*Tarjeta flotante*/
+
+  .floating-card {
+    position: fixed;
+    bottom: 20px; /* Ajusta la posición vertical como desees */
+    left: 20px; /* Ajusta la posición horizontal como desees */
+    width: 300px; /* Ajusta el ancho como desees */
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+
+        
+}
+
+.card-content {
+    /* Estilos para el contenido de la tarjeta */
+}

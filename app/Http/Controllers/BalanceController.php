@@ -38,9 +38,13 @@ class BalanceController extends Controller
             'gasto_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'gasto_disco' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'year' => 'required|integer|digits:4',
+            'fechas' => 'required|integer|digits:4',
 
         ]);
-
+        $data['gasto_premios'] = -abs($data['gasto_premios']);
+        $data['gasto_tickets'] = -abs($data['gasto_tickets']);
+        $data['gasto_c_b'] = -abs($data['gasto_c_b']);
+        $data['gasto_disco'] = -abs($data['gasto_disco']);
         $newBalance = Balance::create($data);
 
         return redirect(route('balance.index'));
@@ -66,8 +70,13 @@ class BalanceController extends Controller
             'gasto_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'gasto_disco' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'year' => 'required|integer|digits:4',
+            'fechas' => 'required|integer|digits:4',
         ]);
-
+        // Aplicar el valor absoluto y el signo negativo a los campos de gasto
+        $data['gasto_premios'] = -abs($data['gasto_premios']);
+        $data['gasto_tickets'] = -abs($data['gasto_tickets']);
+        $data['gasto_c_b'] = -abs($data['gasto_c_b']);
+        $data['gasto_disco'] = -abs($data['gasto_disco']);
         $balance->update($data);
 
         return redirect(route('balance.index'))->with('success', 'Balance Updated Succesffully');
@@ -85,7 +94,7 @@ class BalanceController extends Controller
         $gasto_c_b = $balanceData->pluck('gasto_c_b');
         $gasto_disco = $balanceData->pluck('gasto_disco');
 
-        return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b,$ingreso_aso,$gasto_premios,$gasto_tickets,$gasto_c_b,$gasto_disco)]);
+        return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b, $ingreso_aso, $gasto_premios, $gasto_tickets, $gasto_c_b, $gasto_disco)]);
     }
 
     /*public function chartDisco(BalanceTotalChart $chart)
