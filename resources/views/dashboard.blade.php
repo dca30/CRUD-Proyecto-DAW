@@ -19,7 +19,7 @@
                             @php
                             $nextBalance = ($key < $balancesCount - 1) ? $balances[$key + 1] : null; @endphp <div
                                 class="col">
-                                <x-card :title="$balance->year" :beneficio="$balance->ingreso_c_b"
+                                <x-card-balance :title="$balance->year" :beneficio="$balance->ingreso_c_b"
                                     :total="$balance->total" :balance="$balance" :nextBalance="$nextBalance" />
                         </div>
                         @endforeach

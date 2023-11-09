@@ -22,9 +22,14 @@
                     <x-nav-link :href="route('task.index')" :active="request()->routeIs('task*')">
                         {{ __('Tasks') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('member.index')" :active="request()->routeIs('member*')">
-                        {{ __('Members') }}
+                    <x-nav-link :href="route('idea.index')" :active="request()->routeIs('idea')">
+                        {{ __('Ideas Mailbox') }}
                     </x-nav-link>
+                    @if (auth()->id() == 1)
+                    <x-nav-link :href="route('member.index')" :active="request()->routeIs('member*')">
+                        {{ __('Admin panel') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

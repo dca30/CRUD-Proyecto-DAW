@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\IdeaController;
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ExpensesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,6 @@ use App\Http\Controllers\ExpensesController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -64,10 +63,10 @@ Route::middleware('auth')->group(function () {
     //Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
 
     Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
-
     Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
 
-    
+    Route::get('/idea', [IdeaController::class, 'index'])->name('idea.index');
+
 
 });
 
