@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
 
     Route::get('/idea', [IdeaController::class, 'index'])->name('idea.index');
+    Route::patch('/ideas/{idea}/update-vista', 'IdeaController@updateVista')->name('idea.updateVista');
 
 
 });

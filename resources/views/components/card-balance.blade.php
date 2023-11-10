@@ -1,5 +1,5 @@
 @push('styles')
-<link href="{{ asset('resources/css/card-component.css') }}" rel="stylesheet">
+<link href="{{ asset('resources/css/card-balance.css') }}" rel="stylesheet">
 @endpush
 
 <div class="card p-3 mb-4 shadow">

@@ -15,15 +15,19 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
                     <x-nav-link :href="route('balance.index')" :active="request()->routeIs('balance*')">
                         {{ __('Balance') }}
                     </x-nav-link>
                     <x-nav-link :href="route('task.index')" :active="request()->routeIs('task*')">
                         {{ __('Tasks') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('idea.index')" :active="request()->routeIs('idea')">
+                    <x-nav-link :href="route('idea.index')" :active="request()->routeIs('idea*')">
                         {{ __('Ideas Mailbox') }}
+                        @if (auth()->id() == 1)
+                        <div class="badge-idea">
+                            <span class="bg-danger">{{ $number }}</span>
+                        </div>
+                        @endif
                     </x-nav-link>
                     @if (auth()->id() == 1)
                     <x-nav-link :href="route('member.index')" :active="request()->routeIs('member*')">

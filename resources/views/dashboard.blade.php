@@ -25,9 +25,9 @@
                         @endforeach
                     </div>
                 </div>
-
             </div>
         </div>
+    </div>
     </div>
     <x-floating-card :chartData="$chart"></x-floating-card>
 </x-app-layout>
