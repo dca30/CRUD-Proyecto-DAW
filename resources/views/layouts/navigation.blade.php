@@ -24,8 +24,8 @@
                     <x-nav-link :href="route('idea.index')" :active="request()->routeIs('idea*')">
                         {{ __('Ideas Mailbox') }}
                         @if (auth()->id() == 1)
-                        <div class="badge-idea">
-                            <span class="bg-danger">{{ $number }}</span>
+                        <div class="ps-2 badge-idea">
+                            <span class ="bg-danger">{{ $number }}</span>
                         </div>
                         @endif
                     </x-nav-link>

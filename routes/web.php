@@ -9,9 +9,6 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
 
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ExpensesController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,13 +31,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 
 Route::middleware('auth')->group(function () {
-    /*Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-    Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');*/
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -53,6 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/balance/{balance}/edit', [BalanceController::class, 'edit'])->name('balance.edit');
     Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
     Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
+    //Chart
+    Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
+    Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
 
     Route::get('/task', [TaskController::class, 'index'])->name('task.index');
     Route::post('/join-group/{task}', [TaskController::class, 'joinGroup'])->name('task.joinGroup');
@@ -60,15 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/task', [TaskController::class, 'store'])->name('task.store');
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
 
-    //Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
-
-    Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
-    Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
-
     Route::get('/idea', [IdeaController::class, 'index'])->name('idea.index');
-    Route::patch('/ideas/{idea}/update-vista', 'IdeaController@updateVista')->name('idea.updateVista');
-
-
+    //Route::get('/idea', [IdeaController::class, 'indexSorted'])->name('idea.index');
+    Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update');
 });
 
 require __DIR__.'/auth.php';

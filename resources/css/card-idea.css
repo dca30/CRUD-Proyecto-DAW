@@ -9,6 +9,18 @@
     font-weight: 300;
     font-size: 13px;
 }
+.badge-idea span {
+    /*background-color: #fffbec;*/
+    width: 18px;
+    height: 18px;
+    border-radius: 25px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s; 
+}
+
 
 .badge span {
     background-color: #fffbec;
@@ -20,11 +32,10 @@
     color: #919191;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s; 
 }
-.badge span:hover {
+/*.badge span:hover {
     transform: scale(1.2);
-}
+}*/
 
 .fuente-montserrat {
     font-family: 'Montserrat', sans-serif;
@@ -34,11 +45,21 @@
 .bg-1{
     background-color: #cae6d9;
 }
+
 .bg-2{
     background-color: #dcdef0;
-
 }
+
 .bg-3{
     background-color: #ecdede;
+}
+
+.badge-idea span{
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease; /* Añade transición para suavizar el cambio */
+}
+.badge-idea span:hover{
+    transform: scale(1.2);
+    transition: transform 0.4s; 
 
 }

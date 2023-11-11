@@ -34,20 +34,6 @@
     transition: transform 0.4s; 
 }
 
-.badge-idea span {
-    /*background-color: #fffbec;*/
-    width: 18px;
-    height: 18px;
-    border-radius: 25px;
-    display: flex;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.4s; 
-}
-.badge-idea{
-    padding-left: 5px;
-}
 .badge span:hover {
     transform: scale(1.2); /* Al hacer hover, aumenta el tamaño a 1.2 veces el tamaño original */
 }

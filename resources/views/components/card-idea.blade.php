@@ -16,8 +16,8 @@
     <div class="d-flex justify-content-between">
         <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
-                <div class="mb-0 h3 text-decoration-underline"></div>
-                <span>{{  $creador  }}</span>
+                <div class="mb-0 h4">{{ $titulo}}</div>
+                @<span>{{  $creador  }}</span>
             </div>
         </div>
         @if ($creador==auth()->user()->username)
@@ -25,29 +25,29 @@
             <i class="fa fa-pencil"></i>
         </x-secondary-button>
         @endif
-        @if (auth()->id() == 1)
-        <form action="{{ route('idea.updateVista', ['idea' => $id]) }}" method="POST">
-            @csrf
-            @method('PATCH')
 
-            <x-secondary-button type="submit">
-                <i class="fa fa-check"></i>
-            </x-secondary-button>
-        </form>
-        @if($vista==1)
-        <div class="badge-idea">
+        @if (auth()->id() == 1 && ($vista==1))
+        <div class="badge-idea"
+            onclick="event.preventDefault(); document.getElementById('update-form-{{ $id }}').submit();">
             <span class="bg-danger">1</span>
         </div>
+        <form id="update-form-{{ $id }}" action="{{ route('idea.update', ['idea' => $id]) }}" method="POST"
+            style="display: none;">
+            @csrf
+            @method('PUT')
+        </form>
         @endif
-        @endif
-        <div class="badge">
-            <span>{{ $tematica  }}</span>
-        </div>
+
     </div>
     <div class="mt-2 row">
 
         <div class="col fuente-montserrat p-4">
             <p>{{ $descripcion  }}</p>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="badge">
+            <span>{{ $tematica  }}</span>
         </div>
     </div>
 </div>
