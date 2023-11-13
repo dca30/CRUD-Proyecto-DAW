@@ -10,7 +10,7 @@ class Idea extends Model
     use HasFactory;
     protected $fillable = [
         'titulo',
-        'description',
+        'descripcion',
         'tematica',
         'creador',
         'vista',

@@ -26,7 +26,7 @@
         </x-secondary-button>
         @endif
 
-        @if (auth()->id() == 1 && ($vista==1))
+        @if (auth()->id() == 1 && ($vista=='N'))
         <div class="badge-idea"
             onclick="event.preventDefault(); document.getElementById('update-form-{{ $id }}').submit();">
             <span class="bg-danger">1</span>

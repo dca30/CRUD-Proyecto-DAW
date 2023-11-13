@@ -18,7 +18,7 @@
                 <div class="flex">
                     <div class="p-6 text-gray-900 w-100">
                         <div class="row row-cols-auto pb-4">
-                            <p  >{{ __('ORDER BY:') }}</p>
+                            <p>{{ __('ORDER BY:') }}</p>
                             <div class="col"><a
                                     href="{{ route('idea.index', ['criteria' => 'USER']) }}">{{ __('user') }}</a></div>
                             <div class="col"><a
@@ -94,11 +94,12 @@
                                                         for="anonimo">{{ __('Anonimo') }}</label>
                                                 </div>
                                             </div>
+                                            
 
                                             <div class="flex items-center justify-end mt-4">
                                                 <x-primary-button class="ml-3">
                                                     {{ __('Aceptar') }}
-                                                    </x-button>
+                                                </x-primary-button>
                                             </div>
                                         </form>
                                     </div>

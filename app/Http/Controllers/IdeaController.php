@@ -13,7 +13,7 @@ class IdeaController extends Controller
         $userId = auth()->id();
 
         if ($userId == 1) {
-            $ideas = Idea::orderByDesc('vista')->orderBy('id', 'asc')->get();
+            $ideas = Idea::orderBy('vista', 'asc')->get();
         } else {
             $ideas = Idea::orderBy('id', 'asc')->get();
         }
@@ -23,39 +23,30 @@ class IdeaController extends Controller
 
     public function store(Request $request)
     {
-        
-
-
         $request->validate([
-            'titulo' => 'required',
-            'descripcion' => 'required',
-            'tematica' => 'required',
-            'creador' => 'required',
-            'vista' => 'required',
-            'anonimo'=> 'required',
+            'titulo' => 'required|string|max:30',
+            'descripcion' => 'required|string',
+            'tematica' => 'required|string|in:A,B,C',
         ]);
 
-        // Crea una nueva tarea con los datos ingresados y el campo 'responsables' vacío
-        Idea::create([
-            'titulo' => 'Test',
-            'descripcion' => 'Esto es un test',
-            'tematica' => 'A',
-            'creador' => 'user',
-            'vista' => true,
-            // Cambiado 'f' a true
-            'anonimo' => "",
-            // Usar has para verificar si está presente
-        ]);
+        $creador = auth()->user()->username;
+        $anonimo = $request->has('anonimo') ? 'S' : 'N';
 
-        return redirect()->route('idea.index')
-            ->with('success', 'Idea creada con éxito');
+        $idea = Idea::create([
+            'titulo' => $request->input('titulo'),
+            'descripcion' => $request->input('descripcion'),
+            'tematica' => $request->input('tematica'),
+            'creador' => $creador,
+            'vista' => 'N',
+            'anonimo' => $anonimo,
+        ]);
+        return redirect()->route('idea.index')->with('success', 'Idea almacenada exitosamente');
     }
-
 
 
     public function update(Idea $idea)
     {
-        $idea->update(['vista' => 0]);
+        $idea->update(['vista' => 'S']);
 
         return redirect()->back()->with('success', 'Vista updated successfully');
     }

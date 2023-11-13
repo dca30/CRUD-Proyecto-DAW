@@ -1,6 +1,6 @@
 /* card-component.css */
 .card {
-    /*border: none;*/
+    border: none;
     border-radius: 10px;
     /*background-color: #F3F4F6;*/
 }
@@ -60,6 +60,6 @@
 }
 .badge-idea span:hover{
     transform: scale(1.2);
-    transition: transform 0.4s; 
+        transition: transform 0.4s; 
 
 }

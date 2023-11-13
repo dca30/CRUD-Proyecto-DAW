@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('descripcion');
             $table->char('tematica', 1);
             $table->string('creador', 15);
-            $table->boolean('vista');
-            $table->boolean('anonimo');
+            $table->char('vista',1);
+            $table->char('anonimo',1);
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.navigation', function ($view) {
             $ideas = Idea::all();
-            $totalVistas = $ideas->where('vista', 1)->count();
+            $totalVistas = $ideas->where('vista', 'N')->count();
             $view->with('number', $totalVistas);
         });
     }
