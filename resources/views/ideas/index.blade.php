@@ -56,11 +56,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- Formulario para agregar nueva tarea -->
-                                        <form action="{{ route('task.store') }}" method="POST">
+                                        <form action="{{ route('idea.store') }}" method="POST">
                                             @csrf
                                             <div class="form-group mb-4">
                                                 <x-input-label class="mb-2" for="titulo" :value="__('Titulo')" />
-                                                <x-text-input id="descripcion" class="block mt-1 w-full" type="text"
+                                                <x-text-input id="titulo" class="block mt-1 w-full" type="text"
                                                     name="titulo" :value="old('titulo')" required autofocus />
                                             </div>
                                             <div class="form-group mb-4">
@@ -73,15 +73,15 @@
                                                 <x-input-label class="mb-2" for="tematica" :value="__('Tematica')" />
                                                 <div>
                                                     <x-input-label for="bajo" class="inline-flex items-center">
-                                                        <x-text-input type="radio" name="dificultad" value="A" id="A" />
+                                                        <x-text-input type="radio" name="tematica" value="A" id="A" />
                                                         <span class="ml-2">{{ __('A') }}</span>
                                                     </x-input-label>
                                                     <x-input-label for="medio" class="inline-flex items-center ml-4">
-                                                        <x-text-input type="radio" name="dificultad" value="B" id="B" />
+                                                        <x-text-input type="radio" name="tematica" value="B" id="B" />
                                                         <span class="ml-2">{{ __('B') }}</span>
                                                     </x-input-label>
                                                     <x-input-label for="alto" class="inline-flex items-center ml-4">
-                                                        <x-text-input type="radio" name="dificultad" value="C" id="C" />
+                                                        <x-text-input type="radio" name="tematica" value="C" id="C" />
                                                         <span class="ml-2">{{ __('C') }}</span>
                                                     </x-input-label>
                                                 </div>

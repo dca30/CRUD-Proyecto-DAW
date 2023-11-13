@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/idea', [IdeaController::class, 'index'])->name('idea.index');
     //Route::get('/idea', [IdeaController::class, 'indexSorted'])->name('idea.index');
     Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update');
+    Route::post('/idea', [IdeaController::class, 'store'])->name('idea.store');
+
 });
 
 require __DIR__.'/auth.php';

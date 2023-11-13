@@ -20,23 +20,38 @@ class IdeaController extends Controller
 
         return view('ideas.index', ['ideas' => $ideas]);
     }
+
     public function store(Request $request)
     {
-        // ... tu código existente para la validación y almacenamiento de la tarea
-    
-        $anonimo = $request->has('anonimo'); // Verifica si el checkbox está marcado
-    
-        // Almacena la tarea con la información del checkbox
-        Task::create([
-            'titulo' => $request->titulo,
-            'descripcion' => $request->descripcion,
-            'dificultad' => $request->dificultad,
-            'anonimo' => $anonimo,
+        
+
+
+        $request->validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'tematica' => 'required',
+            'creador' => 'required',
+            'vista' => 'required',
+            'anonimo'=> 'required',
         ]);
-    
-        // Resto de tu código de redirección o respuesta
+
+        // Crea una nueva tarea con los datos ingresados y el campo 'responsables' vacío
+        Idea::create([
+            'titulo' => 'Test',
+            'descripcion' => 'Esto es un test',
+            'tematica' => 'A',
+            'creador' => 'user',
+            'vista' => true,
+            // Cambiado 'f' a true
+            'anonimo' => "",
+            // Usar has para verificar si está presente
+        ]);
+
+        return redirect()->route('idea.index')
+            ->with('success', 'Idea creada con éxito');
     }
-    
+
+
 
     public function update(Idea $idea)
     {
