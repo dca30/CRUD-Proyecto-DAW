@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,12 @@ Route::middleware('auth')->group(function () {
     //Route::get('/idea', [IdeaController::class, 'indexSorted'])->name('idea.index');
     Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update');
     Route::post('/idea', [IdeaController::class, 'store'])->name('idea.store');
+
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/export-db', [AdminController::class, 'exportDB'])->name('admin.exportDB');
+
+    Route::get("/admin/search",[AdminController::class,'search'])->name('admin.search');
+
 
 });
 

@@ -13,18 +13,18 @@
 
 
 <div class="card p-3 mb-4 shadow {{ $bg }}">
-    <div class="d-flex justify-content-between">
+    <div class="notif-card d-flex justify-content-between">
         <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
                 <div class="mb-0 h4">{{ $titulo}}</div>
                 @<span>{{  $creador  }}</span>
             </div>
         </div>
-        @if ($creador==auth()->user()->username)
+        {{-- @if ($creador==auth()->user()->username)
         <x-secondary-button>
             <i class="fa fa-pencil"></i>
         </x-secondary-button>
-        @endif
+        @endif --}}
 
         @if (auth()->id() == 1 && ($vista=='N'))
         <div class="badge-idea"
@@ -46,8 +46,11 @@
         </div>
     </div>
     <div class="row ">
-        <div class="badge">
+        <div class="col badge">
             <span>{{ $tematica  }}</span>
+        </div>
+        <div class="col justify-content-end text-end">
+            {{ substr($fecha, 0, 10)}}
         </div>
     </div>
 </div>

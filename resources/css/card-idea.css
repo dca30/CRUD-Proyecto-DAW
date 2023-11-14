@@ -58,7 +58,7 @@
     cursor: pointer; /* Cambia el cursor al pasar el ratón */
     transition: background-color 0.3s ease; /* Añade transición para suavizar el cambio */
 }
-.badge-idea span:hover{
+.notif-card span:hover{
     transform: scale(1.2);
         transition: transform 0.4s; 
 

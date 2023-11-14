@@ -30,7 +30,7 @@
                         @endif
                     </x-nav-link>
                     @if (auth()->id() == 1)
-                    <x-nav-link :href="route('member.index')" :active="request()->routeIs('member*')">
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin*')">
                         {{ __('Admin panel') }}
                     </x-nav-link>
                     @endif

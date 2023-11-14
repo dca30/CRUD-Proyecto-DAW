@@ -36,6 +36,8 @@ services:
         volumes:
             - 'sail-pgsql:/var/lib/postgresql/data'
             - './vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+            - './database/backups:/backups'
+
         networks:
             - sail
         healthcheck:

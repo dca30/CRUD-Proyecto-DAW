@@ -20,12 +20,19 @@
                         <div class="row row-cols-auto pb-4">
                             <p>{{ __('ORDER BY:') }}</p>
                             <div class="col"><a
-                                    href="{{ route('idea.index', ['criteria' => 'USER']) }}">{{ __('user') }}</a></div>
-                            <div class="col"><a
-                                    href="{{ route('idea.index', ['criteria' => 'THEME']) }}">{{ __('theme') }}</a>
+                                    href="{{ route('idea.index', ['criteria' => 'creador']) }}">{{ __('user') }}</a>
                             </div>
                             <div class="col"><a
-                                    href="{{ route('idea.index', ['criteria' => 'DATE']) }}">{{ __('date') }}</a></div>
+                                    href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{ __('theme') }}</a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ route('idea.index', ['criteria' => 'created_at']) }}">{{ __('date') }}</a>
+                            </div>
+                            @if (auth()->id() == 1)
+                            <div class="col">
+                                <a href="{{ route('idea.index', ['criteria' => 'vista']) }}">{{ __('pendiente') }}</a>
+                            </div>
+                            @endif
                         </div>
                         <div class="row justify-content-center align-items-center g-2 pb-4">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
@@ -40,7 +47,7 @@
                             <div class="col-4">
                                 <x-card-idea :id="$idea->id" :creador="$idea->creador" :titulo="$idea->titulo"
                                     :tematica="$idea->tematica" :descripcion="$idea->descripcion"
-                                    :vista="$idea->vista" />
+                                    :vista="$idea->vista" :fecha="$idea->created_at"/>
                             </div>
                             @endforeach
                         </div>
@@ -94,7 +101,7 @@
                                                         for="anonimo">{{ __('Anonimo') }}</label>
                                                 </div>
                                             </div>
-                                            
+
 
                                             <div class="flex items-center justify-end mt-4">
                                                 <x-primary-button class="ml-3">
