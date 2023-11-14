@@ -46,7 +46,6 @@
                         $('#search_list').html(data);
                     }
                 });
-                //end of ajax call
             });
         });
         </script>

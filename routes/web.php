@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/export-db', [AdminController::class, 'exportDB'])->name('admin.exportDB');
 
     Route::get("/admin/search",[AdminController::class,'search'])->name('admin.search');
+    Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+    
 
 
 });

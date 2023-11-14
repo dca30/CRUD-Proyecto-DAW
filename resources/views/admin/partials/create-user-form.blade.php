@@ -12,8 +12,8 @@
     <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-creation')">
         {{ __('Create') }}</x-danger-button>
 
-    <x-modal name="confirm-user-creation" :show="$errors->userCreation->isNotEmpty()" focusable >
-        <form class="p-4" method="POST" action="{{ route('register') }}">
+    <x-modal name="confirm-user-creation" :show="$errors->userCreation->isNotEmpty()" focusable>
+        <form class="p-4" method="POST" action="{{ route('admin.store') }}">
             @csrf
             <!-- Name -->
             <div>
@@ -48,19 +48,7 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                    name="password_confirmation" />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
             <div class="flex items-center justify-end mt-4">
-                
-
                 <x-primary-button class="ml-4">
                     {{ __('Register') }}
                 </x-primary-button>

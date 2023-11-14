@@ -50,6 +50,36 @@ class AdminController extends Controller
             return response()->json(['error' => 'Error al exportar la base de datos'], 500);
         }
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+        ]);
+        return redirect()->route('admin.index')
+            ->with('success', 'Usuario creado con éxito');
+    }
+
+
+    public function destroy(User $user)
+    {
+        if (auth()->id() === 1) {
+            $user->delete();
+
+            return redirect()->back()->with('success', 'Usuario eliminado exitosamente.');
+        } else {
+            return redirect()->back()->with('error', 'No tienes permisos para eliminar a este usuario.');
+        }
+    }
     public function search(Request $request)
     {
         if ($request->ajax()) {
@@ -68,19 +98,30 @@ class AdminController extends Controller
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>';
                 foreach ($data as $row) {
                     $output .= '
-                        <tr>
-                            <th scope="row">' . $row->id . '</th>
-                            <td>' . $row->name . '</td>
-                            <td>' . $row->email . '</td>
-                            <td><a href="#"><x-secondary-button class="ml-3"><i class="fa fa-pencil"></i></x-secondary-button></a></td>
-                            <td><a href="#"><x-danger-button class="ml-3"><i class="fa fa-x">Delete</i></x-danger-button></a></td>
-                        </tr>';
+                                <tr>
+                                    <th scope="row">' . $row->id . '</th>
+                                    <td><a href="' . route('dashboard') . '"><x-secondary-button class="ml-3"><i class="fa fa-pencil"></i></x-secondary-button></a></td>
+                                    <td>
+                                        <form method="post" action="' . route('user.destroy', $row->id) . '">
+                                            @csrf
+                                            @method("delete")
+                                            <x-danger-button class="ml-3">
+                                                {{ __("Delete") }}
+                                            </x-danger-button>
+                                        </form>
+                                    </td>
+                                    <td>' . $row->name . '</td>
+                                    <td>' . $row->email . '</td>
+                                </tr>';
                 }
+
                 $output .= '
                         </tbody>
                     </table>';
