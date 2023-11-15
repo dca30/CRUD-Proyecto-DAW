@@ -15,6 +15,12 @@ class AdminController extends Controller
         return view('admin.index');
 
     }
+    public function edit()
+    {
+
+        return view('admin.edit');
+
+    }
 
     public function exportDB()
     {
@@ -107,18 +113,14 @@ class AdminController extends Controller
                     $output .= '
                                 <tr>
                                     <th scope="row">' . $row->id . '</th>
+                                    <td>' . $row->name . '</td>
+                                    <td>' . $row->email . '</td>
                                     <td><a href="' . route('dashboard') . '"><x-secondary-button class="ml-3"><i class="fa fa-pencil"></i></x-secondary-button></a></td>
                                     <td>
-                                        <form method="post" action="' . route('user.destroy', $row->id) . '">
-                                            @csrf
-                                            @method("delete")
                                             <x-danger-button class="ml-3">
                                                 {{ __("Delete") }}
                                             </x-danger-button>
-                                        </form>
                                     </td>
-                                    <td>' . $row->name . '</td>
-                                    <td>' . $row->email . '</td>
                                 </tr>';
                 }
 
