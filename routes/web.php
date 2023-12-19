@@ -43,7 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/balance', [BalanceController::class, 'store'])->name('balance.store');
     Route::get('/balance/{balance}/edit', [BalanceController::class, 'edit'])->name('balance.edit');
     Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
-    Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
+    //Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
+    Route::get('/balance/{balance}/ticket', [BalanceController::class, 'ticket'])->name('balance.ticket');
     //Chart
     Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
     Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');

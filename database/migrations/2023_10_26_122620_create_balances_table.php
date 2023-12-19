@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->decimal('gasto_disco', 8, 2);
             $table->decimal('total')->storedAs('ingreso_c_b + ingreso_aso + gasto_premios + gasto_tickets + gasto_c_b + gasto_disco');
             $table->year('year');
+            $table->year('fechas');
             $table->timestamps();
         });
     }

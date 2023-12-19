@@ -138,4 +138,12 @@ class BalanceController extends Controller
     {
         return view('balances.info', ['balance' => $balance]);
     }*/
+    public function ticket(Balance $balance, TicketsBarChart $chart)
+    {
+        $ticket = Ticket::where('year', $balance->year)->first();
+        return view('balances.ticket', [
+            'ticket' => $ticket,
+            'chart3' => $chart->build($ticket),
+        ]);
+    }
 }
