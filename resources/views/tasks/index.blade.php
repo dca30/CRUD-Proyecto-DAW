@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Balance') }}
+            {{ __('Tasks') }}
         </h2>
         <div>
             @if(session()->has('success'))
@@ -16,7 +16,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="">
                     <div class="p-6 text-gray-900">
-
+                        <div class="text-end">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
+                            @if (auth()->id() === 1)
+                            <x-success-button>
+                                {{ __('Add new') }}
+                            </x-success-button>
+                            @endif
+                        </a>
+                        </div>
                         <table class="table table-striped">
 
                             <thead>
@@ -25,6 +33,7 @@
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Dificultad</th>
                                     <th scope="col">Responsable(s)</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,13 +94,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
-                            @if (auth()->id() === 1)
-                            <x-success-button>
-                                {{ __('Add new') }}
-                            </x-success-button>
-                            @endif
-                        </a>
+                        
                         <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">

@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-4 sm:col-span-2">
+                        <div class="col-span-4 sm:col-span-1">
                             <div class="bg-white shadow-sm sm:rounded-lg p-4">
                                 <h3 class="text-lg font-semibold">TOTAL</h3>
                                 <p class="text-2xl font-bold text-center">{{$balance->total}} €</p>

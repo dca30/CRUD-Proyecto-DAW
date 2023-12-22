@@ -31,7 +31,14 @@
                         </div>
                         @endif
                     </div>
-                    <div>
+                    <div class="text-end">
+                    @if (auth()->id() === 1)
+                        <a href="{{ route('balance.create') }}">
+                            <x-success-button>
+                                {{ __('Add new') }}
+                            </x-success-button>
+                        </a>
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -79,13 +86,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        @if (auth()->id() === 1)
-                        <a href="{{ route('balance.create') }}">
-                            <x-success-button>
-                                {{ __('Add new') }}
-                            </x-success-button>
-                        </a>
-                        @endif
+                        
                     </div>
                 </div>
             </div>

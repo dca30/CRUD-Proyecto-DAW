@@ -15,8 +15,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex">
-                    <div class="p-6 text-gray-900 w-100">
+                    <div class="p-6 text-gray-900 w-100 justify-between">
                         <div class="row row-cols-auto pb-4">
                             <p>{{ __('ORDER BY:') }}</p>
                             <div class="col"><a href="{{ route('idea.index', ['criteria' => 'creador']) }}">{{
@@ -33,17 +32,16 @@
                                 <a href="{{ route('idea.index', ['criteria' => 'vista']) }}">{{ __('pendiente') }}</a>
                             </div>
                             @endif
-                        </div>
-                        <div class="row justify-content-center align-items-center g-2 pb-4">
-                            <div class="col">
+                        <!--<div class="row justify-content-center align-items-center g-2 pb-4">
+                        </div>-->
+                        <div class="">
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
                                     <x-success-button>
                                         {{ __('Add new') }}
                                     </x-success-button>
                                 </a>
-                            </div>
-                        </div>
-
+                            </div>                         </div>
+             
                         <div class="row ">
                             @foreach($ideas as $idea)
                             <div class="col-4">
