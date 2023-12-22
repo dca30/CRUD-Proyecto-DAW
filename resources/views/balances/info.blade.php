@@ -1,15 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Balance')  }} {{$balance->year}}
-        </h2>
-        <a href="{{ route('balance.ticket', ['balance' => $balance],['ticket' => $ticket] ) }}">
-            <x-secondary-button class="ml-3">
-                Info tickets
-            </x-secondary-button>
-        </a>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Balance') }} {{$balance->year}}
+            </h2>
+            <a href="{{ route('balance.ticket', ['balance' => $balance],['ticket' => $ticket] ) }}">
+                <x-primary-button class="ml-3">
+                    {{ __('Info tickets') }}
+                </x-primary-button>
+            </a>
+        </div>
     </x-slot>
-    <div class="py-12">
+    <div class="pt-10 pb-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
@@ -57,8 +59,8 @@
                                     <p>{{$balance->gasto_disco}}€</p>
                                 </div>
                             </div>
-                        </div>                        
-                        <div class="col-span-4 sm:col-span-4">
+                        </div>
+                        <div class="col-span-4 sm:col-span-2">
                             <div class="bg-white shadow-sm sm:rounded-lg p-4">
                                 <h3 class="text-lg font-semibold">TOTAL</h3>
                                 <p class="text-2xl font-bold text-center">{{$balance->total}} €</p>

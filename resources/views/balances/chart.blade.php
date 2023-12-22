@@ -14,9 +14,9 @@
         @endif
     </div>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="container px-4 mx-auto">
-                <div class="p-6 m-20 bg-white rounded shadow">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+            <div class="container h-50 px-4 mx-auto">
+                <div class="p-6 my-15 bg-white rounded shadow">
                     {!! $chart->container() !!}
                 </div>
             </div>

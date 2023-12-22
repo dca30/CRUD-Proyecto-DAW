@@ -19,11 +19,11 @@
                     <div class="p-6 text-gray-900 w-100">
                         <div class="row row-cols-auto pb-4">
                             <p>{{ __('ORDER BY:') }}</p>
-                            <div class="col"><a
-                                    href="{{ route('idea.index', ['criteria' => 'creador']) }}">{{ __('user') }}</a>
+                            <div class="col"><a href="{{ route('idea.index', ['criteria' => 'creador']) }}">{{
+                                    __('user') }}</a>
                             </div>
-                            <div class="col"><a
-                                    href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{ __('theme') }}</a>
+                            <div class="col"><a href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{
+                                    __('theme') }}</a>
                             </div>
                             <div class="col">
                                 <a href="{{ route('idea.index', ['criteria' => 'created_at']) }}">{{ __('date') }}</a>
@@ -35,19 +35,21 @@
                             @endif
                         </div>
                         <div class="row justify-content-center align-items-center g-2 pb-4">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
-                                <x-success-button>
-                                    {{ __('Add new') }}
-                                </x-success-button>
-                            </a>
+                            <div class="col">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
+                                    <x-success-button>
+                                        {{ __('Add new') }}
+                                    </x-success-button>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="row ">
                             @foreach($ideas as $idea)
                             <div class="col-4">
                                 <x-card-idea :id="$idea->id" :creador="$idea->creador" :titulo="$idea->titulo"
-                                    :tematica="$idea->tematica" :descripcion="$idea->descripcion"
-                                    :vista="$idea->vista" :fecha="$idea->created_at"/>
+                                    :tematica="$idea->tematica" :descripcion="$idea->descripcion" :vista="$idea->vista"
+                                    :fecha="$idea->created_at" />
                             </div>
                             @endforeach
                         </div>
@@ -97,8 +99,8 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" name="anonimo"
                                                         id="anonimo">
-                                                    <label class="form-check-label"
-                                                        for="anonimo">{{ __('Anonimo') }}</label>
+                                                    <label class="form-check-label" for="anonimo">{{ __('Anonimo')
+                                                        }}</label>
                                                 </div>
                                             </div>
 

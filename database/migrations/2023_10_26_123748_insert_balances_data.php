@@ -27,7 +27,7 @@ return new class extends Migration
         ),
         (3941.10,418.00,-150.18,-88.35,-2300.00,-800.00,2022,1821,current_timestamp,current_timestamp),
         (5876.75,613.00,-113.67,-80.75,-2400.00,-1200.00,2021,1922,current_timestamp,current_timestamp),
-        (5876.75,230.00,0.00,-40.75,-1000.00,0.00,2020,2023,current_timestamp,current_timestamp),
+        (1240.28,230.00,0.00,-40.75,-1000.00,0.00,2020,2023,current_timestamp,current_timestamp),
         (4549.47,580.00,-128.46,-82.50,-2150.00,-1050.00,2019,2225,current_timestamp,current_timestamp),
         (4731.85,535.00,-115.06,-75.35,-2280.00,-900.00,2018,1619,current_timestamp,current_timestamp),
         (3866.14,490.00,-100.80,-72.10,-2800.00,-850.00,2017,1720,current_timestamp,current_timestamp),
