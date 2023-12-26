@@ -18,6 +18,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite('resources/css/card-balance.css')
     @vite('resources/css/card-idea.css')
+    @vite('resources/css/general.css')
 
 </head>
 

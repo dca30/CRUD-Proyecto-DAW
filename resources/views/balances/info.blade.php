@@ -1,3 +1,7 @@
+@push('styles')
+<link href="{{ asset('resources/css/general.css') }}" rel="stylesheet">
+@endpush
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
@@ -36,6 +40,11 @@
                                     <p>Aporte Asociacion:</p>
                                     <p>{{$balance->ingreso_aso}}€</p>
                                 </div>
+                                <hr class="mb-3" style="height:2px;background-color:gray">
+                                <div class="flex justify-between mt-2">
+                                    <p>Total:</p>
+                                    <p>+{{$balance->ingreso_aso + $balance->ingreso_c_b}}€</p>
+                                </div>
                             </div>
                         </div>
 
@@ -58,18 +67,32 @@
                                     <p>Discomovil:</p>
                                     <p>{{$balance->gasto_disco}}€</p>
                                 </div>
+                                <hr class="mb-3" style="height:2px;background-color:gray">
+                                <div class="flex justify-between mt-2">
+                                    <p>Total:</p>
+                                    <p>{{$balance->gasto_disco + $balance->gasto_c_b + $balance->gasto_tickets + $balance->gasto_premios}}€
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-span-4 sm:col-span-1">
-                            <div class="bg-white shadow-sm sm:rounded-lg p-4">
+                    </div>
+                    <div class="pt-4 grid grid-cols-5 gap-4">
+                        <div class="col-span-4 sm:col-span-1 sm:col-start-3 text-center">
+                            @if($balance->incremento>0)
+                            <div class="shadow-sm sm:rounded-lg p-4 total-pos">
+                                <h3 class="text-lg font-semibold">TOTAL</h3>
+                                <p class="text-2xl font-bold text-center">+{{$balance->total}} €</p>
+                            </div>
+                            @elseif($balance->total<0) <div class="shadow-sm sm:rounded-lg p-4 total-neg">
                                 <h3 class="text-lg font-semibold">TOTAL</h3>
                                 <p class="text-2xl font-bold text-center">{{$balance->total}} €</p>
-                            </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="pb-12">

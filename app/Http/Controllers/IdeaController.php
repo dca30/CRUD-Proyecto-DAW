@@ -11,12 +11,13 @@ class IdeaController extends Controller
     public function index(Request $request)
 {
     $userId = auth()->id();
-    //$criteria = $request->get('criteria', 'id'); // Obtiene el valor de 'criteria' de la URL o usa 'id' por defecto
-    //$vista = $request->get('vista', 'id');
+    $criteria = $request->get('criteria', 'id'); 
+
     if ($userId == 1) {
-        $ideas = Idea::orderBy('vista', 'asc')->get();
-    }else {
-        $ideas = Idea::orderBy('id', 'asc')->get();
+        $criteria = $request->get('criteria', 'vista');
+        $ideas = Idea::orderBy($criteria, 'asc')->get();
+    } else {
+        $ideas = Idea::orderBy($criteria, 'asc')->get();
     }
 
     return view('ideas.index', ['ideas' => $ideas]);

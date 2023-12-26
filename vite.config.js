@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/card-balance.css',
                 'resources/css/card-idea.css',
+                'resources/css/general.css',
                 'resources/js/app.js',
             ],
             refresh: true,

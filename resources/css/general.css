@@ -1,0 +1,8 @@
+.total-neg {
+    border-bottom: 4px solid red; /* 2px de grosor y color rojo (#ff0000) */
+
+  }
+
+  .total-pos {
+    border-bottom: 4px solid #198754; /* 2px de grosor y color rojo (#ff0000) */
+  }
