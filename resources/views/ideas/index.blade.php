@@ -23,18 +23,18 @@
                             </div>
                             <div class="col d-flex align-items-center">
                                 <a href="{{ route('idea.index', ['criteria' => 'creador']) }}">
-                                    {{__('user') }}
+                                    {{__('User') }}
                                 </a>
                             </div>
                             <div class="col d-flex align-items-center">
-                                <a href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{__('theme') }}</a>
+                                <a href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{__('Type') }}</a>
                             </div>
                             <div class="col d-flex align-items-center">
-                                <a href="{{ route('idea.index', ['criteria' => 'created_at']) }}">{{ __('date') }}</a>
+                                <a href="{{ route('idea.index', ['criteria' => 'created_at']) }}">{{ __('Date') }}</a>
                             </div>
                             @if (auth()->id() == 1)
                             <div class="col d-flex align-items-center">
-                                <a href="{{ route('idea.index', ['criteria' => 'vista']) }}">{{ __('pendiente') }}</a>
+                                <a href="{{ route('idea.index', ['criteria' => 'vista']) }}">{{ __('Pending') }}</a>
                             </div>
                             @endif
                         </div>
@@ -73,17 +73,17 @@
                                     <form action="{{ route('idea.store') }}" method="POST">
                                         @csrf
                                         <div class="form-group mb-4">
-                                            <x-input-label class="mb-2" for="titulo" :value="__('Titulo')" />
+                                            <x-input-label class="mb-2" for="titulo" :value="__('Title')" />
                                             <x-text-input id="titulo" class="block mt-1 w-full" type="text"
                                                 name="titulo" :value="old('titulo')" required autofocus />
                                         </div>
                                         <div class="form-group mb-4">
-                                            <x-input-label class="mb-2" for="descripcion" :value="__('Descripción')" />
+                                            <x-input-label class="mb-2" for="descripcion" :value="__('Description')" />
                                             <x-text-input id="descripcion" class="block mt-1 w-full" type="text"
                                                 name="descripcion" :value="old('descripcion')" required autofocus />
                                         </div>
                                         <div class="form-group mb-4">
-                                            <x-input-label class="mb-2" for="tematica" :value="__('Tematica')" />
+                                            <x-input-label class="mb-2" for="tematica" :value="__('Type')" />
                                             <div>
                                                 <x-input-label for="bajo" class="inline-flex items-center">
                                                     <x-text-input type="radio" name="tematica" value="A" id="A" />
@@ -103,7 +103,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="anonimo"
                                                     id="anonimo">
-                                                <label class="form-check-label" for="anonimo">{{ __('Anonimo')
+                                                <label class="form-check-label" for="anonimo">{{ __('Anonymous')
                                                         }}</label>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
 
                                         <div class="flex items-center justify-end mt-4">
                                             <x-primary-button class="ml-3">
-                                                {{ __('Aceptar') }}
+                                                {{ __('Submit') }}
                                             </x-primary-button>
                                         </div>
                                     </form>

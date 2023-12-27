@@ -4,25 +4,18 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Balances') }}
             </h2>
+            
             <a href="{{ route('balance.chart') }}">
                 <x-primary-button class="ml-3">
-                    {{ __('Ver grafico total') }}
+                    {{ __('Summary chart') }}
                 </x-primary-button>
             </a>
         </div>
-        <!--<a href="{{ route('balance.chart') }}">
-            <x-primary-button>
-                {{ __('Ver gráfico no se que') }}
-            </x-primary-button>
-        </a>-->
     </x-slot>
     <div class="py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <!--<h1 class="text-primary mb-3">Balance</h1>-->
-                    </div>
 
                     <div>
                         @if(session()->has('success'))
@@ -43,13 +36,13 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Bebida Beneficio</th>
-                                    <th scope="col">Aporte Asociacion</th>
-                                    <th scope="col">Premios gasto</th>
-                                    <th scope="col">Tickets gasto</th>
-                                    <th scope="col">Bebida gasto</th>
-                                    <th scope="col">Discomovil</th>
-                                    <th scope="col">TOTAL</th>
+                                    <th scope="col">{{ __('Drinks profit') }}</th>
+                                    <th scope="col">{{ __('Association contribution') }}</th>
+                                    <th scope="col">{{ __('Awards expense') }}</th>
+                                    <th scope="col">{{ __('Tickets expense') }}</th>
+                                    <th scope="col">{{ __('Drinks espense') }}</th>
+                                    <th scope="col">{{ __('Mobile DJ') }}</th>
+                                    <th scope="col">{{ __('TOTAL') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

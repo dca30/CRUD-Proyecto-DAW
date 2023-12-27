@@ -6,7 +6,7 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Balance') }} {{$balance->year}}
+                {{ __('Balance') }} > {{$balance->year}}
             </h2>
             <a href="{{ route('balance.ticket', ['balance' => $balance],['ticket' => $ticket] ) }}">
                 <x-primary-button class="ml-3">
@@ -31,45 +31,45 @@
                     <div class="grid grid-cols-4 gap-4">
                         <div class="col-span-4 sm:col-span-2">
                             <div class="bg-white shadow-sm sm:rounded-lg p-4">
-                                <h3 class="text-lg font-semibold">Ingresos</h3>
+                                <h3 class="text-lg font-semibold">{{ __('PROFITS') }}</h3>
                                 <div class="flex justify-between mt-2">
-                                    <p>Bebida Beneficio:</p>
+                                    <p>{{ __('Drinks & food') }}:</p>
                                     <p>{{$balance->ingreso_c_b}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <p>Aporte Asociacion:</p>
+                                    <p>{{ __('Association contribution') }}:</p>
                                     <p>{{$balance->ingreso_aso}}€</p>
                                 </div>
-                                <hr class="mb-3" style="height:2px;background-color:gray">
+                                <hr class="mb-3" style="height:2px;background-color:gray;opacity:0.1">
                                 <div class="flex justify-between mt-2">
-                                    <p>Total:</p>
-                                    <p>+{{$balance->ingreso_aso + $balance->ingreso_c_b}}€</p>
+                                    <p>{{ __('TOTAL') }}:</p>
+                                    <p>{{$balance->ingreso_aso + $balance->ingreso_c_b}}€</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-span-4 sm:col-span-2">
                             <div class="bg-white shadow-sm sm:rounded-lg p-4">
-                                <h3 class="text-lg font-semibold">Gastos</h3>
+                                <h3 class="text-lg font-semibold">{{ __('EXPENSES') }}</h3>
                                 <div class="flex justify-between mt-2">
-                                    <p>Premios gasto:</p>
+                                    <p>{{ __('Awards') }}:</p>
                                     <p>{{$balance->gasto_premios}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <p>Tickets gasto:</p>
+                                    <p>{{ __('Tickets') }}:</p>
                                     <p>{{$balance->gasto_tickets}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <p>Bebida gasto:</p>
+                                    <p>{{ __('Drinks & food') }}:</p>
                                     <p>{{$balance->gasto_c_b}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <p>Discomovil:</p>
+                                    <p>{{ __('Mobile DJ') }}:</p>
                                     <p>{{$balance->gasto_disco}}€</p>
                                 </div>
-                                <hr class="mb-3" style="height:2px;background-color:gray">
+                                <hr class="mb-3" style="height:2px;background-color:gray;opacity:0.1;">
                                 <div class="flex justify-between mt-2">
-                                    <p>Total:</p>
+                                    <p>{{ __('TOTAL') }}:</p>
                                     <p>{{$balance->gasto_disco + $balance->gasto_c_b + $balance->gasto_tickets + $balance->gasto_premios}}€
                                     </p>
                                 </div>

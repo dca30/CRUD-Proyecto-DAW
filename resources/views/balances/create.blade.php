@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Balance') }}
+            {{ __('Balance') }} > {{ __('Create') }}
         </h2>
     </x-slot>
     <div>
@@ -23,32 +23,32 @@
                             @method('post')
                             <div class="row">
                                 <div class="col">
-                                    <h1 class="mb-3">GASTOS</h1>
+                                    <h1 class="mb-3">{{ __('Expenses') }}</h1>
 
-                                    <x-input-label>Premios</x-input-label>
+                                    <x-input-label>{{ __('Awards') }}</x-input-label>
                                     <x-text-input class="mb-3" name="gasto_premios" placeholder="Premios" />
 
-                                    <x-input-label>Tickets</x-input-label>
+                                    <x-input-label>{{ __('Tickets') }}</x-input-label>
                                     <x-text-input class="mb-3" name="gasto_tickets" placeholder="Tickets" />
 
-                                    <x-input-label>Bebida y comida</x-input-label>
+                                    <x-input-label>{{ __('Drinks & Food') }}</x-input-label>
                                     <x-text-input class="mb-3" name="gasto_c_b" placeholder="Bebida y comida" />
 
-                                    <x-input-label>Discomovil</x-input-label>
+                                    <x-input-label>{{ __('Mobile DJ') }}</x-input-label>
                                     <x-text-input class="mb-3" name="gasto_disco" placeholder="Discomovil" />
                                 </div>
                                 <div class="col">
-                                    <h1 class="mb-3">INGRESOS</h1>
+                                    <h1 class="mb-3">{{ __('Profits') }}</h1>
                                     <x-input-label>Año</x-input-label>
                                     <x-text-input class="mb-3" name="year" placeholder="Año" />
 
-                                    <x-input-label>Comida y bebida</x-input-label>
+                                    <x-input-label>{{ __('Drinks & Food') }}</x-input-label>
                                     <x-text-input class="mb-3" name="ingreso_c_b" placeholder="Comida y bebida" />
 
-                                    <x-input-label>Aporte asociación</x-input-label>
+                                    <x-input-label>{{ __('Association contribution') }}</x-input-label>
                                     <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
 
-                                    <x-input-label>Fechas</x-input-label>
+                                    <x-input-label>{{ __('Date') }}</x-input-label>
                                     <x-text-input class="mb-3" name="fechas" placeholder="Fechas" />
 
                                     <x-input-label></x-input-label>

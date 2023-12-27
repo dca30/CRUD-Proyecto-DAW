@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Tasks') }}
         </h2>
+        
         <div>
             @if(session()->has('success'))
             <div>
@@ -30,9 +31,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Descripcion</th>
-                                    <th scope="col">Dificultad</th>
-                                    <th scope="col">Responsable(s)</th>
+                                    <th scope="col">{{ __('Description') }}</th>
+                                    <th scope="col">{{ __('Difficulty') }}</th>
+                                    <th scope="col">{{ __('Responsable(s)') }}</th>
                                     
                                 </tr>
                             </thead>

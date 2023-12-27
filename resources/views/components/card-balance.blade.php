@@ -8,12 +8,12 @@
             <!--<div class="icon"> <i class="fa fa-regular fa-circle"></i> </div>-->
             <div class="ms-2 c-details">
                 <div class="mb-0 h3 ">{{ $title  }}</div>
-                <span>{{ substr($balance->fechas, 0, 2)}} Ago - {{ substr($balance->fechas, 2, 2)}} Ago</span>
+                <span>{{ substr($balance->fechas, 0, 2)}} - {{ substr($balance->fechas, 2, 2)}} {{ __('Augost') }}</span>
             </div>
         </div>
         <div class="badge">
             <a href="{{ route('balance.info', ['balance' => $balance]) }}">
-                <span>Show more</span>
+                <span>{{ __('Show more') }}</span>
             </a>
         </div>
     </div>

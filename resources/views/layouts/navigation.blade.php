@@ -59,19 +59,12 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link href="{{ url('locale/es') }}">
                                 {{ __('Español') }}
                             </x-dropdown-link>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    {{ __('English') }}
-                                </x-dropdown-link>
-                            </form>
+                            <x-dropdown-link href="{{ url('locale/en') }}">
+                                {{ __('English') }}
+                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>
