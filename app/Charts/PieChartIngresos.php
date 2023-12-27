@@ -12,12 +12,11 @@ class PieChartIngresos
     {
         $this->chart = $chart;
     }
-    public function build($ingresos, $labels)
+    public function build($ingresos, $labels,$title)
     {
         return $this->chart
-            //->donutChart()
             ->pieChart()
-            ->setTitle('INGRESOS')
+            ->setTitle($title)
             ->addData($ingresos)
             ->setLabels($labels);
     }

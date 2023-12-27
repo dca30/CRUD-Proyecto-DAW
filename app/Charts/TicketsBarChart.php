@@ -13,8 +13,9 @@ class TicketsBarChart
         $this->chart = $chart;
     }
 
-    public function build($ticket)
+    public function build($ticket,$bebidas,$text)
     {
+
         $ticket_totales = [
             $ticket->tickets_totales_cubata,
             $ticket->tickets_totales_cerveza,
@@ -52,10 +53,10 @@ class TicketsBarChart
             //->radarChart()
             ->horizontalBarChart()
             ->setTitle($ticket->year)
-            ->setSubtitle('Tickets totales vs. Tickets comprados')
-            ->addData('Totales', $ticket_totales)
-            ->addData('Comprados', $ticket_comprados)
-            ->setXAxis(['Cubata', 'Cerveza', 'Agua/Refresco', 'Bocadillo', 'Copa', 'Litro cerveza']);
+            ->setSubtitle($text[0])
+            ->addData($text[1], $ticket_totales)
+            ->addData($text[2], $ticket_comprados)
+            ->setXAxis($bebidas);
     }
 }
 //Donut Chart, Radial Bar Chart, Polar Area Chart, Line Chart, Area Chart, Bar Chart, Horizontal Bar Chart, Heatmap Chart, Radar Chart

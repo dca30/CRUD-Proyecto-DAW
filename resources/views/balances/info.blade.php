@@ -40,6 +40,18 @@
                                     <p>{{ __('Association contribution') }}:</p>
                                     <p>{{$balance->ingreso_aso}}€</p>
                                 </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>{{ __('Chapas tournament') }}:</p>
+                                    <p>{{$balance->ingreso_chapas}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>{{ __('Guinote tournament') }}:</p>
+                                    <p>{{$balance->ingreso_guinote}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>{{ __('Patrocinadores') }}:</p>
+                                    <p>{{$balance->ingreso_patrocinio}}€</p>
+                                </div>
                                 <hr class="mb-3" style="height:2px;background-color:gray;opacity:0.1">
                                 <div class="flex justify-between mt-2">
                                     <p>{{ __('TOTAL') }}:</p>
@@ -66,6 +78,10 @@
                                 <div class="flex justify-between mt-2">
                                     <p>{{ __('Mobile DJ') }}:</p>
                                     <p>{{$balance->gasto_disco}}€</p>
+                                </div>
+                                <div class="flex justify-between mt-2">
+                                    <p>{{ __('Games for kids') }}:</p>
+                                    <p>{{$balance->gasto_juegos}}€</p>
                                 </div>
                                 <hr class="mb-3" style="height:2px;background-color:gray;opacity:0.1;">
                                 <div class="flex justify-between mt-2">
@@ -112,6 +128,20 @@
             <script src="{{ $chart2->cdn() }}"></script>
             {{ $chart2->script() }}
 
+        </div>
+    </div>
+    <div class="pb-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="container mx-auto">
+                <div class="row">
+                    <div class="col p-6 me-3 bg-white rounded shadow">
+                        <h3 class="text-lg font-semibold">{{ __('NOTES') }}</h3>
+                        <div class="flex justify-between mt-2">
+                            <p>{{$balance->notas}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

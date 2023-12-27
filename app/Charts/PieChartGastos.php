@@ -12,10 +12,10 @@ class PieChartGastos
     {
         $this->chart = $chart;
     }
-    public function build($gastos, $labels)
+    public function build($gastos, $labels, $title)
     {
         return $this->chart->pieChart()
-            ->setTitle('GASTOS')
+            ->setTitle($title)
             ->addData($gastos)
             ->setLabels($labels);
     }

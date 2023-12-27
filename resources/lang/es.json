@@ -32,7 +32,23 @@
     "TOTAL":"TOTAL",
     "EXPENSES":"GASTOS",
     "PROFITS":"INGRESOS",
-    
+    "Cocktail":"Cubata",
+    "Beer":"Cerveza",
+    "Water/Soda":"Agua/Refresco",
+    "Sandwich":"Bocadillo",
+    "Neat drink":"Copa",
+    "Beer 1L":"Litro cerveza",
+    "Drink/Food":"Comida/Bebida",
+    "Prefestivities":"Prefiestas",
+    "Festivities":"Fiestas",
+    "Activities":"Actividades",
+    "Games for kids":"Juegos infantiles",
+    "Chapas tournament":"Torneo de chapas",
+    "Guiñote tournament":"Torneo de guiñote",
+    "Sponsors":"Patrocinadores",
+
+
+
 
     "(and :count more error)": "(y :count error más)",
     "(and :count more errors)": "(y :count errores más)",

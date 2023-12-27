@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Balance') }} > {{$ticket->year}} > {{ __('Tickets') }}
+            {{ __('Balance') }} > {{$ticket->year}} > {{ __('Tickets') }}
         </h2>
 
     </x-slot>
@@ -16,34 +16,34 @@
                     @endif
 
                     <div class="grid grid-cols-5 gap-5">
-                        <div class="col-span-4 sm:col-span-1">
-                                <h3 class="text-lg font-semibold">Tickets</h3>
-                                <div class="flex justify-between mt-3">
-                                    <p>Cubata:</p>
-                                    <p>{{$ticket->tickets_comprados_cubata}}/{{$ticket->tickets_totales_cubata}}</p>
-                                </div>
-                                <div class="flex justify-between mt-3">
-                                    <p>Cerveza:</p>
-                                    <p>{{$ticket->tickets_comprados_cerveza}}/{{$ticket->tickets_totales_cerveza}}</p>
-                                </div>
-                                <div class="flex justify-between mt-3">
-                                    <p>Agua/Refresco:</p>
-                                    <p>{{$ticket->tickets_comprados_agua_refresco}}/{{$ticket->tickets_totales_agua_refresco}}
-                                    </p>
-                                </div>
-                                <div class="flex justify-between mt-3">
-                                    <p>Bocadillo:</p>
-                                    <p>{{$ticket->tickets_comprados_bocadillo}}/{{$ticket->tickets_totales_bocadillo}}
-                                    </p>
-                                </div>
-                                <div class="flex justify-between mt-3">
-                                    <p>Copa:</p>
-                                    <p>{{$ticket->tickets_comprados_copa}}/{{$ticket->tickets_totales_copa}}</p>
-                                </div>
-                                <div class="flex justify-between mt-3">
-                                    <p>Litro Cerveza:</p>
-                                    <p>{{$ticket->tickets_comprados_litro_cerveza}}/{{$ticket->tickets_totales_litro_cerveza}}
-                                    </p>
+                        <div class="col-span-4 sm:col-span-1 pt-8">
+                            <h3 class="text-lg font-semibold">Tickets</h3>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Cocktail') }}:</p>
+                                <p>{{$ticket->tickets_comprados_cubata}}/{{$ticket->tickets_totales_cubata}}</p>
+                            </div>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Beer') }}:</p>
+                                <p>{{$ticket->tickets_comprados_cerveza}}/{{$ticket->tickets_totales_cerveza}}</p>
+                            </div>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Water/Soda') }}:</p>
+                                <p>{{$ticket->tickets_comprados_agua_refresco}}/{{$ticket->tickets_totales_agua_refresco}}
+                                </p>
+                            </div>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Sandwich') }}:</p>
+                                <p>{{$ticket->tickets_comprados_bocadillo}}/{{$ticket->tickets_totales_bocadillo}}
+                                </p>
+                            </div>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Neat drink') }}:</p>
+                                <p>{{$ticket->tickets_comprados_copa}}/{{$ticket->tickets_totales_copa}}</p>
+                            </div>
+                            <div class="flex justify-between mt-3">
+                                <p>{{ __('Beer 1L') }}:</p>
+                                <p>{{$ticket->tickets_comprados_litro_cerveza}}/{{$ticket->tickets_totales_litro_cerveza}}
+                                </p>
                             </div>
                         </div>
                         <div class="col-span-4 sm:col-span-4">

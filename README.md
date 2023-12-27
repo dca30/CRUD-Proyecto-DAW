@@ -1,3 +1,19 @@
+> [!NOTE]
+>Aqui tienes una nota especial
+
+> [!TIP]
+>Aqui tienes una nota especial
+
+> [!IMPORTANT]
+>Aqui tienes una nota especial
+
+> [!WARNING]
+>Aqui tienes una nota especial
+
+> [!CAUTION]
+>Aqui tienes una nota especial
+
+
 DESPLEGAR EL PROYECTO
 ./vendor/bin/sail up
 ./vendoir/bin/sail npm run dev

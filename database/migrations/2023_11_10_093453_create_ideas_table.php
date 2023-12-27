@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo', 30);
             $table->text('descripcion');
-            $table->char('tematica', 1);
+            $table->string('tematica', 15);
             $table->string('creador', 15);
             $table->char('vista',1);
             $table->char('anonimo',1);

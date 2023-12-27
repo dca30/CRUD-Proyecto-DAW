@@ -18,47 +18,77 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="">
                     <div class="p-6 text-gray-900">
-                        <form method="post" action="{{route('balance.store')}}">
+                    <form method="post" action="{{route('balance.store')}}">
                             @csrf
                             @method('post')
-                            <div class="row">
-                                <div class="col">
-                                    <h1 class="mb-3">{{ __('Expenses') }}</h1>
+                            <div class="grid grid-cols-9 gap-4">
+                                <div class="col-span-4 sm:col-span-3 col-start-6 text-center">
+                                    <div class="bg-white sm:rounded-lg p-4 sombra-negra">
+                                        <h3 class="text-lg font-semibold">INFO</h3>
 
-                                    <x-input-label>{{ __('Awards') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="gasto_premios" placeholder="Premios" />
+                                        <x-input-label>{{ __('Year') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="year" placeholder="Año" />
 
-                                    <x-input-label>{{ __('Tickets') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="gasto_tickets" placeholder="Tickets" />
+                                        <x-input-label>{{ __('Date') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="fechas" placeholder="Fechas" />
+                                    </div>
+                                    <div class="bg-white sm:rounded-lg p-4 mt-5 sombra-negra">
+                                        <h3 class="text-lg font-semibold">{{ __('NOTES') }}</h3>
 
-                                    <x-input-label>{{ __('Drinks & Food') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="gasto_c_b" placeholder="Bebida y comida" />
+                                        <x-text-input class="mb-3" name="notas" placeholder="Notes" />
 
-                                    <x-input-label>{{ __('Mobile DJ') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="gasto_disco" placeholder="Discomovil" />
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <h1 class="mb-3">{{ __('Profits') }}</h1>
-                                    <x-input-label>Año</x-input-label>
-                                    <x-text-input class="mb-3" name="year" placeholder="Año" />
+                                <div class="col-span-4 sm:col-span-3 text-center">
+                                    <div class="bg-white sm:rounded-lg col-start-2 p-4 sombra-verde">
+                                        <h3 class="text-lg font-semibold">{{ __('PROFITS') }}</h3>
+                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_c_b" placeholder="Comida y bebida" />
 
-                                    <x-input-label>{{ __('Drinks & Food') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="ingreso_c_b" placeholder="Comida y bebida" />
+                                        <x-input-label>{{ __('Association contribution') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
 
-                                    <x-input-label>{{ __('Association contribution') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
+                                        <x-input-label>{{ __('Torneo chapas') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_chapas" placeholder="Chapas" />
 
-                                    <x-input-label>{{ __('Date') }}</x-input-label>
-                                    <x-text-input class="mb-3" name="fechas" placeholder="Fechas" />
+                                        <x-input-label>{{ __('Torneo guiñote') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_guinote" placeholder="Guiñote" />
 
-                                    <x-input-label></x-input-label>
-                                    <input type="submit" value="">
-                                    <x-success-button>
-                                        {{ __('Submit') }}
-                                    </x-success-button>
+                                        <x-input-label>{{ __('Patrocinadores') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_patrocinio" placeholder="Patrocinadores" />
 
-                                    </input>
+                                    </div>
                                 </div>
+
+                                <div class="col-span-4 sm:col-span-3 col-start-6 text-center">
+                                    <div class="bg-white sombra-roja sm:rounded-lg p-4 bg-success">
+                                        <h3 class="text-lg font-semibold">{{ __('EXPENSES') }}</h3>
+                                        <x-input-label>{{ __('Awards') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_premios"
+                                            placeholder="Premios" />
+
+                                        <x-input-label>{{ __('Tickets') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_tickets" 
+                                            placeholder="Tickets" />
+
+                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_c_b" 
+                                            placeholder="Bebida y comida" />
+
+                                        <x-input-label>{{ __('Mobile DJ') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_disco" 
+                                            placeholder="Discomovil" />
+                                        <x-input-label>{{ __('Games for kids') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_juegos" 
+                                            placeholder="Juegos" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center pt-3">
+                                <input type="submit" value="">
+                                <x-success-button>
+                                    {{ __('Submit') }}
+                                </x-success-button></input>
                             </div>
                         </form>
                     </div>

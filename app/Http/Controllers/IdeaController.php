@@ -29,7 +29,7 @@ class IdeaController extends Controller
         $request->validate([
             'titulo' => 'required|string|max:30',
             'descripcion' => 'required|string',
-            'tematica' => 'required|string|in:A,B,C',
+            'tematica' => 'required|string',
         ]);
 
         $creador = auth()->user()->username;

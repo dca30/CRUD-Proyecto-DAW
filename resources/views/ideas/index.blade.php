@@ -19,21 +19,21 @@
                     <div class="row row-cols-auto pb-4 justify-between">
                         <div class="row">
                             <div class="col d-flex align-items-center">
-                                <p><i class="fa fa-filter fa-2x"></i></p>
+                                <p><i class="fa fa-filter" style="transform:scale(1.3)"></i>:</p>
                             </div>
-                            <div class="col d-flex align-items-center">
+                            <div class="col d-flex align-items-center px-1">
                                 <a href="{{ route('idea.index', ['criteria' => 'creador']) }}">
                                     {{__('User') }}
                                 </a>
                             </div>
-                            <div class="col d-flex align-items-center">
+                            <div class="col d-flex align-items-center px-1">
                                 <a href="{{ route('idea.index', ['criteria' => 'tematica']) }}">{{__('Type') }}</a>
                             </div>
-                            <div class="col d-flex align-items-center">
+                            <div class="col d-flex align-items-center px-1">
                                 <a href="{{ route('idea.index', ['criteria' => 'created_at']) }}">{{ __('Date') }}</a>
                             </div>
                             @if (auth()->id() == 1)
-                            <div class="col d-flex align-items-center">
+                            <div class="col d-flex align-items-center px-1">
                                 <a href="{{ route('idea.index', ['criteria' => 'vista']) }}">{{ __('Pending') }}</a>
                             </div>
                             @endif
@@ -86,16 +86,20 @@
                                             <x-input-label class="mb-2" for="tematica" :value="__('Type')" />
                                             <div>
                                                 <x-input-label for="bajo" class="inline-flex items-center">
-                                                    <x-text-input type="radio" name="tematica" value="A" id="A" />
-                                                    <span class="ml-2">{{ __('A') }}</span>
+                                                    <x-text-input type="radio" name="tematica" value="Comida y bebida" id="cyb" />
+                                                    <span class="ml-2">{{ __('Drink/Food') }}</span>
                                                 </x-input-label>
                                                 <x-input-label for="medio" class="inline-flex items-center ml-4">
-                                                    <x-text-input type="radio" name="tematica" value="B" id="B" />
-                                                    <span class="ml-2">{{ __('B') }}</span>
+                                                    <x-text-input type="radio" name="tematica" value="Prefiestas" id="prefes" />
+                                                    <span class="ml-2">{{ __('Prefestivities') }}</span>
                                                 </x-input-label>
                                                 <x-input-label for="alto" class="inline-flex items-center ml-4">
-                                                    <x-text-input type="radio" name="tematica" value="C" id="C" />
-                                                    <span class="ml-2">{{ __('C') }}</span>
+                                                    <x-text-input type="radio" name="tematica" value="Fiestas" id="fes" />
+                                                    <span class="ml-2">{{ __('Festivities') }}</span>
+                                                </x-input-label>
+                                                <x-input-label for="alto" class="inline-flex items-center ml-4">
+                                                    <x-text-input type="radio" name="tematica" value="Actividades" id="act" />
+                                                    <span class="ml-2">{{ __('Activities') }}</span>
                                                 </x-input-label>
                                             </div>
                                         </div>

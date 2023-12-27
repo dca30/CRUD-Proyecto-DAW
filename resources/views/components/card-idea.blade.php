@@ -2,12 +2,14 @@
 <link href="{{ asset('resources/css/card-idea.css') }}" rel="stylesheet">
 @endpush
 
-@if ($tematica == 'A')
+@if ($tematica == 'Comida y bebida')
 @php $bg = 'bg-1'; @endphp
-@elseif ($tematica == 'B')
+@elseif ($tematica == 'Prefiestas')
 @php $bg = 'bg-2'; @endphp
-@else
+@elseif ($tematica == 'Fiestas')
 @php $bg = 'bg-3'; @endphp
+@elseif ($tematica == 'Actividades')
+@php $bg = 'bg-4'; @endphp
 @endif
 
 
@@ -47,7 +49,7 @@
     </div>
     <div class="row ">
         <div class="col badge">
-            <span>{{ $tematica  }}</span>
+            <span>{{ substr($tematica,0,1)  }}</span>
         </div>
         <div class="col justify-content-end text-end">
             {{ substr($fecha, 0, 10)}}
