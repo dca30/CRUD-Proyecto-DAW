@@ -26,6 +26,7 @@ class BalanceTotalChart
             ->addData($labels[2], $gasto_c_b->all())
             ->addData($labels[9], $gasto_disco->all())
             ->addData($labels[10], $gasto_juegos->all())
+            ->setHeight(650)
             ->setXAxis($years->all());
     }
 }

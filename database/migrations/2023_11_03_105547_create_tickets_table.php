@@ -15,27 +15,27 @@ return new class extends Migration
             $table->id();
 
             $table->integer('tickets_totales_cubata');
-            $table->integer('tickets_comprados_cubata');
+            $table->integer('tickets_vendidos_cubata');
             $table->decimal('precio_ticket_cubata', 4, 2);
 
             $table->integer('tickets_totales_cerveza');
-            $table->integer('tickets_comprados_cerveza');
+            $table->integer('tickets_vendidos_cerveza');
             $table->decimal('precio_ticket_cerveza', 4, 2);
 
             $table->integer('tickets_totales_agua_refresco');
-            $table->integer('tickets_comprados_agua_refresco');
+            $table->integer('tickets_vendidos_agua_refresco');
             $table->decimal('precio_ticket_agua_refresco', 4, 2);
 
             $table->integer('tickets_totales_bocadillo');
-            $table->integer('tickets_comprados_bocadillo');
+            $table->integer('tickets_vendidos_bocadillo');
             $table->decimal('precio_ticket_bocadillo', 4, 2);
 
             $table->integer('tickets_totales_copa');
-            $table->integer('tickets_comprados_copa');
+            $table->integer('tickets_vendidos_copa');
             $table->decimal('precio_ticket_copa', 4, 2);
 
             $table->integer('tickets_totales_litro_cerveza');
-            $table->integer('tickets_comprados_litro_cerveza');
+            $table->integer('tickets_vendidos_litro_cerveza');
             $table->decimal('precio_ticket_litro_cerveza', 4, 2);
 
             $table->year('year');

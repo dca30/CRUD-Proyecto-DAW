@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('balances', function (Blueprint $table) {
-            $table->decimal('incremento', 5, 2)->default(0.00);
+            $table->decimal('incremento', 6, 2)->default(0.00);
         });
 
         \DB::table('balances')->orderBy('year')->get()->each(function ($balance) {
@@ -20,7 +20,7 @@ return new class extends Migration {
             if ($previousBalance) {
                 $total = $balance->total;
                 $totalAnterior = $previousBalance->total;
-                $incremento = ($totalAnterior != 0) ? ($total - $totalAnterior) * 100 / abs($totalAnterior) : 0;
+                $incremento = ($totalAnterior != 0) ? round(($total - $totalAnterior) * 100 / abs($totalAnterior), 2) : 0;
 
                 \DB::table('balances')->where('id', $balance->id)->update(['incremento' => $incremento]);
             }

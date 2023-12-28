@@ -1,11 +1,38 @@
 > [!NOTE]
->Aqui tienes una nota especial
+>Proyecto DAW Diego Calvo Alegre
 
-> [!TIP]
->Aqui tienes una nota especial
+Este proyecto esta dockerizado y por lo tanto se debe tener instalado docker en local.
+
 
 > [!IMPORTANT]
->Aqui tienes una nota especial
+>Para poder utilizar la funcion pg_anonymize hay que seguir una serie de pasos:
+> 
+> En el contenedor de postgres ejecutamos: 
+> apt update -y && apt install -y git && git clone https://github.com/rjuju/pg_anonymize.git && cd pg_anonymize/ && apt install -y postgresql-server-dev-15 gcc && apt autoremove -y && apt install -y make && make && make clean && make install
+> Despues en la base de datos ejecutamos lo siguiente:
+>
+> ALTER ROLE "user" SET session_preload_libraries = 'pg_anonymize';
+>
+> LOAD 'pg_anonymize';
+>
+> SECURITY LABEL FOR pg_anonymize ON ROLE "user" IS 'anonymize';
+>
+> GRANT SELECT ON TABLE public.members TO "user";
+>
+> SECURITY LABEL FOR pg_anonymize ON COLUMN public.members.phone_number IS $$regexp_replace(phone_number, '\d', 'X', 'g')$$;
+
+De esta manera el usuario 'user' tendria censurado el campo phone_number, sin embargo el usuario 'admin' no tendria ningun problema en verlo
+
+
+A continuacion, para desplegar el proyecto necesitaremos utilizar un par de comandos
+
+Para lanzar la aplicacion: ./vendor/bin/sail up
+Para cargar los estilos: ./vendor/bin/sail npm run dev
+
+> [!TIP]
+> Recomiento ejecutar cada comando en una consola y en una tercera ejecutar los comandos artisan si es que hacemos alguna migracion o creamos algun nuevo modelo.
+> Por otro lado ejecutar ./vendor/bin/sail npm install y ./vendor/bin/sail npm update para instalar y/o actualizar las dependencias necesarias para que carguen los estilos.
+
 
 > [!WARNING]
 >Aqui tienes una nota especial
@@ -13,35 +40,9 @@
 > [!CAUTION]
 >Aqui tienes una nota especial
 
-
-DESPLEGAR EL PROYECTO
-./vendor/bin/sail up
-./vendoir/bin/sail npm run dev
-./vendor/bin/sail composer install
-./vendor/bin/sail artisan migrate
-./vendor/bin/sail artisan db:seed
+CHART LIBRARIES:
+https://blog.logrocket.com/exploring-best-laravel-chart-libraries/
 
 
-./vendor/bin/sail artisan migrate
-./vendor/bin/sail artisan make:migration create_table_****
-./vendor/bin/sail artisan migrate
-./vendor/bin/sail artisan make:model Balance
-
-
-para los componentes laravel:
-https://laravel-bootstrap-components.com/components/cards
-
-chart libraries:
-blog.logrocket.com/exploring-best-laravel-chart-libraries/
-dev.to/arielmejiadev/use-laravel-charts-in-laravel-5bbm
-
-en las cartas del dashboard hacer una barra que salga en verde si es beneficio y en rojo si es perdida
 CARDS:
 https://bbbootstrap.com/snippets/bootstrap-5-jobs-card-listing-59188500
-https://www.bootdey.com/snippets/view/events-card-widget
-https://www.bootdey.com/snippets/view/bs4-card-widget
-https://codepen.io/lesliesamafful/pen/oNXgmBG
-https://www.bootdey.com/snippets/view/Gradients-dashboard-cards
-
-Fuente interesante
-https://fonts.google.com/specimen/Montserrat

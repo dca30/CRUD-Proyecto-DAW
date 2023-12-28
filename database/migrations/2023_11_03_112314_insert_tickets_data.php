@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         $sql = "
         INSERT INTO public.tickets (
-        tickets_totales_cubata, tickets_comprados_cubata, precio_ticket_cubata, 
-        tickets_totales_cerveza, tickets_comprados_cerveza, precio_ticket_cerveza, 
-        tickets_totales_agua_refresco, tickets_comprados_agua_refresco, precio_ticket_agua_refresco, 
-        tickets_totales_bocadillo, tickets_comprados_bocadillo, precio_ticket_bocadillo, 
-        tickets_totales_copa, tickets_comprados_copa, precio_ticket_copa, 
-        tickets_totales_litro_cerveza, tickets_comprados_litro_cerveza, precio_ticket_litro_cerveza, 
+        tickets_totales_cubata, tickets_vendidos_cubata, precio_ticket_cubata, 
+        tickets_totales_cerveza, tickets_vendidos_cerveza, precio_ticket_cerveza, 
+        tickets_totales_agua_refresco, tickets_vendidos_agua_refresco, precio_ticket_agua_refresco, 
+        tickets_totales_bocadillo, tickets_vendidos_bocadillo, precio_ticket_bocadillo, 
+        tickets_totales_copa, tickets_vendidos_copa, precio_ticket_copa, 
+        tickets_totales_litro_cerveza, tickets_vendidos_litro_cerveza, precio_ticket_litro_cerveza, 
         year, created_at, updated_at) VALUES
         (2500,2381,3.5,2600,2546,1,1900,1508,1,90,87,5,500,89,7,400,195,8,2010, current_timestamp, current_timestamp),
         (3000,2761,3.5,3200,3094,1,2000,1646,1,80,80,5,400,115,7,500,240,8,2011, current_timestamp, current_timestamp),

@@ -94,12 +94,12 @@
                     </div>
                     <div class="pt-4 grid grid-cols-5 gap-4">
                         <div class="col-span-4 sm:col-span-1 sm:col-start-3 text-center">
-                            @if($balance->incremento>0)
+                            @if($balance->total>0)
                             <div class="shadow-sm sm:rounded-lg p-4 total-pos">
                                 <h3 class="text-lg font-semibold">TOTAL</h3>
                                 <p class="text-2xl font-bold text-center">+{{$balance->total}} €</p>
                             </div>
-                            @elseif($balance->total<0) <div class="shadow-sm sm:rounded-lg p-4 total-neg">
+                            @elseif($balance->total<=0) <div class="shadow-sm sm:rounded-lg p-4 total-neg">
                                 <h3 class="text-lg font-semibold">TOTAL</h3>
                                 <p class="text-2xl font-bold text-center">{{$balance->total}} €</p>
                         </div>
@@ -127,11 +127,11 @@
             {{ $chart1->script() }}
             <script src="{{ $chart2->cdn() }}"></script>
             {{ $chart2->script() }}
-
         </div>
     </div>
-    <div class="pb-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    @if (auth()->id() === 1)
+    <div class="pb-12 grid grid-cols-5 gap-4">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 col-span-4 sm:col-span-3 sm:col-start-2 text-center">
             <div class="container mx-auto">
                 <div class="row">
                     <div class="col p-6 me-3 bg-white rounded shadow">
@@ -144,4 +144,5 @@
             </div>
         </div>
     </div>
+    @endif
 </x-app-layout>

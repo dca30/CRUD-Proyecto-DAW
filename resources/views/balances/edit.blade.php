@@ -34,12 +34,10 @@
                                         <x-text-input class="mb-3" name="fechas" :value="$balance->fechas"
                                             placeholder="Fechas" />
                                     </div>
-                                    <div class="bg-white sm:rounded-lg p-4 mt-5 sombra-negra">
+                                    <div class="bg-white sm:rounded-lg p-4 mt-3 sombra-negra">
                                         <h3 class="text-lg font-semibold">{{ __('NOTES') }}</h3>
-
-                                        <x-text-input class="mb-3" name="notas" :value="$balance->notas"
-                                            placeholder="Notes" />
-
+                                        <textarea name="notas" rows="4" cols="15"
+                                            class="my-3 form-control border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{$balance->notas}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-span-4 sm:col-span-3 text-center">
@@ -92,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center pt-3">
+                            <div class="text-center pt-4">
                                 <input type="submit" value="">
                                 <x-success-button>
                                     {{ __('Submit') }}
@@ -104,6 +102,4 @@
             </div>
         </div>
     </div>
-
-
 </x-app-layout>

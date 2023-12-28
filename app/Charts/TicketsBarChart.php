@@ -25,38 +25,21 @@ class TicketsBarChart
             $ticket->tickets_totales_litro_cerveza,
         ];
 
-        $ticket_comprados = [
-            $ticket->tickets_comprados_cubata,
-            $ticket->tickets_comprados_cerveza,
-            $ticket->tickets_comprados_agua_refresco,
-            $ticket->tickets_comprados_bocadillo,
-            $ticket->tickets_comprados_copa,
-            $ticket->tickets_comprados_litro_cerveza,
-        ];
-
-        $ticket_precio = [
-            $ticket->precio_ticket_cubata,
-            $ticket->precio_ticket_cerveza,
-            $ticket->precio_ticket_agua_refresco,
-            $ticket->precio_ticket_bocadillo,
-            $ticket->precio_ticket_copa,
-            $ticket->precio_ticket_litro_cerveza,
+        $ticket_vendidos = [
+            $ticket->tickets_vendidos_cubata,
+            $ticket->tickets_vendidos_cerveza,
+            $ticket->tickets_vendidos_agua_refresco,
+            $ticket->tickets_vendidos_bocadillo,
+            $ticket->tickets_vendidos_copa,
+            $ticket->tickets_vendidos_litro_cerveza,
         ];
         return $this->chart
-            //->pieChart()
-            //->donutChart()
-            //->radialChart()    
-            //->lineChart()
-            //->radarChart()
-            //->polarAreaChart()
-            //->heatMapChart() el peor de todos
-            //->radarChart()
             ->horizontalBarChart()
             ->setTitle($ticket->year)
             ->setSubtitle($text[0])
+            ->setHeight(550)
             ->addData($text[1], $ticket_totales)
-            ->addData($text[2], $ticket_comprados)
+            ->addData($text[2], $ticket_vendidos)
             ->setXAxis($bebidas);
     }
 }
-//Donut Chart, Radial Bar Chart, Polar Area Chart, Line Chart, Area Chart, Bar Chart, Horizontal Bar Chart, Heatmap Chart, Radar Chart

@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Balances') }}
             </h2>
-            
+
             <a href="{{ route('balance.chart') }}">
                 <x-primary-button class="ml-3">
                     {{ __('Summary chart') }}
@@ -25,7 +25,7 @@
                         @endif
                     </div>
                     <div class="text-end">
-                    @if (auth()->id() === 1)
+                        @if (auth()->id() === 1)
                         <a href="{{ route('balance.create') }}">
                             <x-success-button>
                                 {{ __('Add new') }}
@@ -36,13 +36,23 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">{{ __('Drinks profit') }}</th>
-                                    <th scope="col">{{ __('Association contribution') }}</th>
-                                    <th scope="col">{{ __('Awards expense') }}</th>
-                                    <th scope="col">{{ __('Tickets expense') }}</th>
-                                    <th scope="col">{{ __('Drinks espense') }}</th>
-                                    <th scope="col">{{ __('Mobile DJ') }}</th>
-                                    <th scope="col">{{ __('TOTAL') }}</th>
+                                    <th scope="col">
+                                        <p title="{{ __('Drinks profit') }}">{{ __('D & F') }}</p>
+                                    </th>
+                                    <th scope="col"><abbr
+                                            title="{{ __('Association contribution') }}">{{ __('Aso. Cont.') }}</abbr>
+                                    </th>
+                                    <th scope="col">{{ __('Chapas') }}</abbr></th>
+                                    <th scope="col">{{ __('Guiñote') }}</th>
+                                    <th scope="col"><abbr title="{{ __('Sponsors') }}">{{ __('Spon.') }}</abbr></th>
+                                    <th scope="col">{{ __('Awards') }}</th>
+                                    <th scope="col">{{ __('Tickets') }}</th>
+                                    <th scope="col"><abbr title="{{ __('Drinks espense') }}">{{ __('D & F') }}</abbr>
+                                    </th>
+                                    <th scope="col"><abbr title="{{ __('Mobile DJ') }}">{{ __('Disco') }}</abbr></th>
+                                    <th scope="col"><abbr title="{{ __('Games for kids') }}">{{ __('Games') }}</abbr>
+                                    </th>
+                                    <th scope="col">TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,10 +61,14 @@
                                     <th scope="row">{{$balance->year}}</th>
                                     <td>{{$balance->ingreso_c_b}}</td>
                                     <td>{{$balance->ingreso_aso}}</td>
+                                    <td>{{$balance->ingreso_chapas}}</td>
+                                    <td>{{$balance->ingreso_guinote}}</td>
+                                    <td>{{$balance->ingreso_patrocinio}}</td>
                                     <td>{{$balance->gasto_premios}}</td>
                                     <td>{{$balance->gasto_tickets}}</td>
                                     <td>{{$balance->gasto_c_b}}</td>
                                     <td>{{$balance->gasto_disco}}</td>
+                                    <td>{{$balance->gasto_juegos}}</td>
                                     <td class="fw-bold">{{$balance->total}} €</td>
                                     <td>
                                         @if (auth()->id() === 1)
@@ -70,16 +84,13 @@
                                         <a href="{{ route('balance.info', ['balance' => $balance]) }}">
                                             <x-secondary-button class="ml-3">
                                                 <i class="fa fa-eye"></i>
-                                                <!--<i class="fa fa-search-plus"></i>-->
                                             </x-secondary-button>
                                         </a>
                                     </td>
-
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        
                     </div>
                 </div>
             </div>
