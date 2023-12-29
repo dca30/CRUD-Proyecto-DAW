@@ -25,7 +25,8 @@
     "Association contribution":"Aporte asociación",
     "Awards expense":"Gasto premios",
     "Tickets expense":"Gasto tickets",
-    "Drinks espense":"Gasto bebidas",
+    "Drinks & food espense":"Gasto bebida y comida",
+    "Drinks & food profit":"Ingreso bebida y comida",
     "Mobile DJ":"Discomovil",
     "Awards":"Premios",
     "Drinks & food":"Bebida y comida",
@@ -48,9 +49,16 @@
     "Sponsors":"Patrocinadores",
     "NOTES":"NOTAS",
     "D & F":"B & C",
-    "Asso. Cont.":"Cont. Aso.",
+    "Assoc.":"Asoc.",
     "Spon.":"Patro.",
     "Games":"Juegos",
+    "Prices":"Precios",
+    "Test":"Prueba",
+    "Create User":"Crear Usuario",
+    "Download database":"Descargar base de datos",
+    "Export the database to an .sql file. This will not affect the current state of the database."
+    :"Exportar la base de datos a un archivo .sql. Esto no afectara al estado actual de la base de datos.",
+
 
 
 

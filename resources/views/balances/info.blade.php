@@ -49,7 +49,7 @@
                                     <p>{{$balance->ingreso_guinote}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-2">
-                                    <p>{{ __('Patrocinadores') }}:</p>
+                                    <p>{{ __('Sponsors') }}:</p>
                                     <p>{{$balance->ingreso_patrocinio}}€</p>
                                 </div>
                                 <hr class="mb-3" style="height:2px;background-color:gray;opacity:0.1">

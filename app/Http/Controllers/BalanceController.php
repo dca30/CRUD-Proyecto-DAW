@@ -17,7 +17,6 @@ class BalanceController extends Controller
     {
         $balances = Balance::orderBy('year', 'desc')->get();
         return view('balances.index', ['balances' => $balances]);
-
     }
 
     public function create()
@@ -48,7 +47,7 @@ class BalanceController extends Controller
         $data['gasto_disco'] = -abs($data['gasto_disco']);
         $newBalance = Balance::create($data);
 
-        return redirect(route('balance.index'));
+        return redirect(route('balance.index'))->with('success', 'Balance Created Succesffully');
 
     }
 
@@ -109,7 +108,7 @@ class BalanceController extends Controller
 
         $labels = ($locale === 'es') ? ['Evolución del valor total',
             'Valores totales de balances en el tiempo',
-            'Comida y bebida', 'Asociacion',
+            'Bebida y comida', 'Asociacion',
             'Chapas', 'Guinote',
             'Patrocinio','Premios',
             'Tickets', 'Discomovil',
@@ -158,8 +157,8 @@ class BalanceController extends Controller
         ];
         $labelsGastos = ($locale === 'es') ? ['Premios', 'Tickets', 'Bebida', 'Discomovil', 'Juegos infantiles']
         : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
-        $labelsIngresos = ($locale === 'es') ? ['Bebida', 'Aporte Asociacion', 'Torneo chapas', 'Torneo guiñote', 'Patrocinadores']
-        : ['Drinks', 'Association Contribution', 'Chapas tournament', 'Guiñote tournament', 'Sponsors']; //Añadir beneficio bingo
+        $labelsIngresos = ($locale === 'es') ? ['Bebida', 'Asociacion', 'Chapas', 'Guiñote', 'Patrocinadores']
+        : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
 
         $titleGastos = ($locale === 'es') ? 'GASTOS' : 'EXPENSES';
         $titleIngresos = ($locale === 'es') ? 'INGRESOS' : 'PROFITS';

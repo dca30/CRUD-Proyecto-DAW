@@ -9,7 +9,7 @@ $locale = app()->getLocale();
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-9 fill-current text-gray-800"/>
+                        <img src="{{ asset('logo/logo.png') }}" width=60px>
                     </a>
                 </div>
 
@@ -63,7 +63,7 @@ $locale = app()->getLocale();
 
                         <x-slot name="content">
                             <x-dropdown-link href="{{ url('locale/es') }}" class="flex justify-between">
-                                {{ __('Español') }} 
+                                {{ __('Español') }}
                                 @if ($locale == 'es')
                                 <i class="fa fa-circle pt-1" style="transform:scale(0.8);"></i>
                                 @endif

@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 
+    <link rel="icon" type="image/png" href="{{ asset('logo/logo.png') }}">
+
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite('resources/css/card-balance.css')

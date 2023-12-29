@@ -31,11 +31,12 @@
     color: #fed85d;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s; 
+    transition: transform 0.4s;
 }
 
 .badge span:hover {
-    transform: scale(1.2); /* Al hacer hover, aumenta el tamaño a 1.2 veces el tamaño original */
+    transform: scale(1.2);
+    /* Al hacer hover, aumenta el tamaño a 1.2 veces el tamaño original */
 }
 
 .badge-percentage-up span {
@@ -63,7 +64,6 @@
 .progress {
     height: 10px;
     border-radius: 10px;
-    
 }
 
 .progress div {
@@ -80,40 +80,60 @@
 }
 
 .fuente-montserrat {
-    font-family: 'Montserrat', sans-serif;
-  }
+    font-family: "Montserrat", sans-serif;
+}
+
 /*Tarjeta flotante*/
 
-  .floating-card {
+.floating-card {
     position: fixed;
-    bottom: 20px; /* Ajusta la posición vertical como desees */
-    left: 20px; /* Ajusta la posición horizontal como desees */
-    width: 300px; /* Ajusta el ancho como desees */
+    bottom: 20px;
+    /* Ajusta la posición vertical como desees */
+    left: 20px;
+    /* Ajusta la posición horizontal como desees */
+    width: 300px;
+    /* Ajusta el ancho como desees */
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
-    z-index: 999; /* Asegura que esté por encima de otros elementos */
-
-        
+    z-index: 999;
+    /* Asegura que esté por encima de otros elementos */
+}
+.floating-card-bank {
+    position: fixed;
+    bottom: 20px;
+    /* Ajusta la posición vertical como desees */
+    right: 20px;
+    /* Ajusta la posición horizontal como desees */
+    width: 300px;
+    /* Ajusta el ancho como desees */
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 999;
+    /* Asegura que esté por encima de otros elementos */
 }
 
 .card-content {
     /* Estilos para el contenido de la tarjeta */
 }
-.bg-1{
+
+.bg-1 {
     background-color: #cae6d9;
 }
 
-.bg-2{
+.bg-2 {
     background-color: #dcdef0;
 }
 
-.bg-3{
+.bg-3 {
     background-color: #ecdede;
 }
 
-.bg-4{
+.bg-4 {
     background-color: #ece9de;
 }

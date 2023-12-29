@@ -4,6 +4,11 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Balances') }}
             </h2>
+            <div class="text-sm text-blue-600 space-y-1">
+                @if(session()->has('success'))
+                {{session('success')}}
+                @endif
+            </div>
 
             <a href="{{ route('balance.chart') }}">
                 <x-primary-button class="ml-3">
@@ -16,14 +21,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                    <div>
-                        @if(session()->has('success'))
-                        <div>
-                            {{session('success')}}
-                        </div>
-                        @endif
-                    </div>
                     <div class="text-end">
                         @if (auth()->id() === 1)
                         <a href="{{ route('balance.create') }}">
@@ -32,22 +29,22 @@
                             </x-success-button>
                         </a>
                         @endif
-                        <table class="table table-striped">
+                        <table class="text-center table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">
-                                        <p title="{{ __('Drinks profit') }}">{{ __('D & F') }}</p>
-                                    </th>
                                     <th scope="col"><abbr
-                                            title="{{ __('Association contribution') }}">{{ __('Aso. Cont.') }}</abbr>
+                                            title="{{ __('Drinks & food profit') }}">{{ __('D & F') }}</abbr></th>
+                                    <th scope="col"><abbr
+                                            title="{{ __('Association contribution') }}">{{ __('Assoc.') }}</abbr>
                                     </th>
                                     <th scope="col">{{ __('Chapas') }}</abbr></th>
                                     <th scope="col">{{ __('Guiñote') }}</th>
                                     <th scope="col"><abbr title="{{ __('Sponsors') }}">{{ __('Spon.') }}</abbr></th>
                                     <th scope="col">{{ __('Awards') }}</th>
                                     <th scope="col">{{ __('Tickets') }}</th>
-                                    <th scope="col"><abbr title="{{ __('Drinks espense') }}">{{ __('D & F') }}</abbr>
+                                    <th scope="col"><abbr
+                                            title="{{ __('Drinks & food espense') }}">{{ __('D & F') }}</abbr>
                                     </th>
                                     <th scope="col"><abbr title="{{ __('Mobile DJ') }}">{{ __('Disco') }}</abbr></th>
                                     <th scope="col"><abbr title="{{ __('Games for kids') }}">{{ __('Games') }}</abbr>

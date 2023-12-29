@@ -48,30 +48,30 @@
                                 </div>
                             </div>
                             <div class="p-6 bg-white rounded shadow">
-                                <h3 class="text-lg font-semibold">{{ __('Prices (€)') }}</h3>
+                                <h3 class="text-lg font-semibold">{{ __('Prices') }}</h3>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Cocktail') }}:</p>
-                                    <p>{{$ticket->precio_ticket_cubata}}</p>
+                                    <p>{{$ticket->precio_ticket_cubata}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Beer') }}:</p>
-                                    <p>{{$ticket->precio_ticket_cubata}}</p>
+                                    <p>{{$ticket->precio_ticket_cubata}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Water/Soda') }}:</p>
-                                    <p>{{$ticket->precio_ticket_agua_refresco}}</p>
+                                    <p>{{$ticket->precio_ticket_agua_refresco}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Sandwich') }}:</p>
-                                    <p>{{$ticket->precio_ticket_bocadillo}}</p>
+                                    <p>{{$ticket->precio_ticket_bocadillo}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Neat drink') }}:</p>
-                                    <p>{{$ticket->precio_ticket_copa}}</p>
+                                    <p>{{$ticket->precio_ticket_copa}}€</p>
                                 </div>
                                 <div class="flex justify-between mt-3">
                                     <p>{{ __('Beer 1L') }}:</p>
-                                    <p>{{$ticket->precio_ticket_litro_cerveza}}</p>
+                                    <p>{{$ticket->precio_ticket_litro_cerveza}}€</p>
                                 </div>
                             </div>
                         </div>
