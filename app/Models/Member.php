@@ -10,10 +10,23 @@ class Member extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name ',
-        'phone_number',
+        'nombre',
+        'apellidos',
+        'numero',
         'email',
-        'fee'
+        'domicilio',
+        'cuota'
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->applyCustomConnection();
+    }
+
+    public function applyCustomConnection()
+    {
+        $this->connection = (auth()->check() && auth()->user()->id === 1) ? 'pgsql' : 'pgsql_low';
+    }
 }

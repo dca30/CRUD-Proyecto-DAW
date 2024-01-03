@@ -49,7 +49,15 @@ SECURITY LABEL FOR pg_anonymize ON COLUMN public.members.phone_number
 SECURITY LABEL FOR pg_anonymize ON COLUMN public.ic_md5_pass.password
     IS $$substr(password, 0, 1) || '*****'$$;
 
-    
+
+    SECURITY LABEL FOR pg_anonymize ON COLUMN public.members.telefono
+    IS $$regexp_replace(telefono, '\d', 'X', 'g')$$;
+
+    SECURITY LABEL FOR pg_anonymize ON COLUMN public.members.cuota
+    IS $$regexp_replace(cuota, '**')$$;
+
+    SECURITY LABEL FOR pg_anonymize ON COLUMN public.members.domicilio
+    IS $$regexp_replace(domicilio, ' .*', ' ####')$$;
 
 
 
@@ -67,21 +75,3 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA camunda TO diego;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA camunda TO diego;
 GRANT ALL PRIVILEGES ON DATABASE diego TO diego;
 ALTER USER diego CREATEDB;
-
-
-
---DO $$
---DECLARE
---   table_name text;
---    column_name text;
---BEGIN
---    FOR table_name, column_name IN
---        SELECT table_name, column_name
---        FROM information_schema.columns
---        WHERE table_schema = 'public'
---            AND data_type = 'varchar'
---            AND column_name ILIKE '%phone%'
---    LOOP
---        EXECUTE format('SECURITY LABEL FOR pg_anonymize ON COLUMN %I.%I IS $$date_trunc(''year'', %I)::date$$', table_name, column_name, column_name);
---    END LOOP;
---END $$;

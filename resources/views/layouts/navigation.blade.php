@@ -40,7 +40,7 @@ $locale = app()->getLocale();
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
+            <!-- Language Dropdown -->
             <div class="flex">
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
@@ -77,7 +77,7 @@ $locale = app()->getLocale();
                         </x-slot>
                     </x-dropdown>
                 </div>
-
+                <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -100,7 +100,9 @@ $locale = app()->getLocale();
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
-
+                            <x-dropdown-link :href="route('member.index')">
+                                {{ __('Members list') }}
+                            </x-dropdown-link>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

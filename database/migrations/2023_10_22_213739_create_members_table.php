@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name'); 
-            $table->string('phone_number');
+            $table->text('nombre');
+            $table->text('apellidos'); 
+            $table->text('telefono');
             $table->string('email')->unique();
-            $table->integer('fee');
+            $table->text('domicilio'); 
+            $table->text('cuota');
             $table->timestamps();
         });
     }

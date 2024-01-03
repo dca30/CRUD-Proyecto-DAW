@@ -24,7 +24,7 @@ class User extends Authenticatable
         'username',
     ];
 
-    protected $connection = 'pgsql_low';
+    protected $connection = 'pgsql';
 
     /**
      * The attributes that should be hidden for serialization.

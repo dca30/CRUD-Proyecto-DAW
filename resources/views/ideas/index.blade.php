@@ -19,7 +19,7 @@
                     <div class="row row-cols-auto pb-4 justify-between">
                         <div class="row">
                             <div class="col d-flex align-items-center">
-                                <p><i class="fa fa-filter" style="transform:scale(1.3)"></i>:</p>
+                                <p><i class="fa fa-sort" style="transform:scale(1.3)"></i></p>
                             </div>
                             <div class="col d-flex align-items-center px-1">
                                 <a href="{{ route('idea.index', ['criteria' => 'creador']) }}">
@@ -54,7 +54,7 @@
                         <div class="col-4">
                             <x-card-idea :id="$idea->id" :creador="$idea->creador" :titulo="$idea->titulo"
                                 :tematica="$idea->tematica" :descripcion="$idea->descripcion" :vista="$idea->vista"
-                                :fecha="$idea->created_at" />
+                                :fecha="$idea->created_at" :anonimo="$idea->anonimo" />
                         </div>
                         @endforeach
                     </div>

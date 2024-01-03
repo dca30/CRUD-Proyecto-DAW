@@ -1,6 +1,8 @@
 @push('styles')
 <link href="{{ asset('resources/css/card-balance.css') }}" rel="stylesheet">
 @endpush
+@if (auth()->id() == 1)
+                         
 <div class="floating-card-bank col pb-0 px-6 ms-3 bg-white rounded shadow d-none d-xxl-block d-xl-none">
     <div class="rounded shadow p-2 bg-2">
         <h5 class="card-title mb-1">ES00 **** **** **** **** 1234</h5>
@@ -35,6 +37,7 @@
         </tbody>
     </table>
 </div>
+@endif
 <div class="floating-card col pb-0 px-6 me-3 bg-white rounded shadow d-none d-xxl-block d-xl-none">
     {!! $chartData->container() !!}
 </div>
