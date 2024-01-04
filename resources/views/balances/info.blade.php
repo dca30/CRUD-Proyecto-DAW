@@ -9,9 +9,9 @@
                 {{ __('Balance') }} > {{$balance->year}}
             </h2>
             <a href="{{ route('balance.ticket', ['balance' => $balance],['ticket' => $ticket] ) }}">
-                <x-primary-button class="ml-3">
+                <x-button-info class="ml-3">
                     {{ __('Info tickets') }}
-                </x-primary-button>
+                </x-button-info>
             </a>
         </div>
     </x-slot>

@@ -14,3 +14,16 @@
 .sombra-negra{
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2); /* Cambia el color verde según tus preferencias */
 }
+.fuente-montserrat {
+  /*font-weight: 800;*/
+}
+
+.bg-mi-color{
+  background-color: #2C39DD;
+}
+.mi-color{
+  color: #2C39DD;
+}
+.mi-color-rojo{
+  color: #960404;
+}

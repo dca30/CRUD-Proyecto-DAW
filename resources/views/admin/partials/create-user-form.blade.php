@@ -9,8 +9,8 @@
         </p>
     </header>
 
-    <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-creation')">
-        {{ __('Create') }}</x-danger-button>
+    <x-button-info x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-creation')">
+        {{ __('Create') }}</x-button-info>
 
     <x-modal name="confirm-user-creation" :show="$errors->userCreation->isNotEmpty()" focusable>
         <form class="p-4" method="POST" action="{{ route('admin.store') }}">
@@ -49,9 +49,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-primary-button class="ml-4">
+                <x-button-info class="ml-4">
                     {{ __('Register') }}
-                </x-primary-button>
+                </x-button-info>
             </div>
         </form>
     </x-modal>

@@ -42,9 +42,9 @@
 
                         <div class="">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
-                                <x-success-button>
+                                <x-button-add>
                                     {{ __('Add new') }}
-                                </x-success-button>
+                                </x-button-add>
                             </a>
                         </div>
                     </div>
@@ -86,19 +86,23 @@
                                             <x-input-label class="mb-2" for="tematica" :value="__('Type')" />
                                             <div>
                                                 <x-input-label for="bajo" class="inline-flex items-center">
-                                                    <x-text-input type="radio" name="tematica" value="Comida y bebida" id="cyb" />
+                                                    <x-text-input type="radio" name="tematica" value="Comida y bebida"
+                                                        id="cyb" />
                                                     <span class="ml-2">{{ __('Drink/Food') }}</span>
                                                 </x-input-label>
                                                 <x-input-label for="medio" class="inline-flex items-center ml-4">
-                                                    <x-text-input type="radio" name="tematica" value="Prefiestas" id="prefes" />
+                                                    <x-text-input type="radio" name="tematica" value="Prefiestas"
+                                                        id="prefes" />
                                                     <span class="ml-2">{{ __('Prefestivities') }}</span>
                                                 </x-input-label>
                                                 <x-input-label for="alto" class="inline-flex items-center ml-4">
-                                                    <x-text-input type="radio" name="tematica" value="Fiestas" id="fes" />
+                                                    <x-text-input type="radio" name="tematica" value="Fiestas"
+                                                        id="fes" />
                                                     <span class="ml-2">{{ __('Festivities') }}</span>
                                                 </x-input-label>
                                                 <x-input-label for="alto" class="inline-flex items-center ml-4">
-                                                    <x-text-input type="radio" name="tematica" value="Actividades" id="act" />
+                                                    <x-text-input type="radio" name="tematica" value="Actividades"
+                                                        id="act" />
                                                     <span class="ml-2">{{ __('Activities') }}</span>
                                                 </x-input-label>
                                             </div>
@@ -114,9 +118,9 @@
 
 
                                         <div class="flex items-center justify-end mt-4">
-                                            <x-primary-button class="ml-3">
+                                            <x-button-accept class="ml-3">
                                                 {{ __('Submit') }}
-                                            </x-primary-button>
+                                                </x-button-accept>
                                         </div>
                                     </form>
                                 </div>

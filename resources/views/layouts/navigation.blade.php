@@ -28,7 +28,7 @@ $locale = app()->getLocale();
                         {{ __('Ideas Mailbox') }}
                         @if (auth()->id() == 1)
                         <div class="ps-2 badge-idea">
-                            <span class="bg-danger">{{ $number }}</span>
+                            <span class="bg-mi-color">{{ $number }}</span>
                         </div>
                         @endif
                     </x-nav-link>
@@ -65,13 +65,13 @@ $locale = app()->getLocale();
                             <x-dropdown-link href="{{ url('locale/es') }}" class="flex justify-between">
                                 {{ __('Español') }}
                                 @if ($locale == 'es')
-                                <i class="fa fa-circle pt-1" style="transform:scale(0.8);"></i>
+                                <i class="fa fa-circle pt-1 mi-color" style="transform:scale(0.8);"></i>
                                 @endif
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ url('locale/en') }}" class="flex justify-between">
                                 {{ __('English') }}
                                 @if ($locale == 'en')
-                                <i class="fa fa-circle pt-1" style="transform:scale(0.8);"></i>
+                                <i class="fa fa-circle pt-1 mi-color" style="transform:scale(0.8);"></i>
                                 @endif
                             </x-dropdown-link>
                         </x-slot>

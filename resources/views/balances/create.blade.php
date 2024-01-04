@@ -27,10 +27,10 @@
                                         <h3 class="text-lg font-semibold">INFO</h3>
 
                                         <x-input-label>{{ __('Year') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="year" placeholder="Año" />
+                                        <x-text-input class="mb-3" name="year" placeholder="{{ __('Year') }}" />
 
                                         <x-input-label>{{ __('Date') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="fechas" placeholder="Fechas" />
+                                        <x-text-input class="mb-3" name="fechas" placeholder="{{ __('Date') }}" />
                                     </div>
                                     <div class="bg-white sm:rounded-lg p-4 mt-3 sombra-negra">
                                         <h3 class="text-lg font-semibold">{{ __('NOTES') }}</h3>
@@ -43,19 +43,19 @@
                                     <div class="bg-white sm:rounded-lg col-start-2 p-4 sombra-verde">
                                         <h3 class="text-lg font-semibold">{{ __('PROFITS') }}</h3>
                                         <x-input-label>{{ __('Drinks & food') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_c_b" placeholder="Comida y bebida" />
+                                        <x-text-input class="mb-3" name="ingreso_c_b" placeholder="{{ __('Drinks & food') }}" />
 
                                         <x-input-label>{{ __('Association contribution') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_aso" placeholder="Aporte Asociación" />
+                                        <x-text-input class="mb-3" name="ingreso_aso" placeholder="{{ __('Association contribution') }}" />
 
-                                        <x-input-label>{{ __('Torneo chapas') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_chapas" placeholder="Chapas" />
+                                        <x-input-label>{{ __('Chapas tournament') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_chapas" placeholder="{{ __('Chapas tournament') }}" />
 
-                                        <x-input-label>{{ __('Torneo guiñote') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_guinote" placeholder="Guiñote" />
+                                        <x-input-label>{{ __('Guiñote tournament') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_guinote" placeholder="{{ __('Guiñote tournament') }}" />
 
-                                        <x-input-label>{{ __('Patrocinadores') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_patrocinio" placeholder="Patrocinadores" />
+                                        <x-input-label>{{ __('Sponsors') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="ingreso_patrocinio" placeholder="{{ __('Sponsors') }}" />
 
                                     </div>
                                 </div>
@@ -63,32 +63,31 @@
                                 <div class="col-span-4 sm:col-span-3 col-start-6 text-center">
                                     <div class="bg-white sombra-roja sm:rounded-lg p-4 bg-success">
                                         <h3 class="text-lg font-semibold">{{ __('EXPENSES') }}</h3>
+                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_c_b" 
+                                            placeholder="{{ __('Drinks & food') }}" />
+
                                         <x-input-label>{{ __('Awards') }}</x-input-label>
                                         <x-text-input class="mb-3" name="gasto_premios"
-                                            placeholder="Premios" />
+                                            placeholder="{{ __('Awards') }}" />
 
                                         <x-input-label>{{ __('Tickets') }}</x-input-label>
                                         <x-text-input class="mb-3" name="gasto_tickets" 
-                                            placeholder="Tickets" />
-
-                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="gasto_c_b" 
-                                            placeholder="Bebida y comida" />
-
+                                            placeholder="{{ __('Tickets') }}" />
+                                            
                                         <x-input-label>{{ __('Mobile DJ') }}</x-input-label>
                                         <x-text-input class="mb-3" name="gasto_disco" 
-                                            placeholder="Discomovil" />
+                                            placeholder="{{ __('Mobile DJ') }}" />
                                         <x-input-label>{{ __('Games for kids') }}</x-input-label>
                                         <x-text-input class="mb-3" name="gasto_juegos" 
-                                            placeholder="Juegos" />
+                                            placeholder="{{ __('Games for kids') }}" />
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center pt-4">
                                 <input type="submit" value="">
-                                <x-success-button>
-                                    {{ __('Submit') }}
-                                </x-success-button></input>
+                                <x-button-accept>                                    {{ __('Submit') }}
+                                </x-button-accept></input>
                             </div>
                         </form>
                     </div>

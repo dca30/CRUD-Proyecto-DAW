@@ -9,9 +9,9 @@
         </p>
     </header>
     <a href="{{ route('admin.edit') }}">
-        <x-danger-button>
+        <x-button-delete>
             {{ __('Edit') }}
-        </x-danger-button>
+        </x-button-delete>
 
     </a>
 

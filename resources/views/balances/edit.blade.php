@@ -8,7 +8,7 @@
         @if($errors->any())
         <ul>
             @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
+                <x-input-error :messages="$errors->get('ingreso_c_')" class="mt-2" />
             @endforeach
         </ul>
         @endif
@@ -44,57 +44,53 @@
                                     <div class="bg-white sm:rounded-lg col-start-2 p-4 sombra-verde">
                                         <h3 class="text-lg font-semibold">{{ __('PROFITS') }}</h3>
                                         <x-input-label>{{ __('Drinks & food') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_c_b" :value="$balance->ingreso_c_b"
-                                            placeholder="Comida y bebida" />
+                                        <x-text-input class="mb-3" name="ingreso_c_b" :value="$balance->ingreso_c_b" />
 
                                         <x-input-label>{{ __('Association contribution') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="ingreso_aso" :value="$balance->ingreso_aso"
-                                            placeholder="Aporte Asociación" />
+                                        <x-text-input class="mb-3" name="ingreso_aso" :value="$balance->ingreso_aso" />
 
-                                        <x-input-label>{{ __('Torneo chapas') }}</x-input-label>
+                                        <x-input-label>{{ __('Chapas tournament') }}</x-input-label>
                                         <x-text-input class="mb-3" name="ingreso_chapas"
-                                            :value="$balance->ingreso_chapas" placeholder="Chapas" />
+                                            :value="$balance->ingreso_chapas" />
 
-                                        <x-input-label>{{ __('Torneo guiñote') }}</x-input-label>
+                                        <x-input-label>{{ __('Guiñote tournament') }}</x-input-label>
                                         <x-text-input class="mb-3" name="ingreso_guinote"
-                                            :value="$balance->ingreso_guinote" placeholder="Guiñote" />
+                                            :value="$balance->ingreso_guinote" />
 
-                                        <x-input-label>{{ __('Patrocinadores') }}</x-input-label>
+                                        <x-input-label>{{ __('Sponsors') }}</x-input-label>
                                         <x-text-input class="mb-3" name="ingreso_patrocinio"
-                                            :value="$balance->ingreso_patrocinio" placeholder="Patrocinadores" />
-
+                                            :value="$balance->ingreso_patrocinio" />
                                     </div>
                                 </div>
 
                                 <div class="col-span-4 sm:col-span-3 col-start-6 text-center">
                                     <div class="bg-white sombra-roja sm:rounded-lg p-4 bg-success">
                                         <h3 class="text-lg font-semibold">{{ __('EXPENSES') }}</h3>
+                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
+                                        <x-text-input class="mb-3" name="gasto_c_b" :value="$balance->gasto_c_b" />
+
                                         <x-input-label>{{ __('Awards') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="gasto_premios" :value="$balance->gasto_premios"
-                                            placeholder="Premios" />
+                                        <x-text-input class="mb-3" name="gasto_premios"
+                                            :value="$balance->gasto_premios" />
 
                                         <x-input-label>{{ __('Tickets') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="gasto_tickets" :value="$balance->gasto_tickets"
-                                            placeholder="Tickets" />
-
-                                        <x-input-label>{{ __('Drinks & food') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="gasto_c_b" :value="$balance->gasto_c_b"
-                                            placeholder="Bebida y comida" />
+                                        <x-text-input class="mb-3" name="gasto_tickets"
+                                            :value="$balance->gasto_tickets" />
 
                                         <x-input-label>{{ __('Mobile DJ') }}</x-input-label>
                                         <x-text-input class="mb-3" name="gasto_disco" :value="$balance->gasto_disco"
                                             placeholder="Discomovil" />
                                         <x-input-label>{{ __('Games for kids') }}</x-input-label>
-                                        <x-text-input class="mb-3" name="gasto_juegos" :value="$balance->gasto_juegos"
-                                            placeholder="Juegos" />
+                                        <x-text-input class="mb-3" name="gasto_juegos"
+                                            :value="$balance->gasto_juegos" />
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center pt-4">
                                 <input type="submit" value="">
-                                <x-success-button>
+                                <x-button-accept>
                                     {{ __('Submit') }}
-                                </x-success-button></input>
+                                </x-button-accept></input>
                             </div>
                         </form>
                     </div>

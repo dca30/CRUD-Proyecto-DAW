@@ -4,16 +4,16 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Balances') }}
             </h2>
-            <div class="text-sm text-blue-600 space-y-1">
+            <div class="fw-bold text-sm text-blue-600 space-y-1">
                 @if(session()->has('success'))
                 {{session('success')}}
                 @endif
             </div>
 
             <a href="{{ route('balance.chart') }}">
-                <x-primary-button class="ml-3">
+                <x-button-info class="ml-3">
                     {{ __('Summary chart') }}
-                </x-primary-button>
+                </x-button-info>
             </a>
         </div>
     </x-slot>
@@ -24,9 +24,9 @@
                     <div class="text-end">
                         @if (auth()->id() === 1)
                         <a href="{{ route('balance.create') }}">
-                            <x-success-button>
+                            <x-button-add>
                                 {{ __('Add new') }}
-                            </x-success-button>
+                            </x-button-add>
                         </a>
                         @endif
                         <table class="text-center table table-striped">

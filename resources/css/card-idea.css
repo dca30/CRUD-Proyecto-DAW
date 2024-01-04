@@ -43,16 +43,20 @@
 /*Tarjeta flotante*/
 
 .bg-1{
-    background-color: #cae6d9;
+    background-color: #DCE2FF;
 }
 
 .bg-2{
-    background-color: #dcdef0;
+    background-color: #E3EFB9;
 }
 
 .bg-3{
-    background-color: #ecdede;
+    background-color: #DBDDD3;
 }
+.bg-4{
+    background-color: #9CA9E5;
+}
+
 
 .badge-idea span{
     cursor: pointer; /* Cambia el cursor al pasar el ratón */

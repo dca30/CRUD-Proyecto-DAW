@@ -9,6 +9,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcom', function () {
-    return view('welcom');
+Route::get('/welcome2', function () {
+    return view('welcome2');
 });
 
 
@@ -37,11 +38,13 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/locale/{locale}', function($locale){
-        session()->put('locale',$locale);
+    Route::get('/locale/{locale}', function ($locale) {
+        session()->put('locale', $locale);
         return Redirect::back();
     });
 
+
+    Route::get('members/search', 'MemberSearchController@index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -73,16 +76,21 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/export-db', [AdminController::class, 'exportDB'])->name('admin.exportDB');
+    Route::get('/admin/search', [AdminController::class, 'search'])->name('admin.search');
+    Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/edit/{id}', [AdminController::class, 'editUser'])->name('admin.editUser');
+    Route::delete('/admin/edit/{id}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
 
-    Route::get('/admin/search',[AdminController::class,'search'])->name('admin.search');
-    Route::get('/admin/edit',[AdminController::class,'edit'])->name('admin.edit');
+
     Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
 
 
     Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-    
 
+    Route::put('/admin/edit/{id}/password', [PasswordController::class, 'updateAdmin'])
+        ->middleware(['auth'])
+        ->name('password.updateAdmin');
 
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

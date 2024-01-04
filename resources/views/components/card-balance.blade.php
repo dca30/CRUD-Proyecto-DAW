@@ -8,12 +8,13 @@
             <!--<div class="icon"> <i class="fa fa-regular fa-circle"></i> </div>-->
             <div class="ms-2 c-details">
                 <div class="mb-0 h3 ">{{ $title  }}</div>
-                <span>{{ substr($balance->fechas, 0, 2)}} - {{ substr($balance->fechas, 2, 2)}} {{ __('Augost') }}</span>
+                <span>{{ substr($balance->fechas, 0, 2)}} - {{ substr($balance->fechas, 2, 2)}}
+                    {{ __('Augost') }}</span>
             </div>
         </div>
-        <div class="badge">
+        <div class="">
             <a href="{{ route('balance.info', ['balance' => $balance]) }}">
-                <span>{{ __('Show more') }}</span>
+                <x-button-accept-secondary>{{ __('Show more') }}</x-button-accept-secondary>
             </a>
         </div>
     </div>
@@ -42,11 +43,11 @@
             <!--barra hacia la izquierda-->
             <div class="col pe-0">
                 <div class="progress rounded-0 rounded-start border-dark border-end" style="direction: rtl;">
-                    @if ($total<=0) <div class="progress-bar bg-danger border-end-0" role="progressbar"
+                    @if ($total<=0) <div class="progress-bar bg-red border-end-0" role="progressbar"
                         style="width: {{ abs($total)*100/6000  }}%;" aria-valuemin="0" aria-valuemax="100">
                 </div>
                 @else
-                <div class="progress-bar bg-danger border-end-0" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                <div class="progress-bar bg-red border-end-0" role="progressbar" style="width: 0%;" aria-valuemin="0"
                     aria-valuemax="100">
                 </div>
                 @endif
@@ -56,11 +57,11 @@
         <div class="col ps-0">
             <div class="progress rounded-0 rounded-end border-dark border-start">
                 @if ($total>0)
-                <div class="progress-bar bg-success border-end-0" role="progressbar"
+                <div class="progress-bar bg-green border-end-0" role="progressbar"
                     style="width: {{ $total*100/6000  }}%;" aria-valuemin="0" aria-valuemax="100"></div>
                 @else
-                <div class="progress-bar bg-success border-end-0" role="progressbar" style="width: 0%;"
-                    aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar bg-green border-end-0" role="progressbar" style="width: 0%;" aria-valuemin="0"
+                    aria-valuemax="100">
                 </div>
                 @endif
             </div>

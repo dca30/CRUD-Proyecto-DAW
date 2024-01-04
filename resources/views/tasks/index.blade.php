@@ -20,9 +20,9 @@
                         <div class="text-end">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
                             @if (auth()->id() === 1)
-                            <x-success-button>
+                            <x-button-add>
                                 {{ __('Add new') }}
-                            </x-success-button>
+                            </x-button-add>
                             @endif
                         </a>
                         </div>
@@ -61,9 +61,9 @@
                                         <form action="{{ route('task.leaveGroup', ['task' => $task]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <x-danger-button type="submit" class="ml-3">
+                                            <x-button-delete type="submit" class="ml-3">
                                                 {{ __('Leave') }}
-                                            </x-danger-button>
+                                            </x-button-delete>
                                         </form> @else
                                         <form action="{{ route('task.joinGroup', ['task' => $task]) }}" method="POST">
                                             @csrf
@@ -82,9 +82,9 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <x-danger-button type="submit" class="ml-3">
-                                                {{ __('Delete') }}
-                                            </x-danger-button>
+                                            <x-button-delete type="submit" class="ml-3">
+                                                <i class="fa fa-times"></i>
+                                            </x-button-delete>
                                         </form>
                                     </td>
                                     @endif
@@ -139,9 +139,10 @@
                                                 </div>
                                             </div>
                                             <div class="flex items-center justify-end mt-4">
-                                                <x-primary-button class="ml-3">
+                                                
+                                                <x-button-accept class="ml-3">
                                                     {{ __('Aceptar') }}
-                                                </x-primary-button>
+                                                </x-button-accept>
                                             </div>
                                         </form>
                                     </div>

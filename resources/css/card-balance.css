@@ -46,7 +46,7 @@
     padding-bottom: 3px;
     border-radius: 5px;
     display: flex;
-    color: #198754;
+    color: #96B515;
     align-items: center;
 }
 
@@ -57,18 +57,28 @@
     padding-bottom: 3px;
     border-radius: 5px;
     display: flex;
-    color: red;
+    color: #960404;
     align-items: center;
 }
+.bg-green{
+    color: #96B515;
+    background-color: #96B515;
+}
 
+.bg-red{
+    color: #960404;
+    background-color: #960404;
+
+
+}
 .progress {
     height: 10px;
     border-radius: 10px;
 }
 
-.progress div {
-    background-color: red;
-}
+/*.progress div {
+    background-color: #960404;
+}*/
 
 .text1 {
     font-size: 14px;
@@ -122,18 +132,4 @@
     /* Estilos para el contenido de la tarjeta */
 }
 
-.bg-1 {
-    background-color: #cae6d9;
-}
 
-.bg-2 {
-    background-color: #dcdef0;
-}
-
-.bg-3 {
-    background-color: #ecdede;
-}
-
-.bg-4 {
-    background-color: #ece9de;
-}
