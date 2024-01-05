@@ -1,15 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tasks') }}
-        </h2>
-        
-        <div>
-            @if(session()->has('success'))
-            <div>
-                {{session('success')}}
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Tasks') }}
+            </h2>
+            <div class="fw-bold text-sm text-blue-600 space-y-1">
+                @if(session()->has('success'))
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)">
+                    {{session('success')}}</p>
+                @endif
             </div>
-            @endif
+            <a></a>
         </div>
     </x-slot>
     <div class="py-12">
@@ -17,14 +18,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="">
                     <div class="p-6 text-gray-900">
-                        <div class="text-end">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
-                            @if (auth()->id() === 1)
-                            <x-button-add>
-                                {{ __('Add new') }}
-                            </x-button-add>
-                            @endif
-                        </a>
+                        <div class="text-end mb-3">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
+                                @if (auth()->id() === 1)
+                                <x-button-add>
+                                    {{ __('Add new') }}
+                                </x-button-add>
+                                @endif
+                            </a>
                         </div>
                         <table class="table table-striped">
 
@@ -34,7 +35,7 @@
                                     <th scope="col">{{ __('Description') }}</th>
                                     <th scope="col">{{ __('Difficulty') }}</th>
                                     <th scope="col">{{ __('Responsable(s)') }}</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,16 +48,16 @@
                                     <td>{{ $task->descripcion }}</td>
                                     <td class="ps-4">
                                         @if ($task->dificultad === 'B')
-                                        <i class="fa fa-regular fa-circle text-success"></i>
+                                        <i class="fa fa-regular fa-circle mi-text-success"></i>
                                         @elseif ($task->dificultad === 'M')
                                         <i class="fa fa-regular fa-circle text-warning"></i>
                                         @elseif ($task->dificultad === 'A')
-                                        <i class="fa fa-regular fa-circle text-danger"></i>
+                                        <i class="fa fa-regular fa-circle mi-text-danger"></i>
                                         @endif
                                     </td>
                                     <td>{{ $task->responsables }}</td>
                                     @if (auth()->id() !== 1)
-                                    <td>
+                                    <td class="text-center">
                                         @if (str_contains($task->responsables, auth()->user()->username))
                                         <form action="{{ route('task.leaveGroup', ['task' => $task]) }}" method="POST">
                                             @csrf
@@ -83,7 +84,7 @@
                                             @method('DELETE')
 
                                             <x-button-delete type="submit" class="ml-3">
-                                                <i class="fa fa-times"></i>
+                                                <i class="fa fa-trash" style="transform:scale(1.3)"></i>
                                             </x-button-delete>
                                         </form>
                                     </td>
@@ -95,7 +96,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                         <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -116,6 +117,8 @@
                                                     :value="__('Descripción')" />
                                                 <x-text-input id="descripcion" class="block mt-1 w-full" type="text"
                                                     name="descripcion" :value="old('descripcion')" required autofocus />
+                                                <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
+
                                             </div>
                                             <div class="form-group">
                                                 <x-input-label class="mb-2" for="dificultad"
@@ -139,7 +142,7 @@
                                                 </div>
                                             </div>
                                             <div class="flex items-center justify-end mt-4">
-                                                
+
                                                 <x-button-accept class="ml-3">
                                                     {{ __('Aceptar') }}
                                                 </x-button-accept>

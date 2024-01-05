@@ -4,14 +4,11 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Admin Panel') }}
             </h2>
-            <div class="text-sm text-blue-600 space-y-1">
+            <div class="fw-bold text-sm text-blue-600 space-y-1">
                 @if(session()->has('success'))
-                {{session('success')}}
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)">
+                    {{session('success')}}</p>
                 @endif
-
-            </div>
-            <div>
-                
             </div>
             <div></div>
         </div>
@@ -19,12 +16,6 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            {{--Descargar BD--}}
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('admin.partials.export-db')
-                </div>
-            </div>
             {{--Crear nuevo usuario--}}
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">

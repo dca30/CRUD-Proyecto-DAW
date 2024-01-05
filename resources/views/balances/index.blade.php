@@ -6,8 +6,8 @@
             </h2>
             <div class="fw-bold text-sm text-blue-600 space-y-1">
                 @if(session()->has('success'))
-                {{session('success')}}
-                @endif
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)">
+                    {{session('success')}}</p> @endif
             </div>
 
             <a href="{{ route('balance.chart') }}">

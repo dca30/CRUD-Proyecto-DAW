@@ -9,12 +9,6 @@
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-14 ">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    @if(session()->has('success'))
-                    <div>
-                        {{session('success')}}
-                    </div>
-                    @endif
-
                     <div class="grid grid-cols-5 gap-3">
                         <div class="col-span-4 sm:col-span-1">
                             <div class="p-3 mb-3 bg-white rounded shadow">

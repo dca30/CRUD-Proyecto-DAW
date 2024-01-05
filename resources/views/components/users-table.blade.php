@@ -8,7 +8,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Editar</th>
+            <th scope="col" class="ps-4">Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +19,9 @@
             <td>{{ $user->email }}</td>
             <td>
                 <a href='/admin/edit/{{ $user->id }}'>
-                    <x-button-add class="ml-3">
+                    <x-secondary-button class="ml-3">
                         <i class="fa fa-pencil"></i>
-                    </x-button-add>
+                    </x-secondary-button>
                 </a>
             </td>
         </tr>

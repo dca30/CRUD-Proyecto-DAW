@@ -1,7 +1,7 @@
 @php
 $locale = app()->getLocale();
 @endphp
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 py-2">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -9,7 +9,7 @@ $locale = app()->getLocale();
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('logo/logo.png') }}" width=60px>
+                        <img src="{{ asset('logo/logo_tronco_color_sm.png') }}">
                     </a>
                 </div>
 
@@ -40,8 +40,8 @@ $locale = app()->getLocale();
                 </div>
             </div>
 
-            <!-- Language Dropdown -->
             <div class="flex">
+                <!-- Language Dropdown -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

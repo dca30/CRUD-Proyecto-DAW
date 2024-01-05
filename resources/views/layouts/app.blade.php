@@ -9,12 +9,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!--<link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />-->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 
-    <link rel="icon" type="image/png" href="{{ asset('logo/logo.png') }}">
+    <link rel="icon" type="image/ico" href="{{ asset('logo/logo_tronco_color.ico') }}">
 
 
     <!-- Scripts -->

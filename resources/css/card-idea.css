@@ -1,5 +1,5 @@
 /* card-component.css */
-.card {
+.card-idea {
     border: none;
     border-radius: 10px;
     /*background-color: #F3F4F6;*/
@@ -9,6 +9,7 @@
     font-weight: 300;
     font-size: 13px;
 }
+
 .badge-idea span {
     /*background-color: #fffbec;*/
     width: 18px;
@@ -18,12 +19,14 @@
     color: white;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s; 
+    transition: transform 0.4s;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 
 .badge span {
-    background-color: #fffbec;
+    background-color: white;
     width: 60px;
     height: 25px;
     padding-bottom: 3px;
@@ -33,37 +36,43 @@
     justify-content: center;
     align-items: center;
 }
+
 /*.badge span:hover {
     transform: scale(1.2);
 }*/
 
 .fuente-montserrat {
     font-family: 'Montserrat', sans-serif;
-  }
+}
+
 /*Tarjeta flotante*/
 
-.bg-1{
+.bg-1 {
     background-color: #DCE2FF;
 }
 
-.bg-2{
+.bg-2 {
     background-color: #E3EFB9;
 }
 
-.bg-3{
+.bg-3 {
     background-color: #DBDDD3;
 }
-.bg-4{
+
+.bg-4 {
     background-color: #9CA9E5;
 }
 
 
-.badge-idea span{
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    transition: background-color 0.3s ease; /* Añade transición para suavizar el cambio */
+.badge-idea span {
+    cursor: pointer;
+    /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease;
+    /* Añade transición para suavizar el cambio */
 }
-.notif-card span:hover{
+
+.notif-card span:hover {
     transform: scale(1.2);
-        transition: transform 0.4s; 
+    transition: transform 0.4s;
 
 }

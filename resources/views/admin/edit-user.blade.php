@@ -1,8 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }} > {{$user->username}}
-        </h2>
+
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Profile') }} > <a class="mi-color">{{$user->username}}</a>
+            </h2>
+            <div class="fw-bold text-sm text-blue-600 space-y-1">
+                @if(session()->has('success'))
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)">
+                    {{session('success')}}</p>
+                @endif
+            </div>
+            <div></div>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -11,7 +21,7 @@
                 <div class="max-w-xl">
                     <section>
                         <header>
-                            <h2 class="text-lg font-medium text-gray-900">
+                            <h2 class="fw-bold text-lg font-medium text-gray-900">
                                 {{ __('Profile Information') }}
                             </h2>
 
@@ -63,7 +73,7 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-button-info>{{ __('Save') }}</x-button-info>
+                                <x-button-accept>{{ __('Save') }}</x-button-accept>
 
                                 @if (session('status') === 'profile-updated')
                                 <p x-data="{ show: true }" x-show="show" x-transition
@@ -81,7 +91,7 @@
                 <div class="max-w-xl">
                     <section>
                         <header>
-                            <h2 class="text-lg font-medium text-gray-900">
+                            <h2 class="fw-bold text-lg font-medium text-gray-900">
                                 {{ __('Update Password') }}
                             </h2>
 
@@ -107,7 +117,7 @@
                                 class="mt-2" />
 
                             <div class="flex items-center gap-4 mt-4">
-                                <x-button-info>{{ __('Save') }}</x-button-info>
+                                <x-button-accept>{{ __('Save') }}</x-button-accept>
 
                                 @if (session('status') === 'password-updated')
                                 <p x-data="{ show: true }" x-show="show" x-transition
@@ -125,7 +135,7 @@
                 <div class="max-w-xl">
                     <section class="space-y-6">
                         <header>
-                            <h2 class="text-lg font-medium text-gray-900">
+                            <h2 class="fw-bold text-lg font-medium text-gray-900">
                                 {{ __('Delete Account') }}
                             </h2>
 
@@ -143,7 +153,7 @@
                                 @csrf
                                 @method('delete')
 
-                                <h2 class="text-lg font-medium text-gray-900">
+                                <h2 class="fw-bold text-lg font-medium text-gray-900">
                                     {{ __('Are you sure you want to delete your account?') }}
                                 </h2>
 

@@ -10,6 +10,14 @@
     font-size: 13px;
 }
 
+.card-important {
+    border: 2px solid #2C39DD;
+    box-shadow: 6px 6px 8px rgba(44, 57, 221, 0.3);
+    /* Cambia el color verde según tus preferencias */
+    padding: 10px;
+}
+
+
 .icon {
     width: 50px;
     height: 50px;
@@ -60,17 +68,19 @@
     color: #960404;
     align-items: center;
 }
-.bg-green{
+
+.bg-green {
     color: #96B515;
     background-color: #96B515;
 }
 
-.bg-red{
+.bg-red {
     color: #960404;
     background-color: #960404;
 
 
 }
+
 .progress {
     height: 10px;
     border-radius: 10px;
@@ -111,6 +121,7 @@
     z-index: 999;
     /* Asegura que esté por encima de otros elementos */
 }
+
 .floating-card-bank {
     position: fixed;
     bottom: 20px;
@@ -131,5 +142,3 @@
 .card-content {
     /* Estilos para el contenido de la tarjeta */
 }
-
-

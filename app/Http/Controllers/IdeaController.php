@@ -9,23 +9,26 @@ use Illuminate\Http\Request;
 class IdeaController extends Controller
 {
     public function index(Request $request)
-{
-    $userId = auth()->id();
-    $criteria = $request->get('criteria', 'id'); 
+    {
+        $userId = auth()->id();
+        $criteria = $request->get('criteria', 'id');
 
-    if ($userId == 1) {
-        $criteria = $request->get('criteria', 'vista');
-        $ideas = Idea::orderBy($criteria, 'asc')->get();
-    } else {
-        $ideas = Idea::orderBy($criteria, 'asc')->get();
+        if ($userId == 1) {
+            $criteria = $request->get('criteria', 'vista');
+            $ideas = Idea::orderBy($criteria, 'asc')->get();
+        } else {
+            $ideas = Idea::orderBy($criteria, 'asc')->get();
+        }
+
+        return view('ideas.index', ['ideas' => $ideas]);
     }
-
-    return view('ideas.index', ['ideas' => $ideas]);
-}
 
 
     public function store(Request $request)
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Idea almacenada exitosamente' : 'Idea stored succesffully';
+
         $request->validate([
             'titulo' => 'required|string|max:30',
             'descripcion' => 'required|string',
@@ -43,14 +46,16 @@ class IdeaController extends Controller
             'vista' => 'N',
             'anonimo' => $anonimo,
         ]);
-        return redirect()->route('idea.index')->with('success', 'Idea almacenada exitosamente');
+        return redirect()->route('idea.index')->with('success', $successMessage);
     }
 
 
-    public function update(Idea $idea)
+    public function update(Request $request, Idea $idea)
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Idea marcada como vista' : 'Idea checked as seen';
         $idea->update(['vista' => 'S']);
 
-        return redirect()->back()->with('success', 'Vista updated successfully');
+        return redirect()->back()->with('success', $successMessage);
     }
 }

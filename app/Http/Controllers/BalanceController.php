@@ -25,6 +25,9 @@ class BalanceController extends Controller
     }
     public function store(Request $request)
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Balance creado con éxito' : 'Balance created succesffully';
+
         $data = $request->validate([
             'ingreso_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'ingreso_aso' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
@@ -45,9 +48,16 @@ class BalanceController extends Controller
         $data['gasto_tickets'] = -abs($data['gasto_tickets']);
         $data['gasto_c_b'] = -abs($data['gasto_c_b']);
         $data['gasto_disco'] = -abs($data['gasto_disco']);
-        $newBalance = Balance::create($data);
 
-        return redirect(route('balance.index'))->with('success', 'Balance Created Succesffully');
+        try {
+            $newBalance = Balance::create($data);
+        } catch (\Exception $e) {
+            // Si hay un error al intentar crear el balance, maneja el error aquí
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+        return redirect(route('balance.index'))->with('success', $successMessage);
+
 
     }
 
@@ -62,6 +72,8 @@ class BalanceController extends Controller
 
     public function update(Balance $balance, Request $request)
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Balance actualizado con éxito' : 'Balance updated succesffully';
         $data = $request->validate([
             'ingreso_c_b' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
             'ingreso_aso' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
@@ -86,7 +98,17 @@ class BalanceController extends Controller
         $data['gasto_juegos'] = -abs($data['gasto_juegos']);
         $balance->update($data);
 
-        return redirect(route('balance.index'))->with('success', 'Balance Updated Succesffully');
+        try {
+            $balance->update($data);
+        } catch (\Exception $e) {
+            // Si hay un error al intentar crear el balance, maneja el error aquí
+            //return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->with('error', 'No se pudo completar la edicion');
+
+        }
+
+        return redirect(route('balance.index'))->with('success', $successMessage);
+
 
     }
     public function chart(Request $request, BalanceTotalChart $chart)
@@ -106,21 +128,32 @@ class BalanceController extends Controller
         $gasto_disco = $balanceData->pluck('gasto_disco');
         $gasto_juegos = $balanceData->pluck('gasto_juegos');
 
-        $labels = ($locale === 'es') ? ['Evolución del valor total',
+        $labels = ($locale === 'es') ? [
+            'Evolución del valor total',
             'Valores totales de balances en el tiempo',
-            'Bebida y comida', 'Asociacion',
-            'Chapas', 'Guinote',
-            'Patrocinio','Premios',
-            'Tickets', 'Discomovil',
-             'Juegos para niños',
+            'Bebida y comida',
+            'Asociacion',
+            'Chapas',
+            'Guinote',
+            'Patrocinio',
+            'Premios',
+            'Tickets',
+            'Discomovil',
+            'Juegos para niños',
         ] :
-        ['Total value evolution',
-            'Balances total values through time',
-            'Drinks & Food', 'Association',
-            'Chapas', 'Guinote',
-            'Sponsors',
-            'Awards', 'Tickets',
-            'Mobile DJ', 'Games for kids'];
+            [
+                'Total value evolution',
+                'Balances total values through time',
+                'Drinks & Food',
+                'Association',
+                'Chapas',
+                'Guinote',
+                'Sponsors',
+                'Awards',
+                'Tickets',
+                'Mobile DJ',
+                'Games for kids'
+            ];
 
         return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b, $ingreso_aso, $ingreso_chapas, $ingreso_guinote, $ingreso_patrocinio, $gasto_premios, $gasto_tickets, $gasto_c_b, $gasto_disco, $gasto_juegos, $labels)]);
     }
@@ -156,9 +189,9 @@ class BalanceController extends Controller
             abs($balance->ingreso_patrocinio),
         ];
         $labelsGastos = ($locale === 'es') ? ['Premios', 'Tickets', 'Bebida', 'Discomovil', 'Juegos infantiles']
-        : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
+            : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
         $labelsIngresos = ($locale === 'es') ? ['Bebida', 'Asociacion', 'Chapas', 'Guiñote', 'Patrocinadores']
-        : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
+            : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
 
         $titleGastos = ($locale === 'es') ? 'GASTOS' : 'EXPENSES';
         $titleIngresos = ($locale === 'es') ? 'INGRESOS' : 'PROFITS';

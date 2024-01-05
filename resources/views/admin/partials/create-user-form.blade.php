@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg fw-bold font-medium text-gray-900">
             {{ __('Create User') }}
         </h2>
 
@@ -9,12 +9,18 @@
         </p>
     </header>
 
-    <x-button-info x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-creation')">
-        {{ __('Create') }}</x-button-info>
+    <x-button-add x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-creation')">
+        {{ __('Create') }}</x-button-add>
 
     <x-modal name="confirm-user-creation" :show="$errors->userCreation->isNotEmpty()" focusable>
+
         <form class="p-4" method="POST" action="{{ route('admin.store') }}">
             @csrf
+            <header class="mb-3">
+                <h2 class="text-lg fw-bold font-medium text-gray-900">
+                    {{ __('Create User') }}
+                </h2>
+            </header>
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
@@ -49,9 +55,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button-info class="ml-4">
+                <x-button-accept class="ml-4">
                     {{ __('Register') }}
-                </x-button-info>
+                </x-button-accept>
             </div>
         </form>
     </x-modal>

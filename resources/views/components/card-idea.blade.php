@@ -14,7 +14,7 @@
 
 
 
-<div class="card p-3 mb-4 shadow {{ $bg }}">
+<div class="card-idea p-3 mb-4 shadow {{ $bg }}">
     <div class="notif-card d-flex justify-content-between">
         <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
@@ -54,7 +54,7 @@
 
     </div>
     <div class="row">
-        <div class="col fuente-montserrat px-4 py-2">
+        <div class="col px-4 py-2">
             <p>{{ $descripcion  }}</p>
         </div>
     </div>

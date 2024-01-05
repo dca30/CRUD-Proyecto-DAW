@@ -19,15 +19,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="d-flex justify-content-between align-items-center">
-                    </div>
-
-                    @if(session()->has('success'))
-                    <div>
-                        {{session('success')}}
-                    </div>
-                    @endif
-
                     <div class="grid grid-cols-4 gap-4">
                         <div class="col-span-4 sm:col-span-2">
                             <div class="bg-white shadow-sm sm:rounded-lg p-4">

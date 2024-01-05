@@ -1,6 +1,6 @@
 <section class="space-y-6">
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
+    <header class="space-y-6">
+        <h2 class="text-lg fw-bold font-medium text-gray-900">
             {{ __('Edit User') }}
         </h2>
 
@@ -9,11 +9,8 @@
         </p>
     </header>
     <a href="{{ route('admin.edit') }}">
-        <x-button-delete>
+        <x-button-add class="mt-4">
             {{ __('Edit') }}
-        </x-button-delete>
-
+        </x-button-add>
     </a>
-
-
 </section>

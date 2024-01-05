@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Ideas') }}
-        </h2>
-        <div>
-            @if(session()->has('success'))
-            <div>
-                {{ session('success') }}
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Ideas') }}
+            </h2>
+            <div class="fw-bold text-sm text-blue-600 space-y-1">
+                @if(session()->has('success'))
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)">
+                    {{session('success')}}</p>
+                @endif
             </div>
-            @endif
+            <a></a>
         </div>
     </x-slot>
 
@@ -79,8 +81,9 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <x-input-label class="mb-2" for="descripcion" :value="__('Description')" />
-                                            <x-text-input id="descripcion" class="block mt-1 w-full" type="text"
-                                                name="descripcion" :value="old('descripcion')" required autofocus />
+                                            <textarea id="descripcion" name="descripcion" :value="old('descripcion')"
+                                                required autofocus rows="4" cols="15"
+                                                class="my-3 form-control border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                         </div>
                                         <div class="form-group mb-4">
                                             <x-input-label class="mb-2" for="tematica" :value="__('Type')" />
@@ -120,7 +123,7 @@
                                         <div class="flex items-center justify-end mt-4">
                                             <x-button-accept class="ml-3">
                                                 {{ __('Submit') }}
-                                                </x-button-accept>
+                                            </x-button-accept>
                                         </div>
                                     </form>
                                 </div>

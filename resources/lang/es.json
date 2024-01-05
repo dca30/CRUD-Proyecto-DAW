@@ -1,6 +1,6 @@
 {
     "Tasks": "Tareas",
-    "Show more":"Ver mas",
+    "Show more":"Ver más",
     "Ideas Mailbox": "Buzón de ideas",
     "_Admin panel": "Panel Admin",
     "Search User (id, username, email)": "Buscar usuario (id, username, email)",
@@ -59,7 +59,8 @@
     "Export the database to an .sql file. This will not affect the current state of the database."
     :"Exportar la base de datos a un archivo .sql. Esto no afectara al estado actual de la base de datos.",
     "Create a new user with a generic password":"Crear un nuevo usuario con una contraseña generica.",
-
+    "Insert your search":"Inserte su búsqueda",
+    "There is an error in the form. Check the fields.":"Hay errores en el formulario. Revisa los campos.",
 
 
     "(and :count more error)": "(y :count error más)",

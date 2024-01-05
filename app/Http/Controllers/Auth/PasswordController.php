@@ -27,9 +27,11 @@ class PasswordController extends Controller
 
         return back()->with('status', 'password-updated');
     }
-    
+
     public function updateAdmin(Request $request): RedirectResponse
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Contraseña actualizada correctamente' : 'Password updated succesfully';
         $validated = $request->validateWithBag('adminPasswordUpdate', [
             'password' => ['required', Password::defaults(), 'confirmed'],
         ]);
@@ -47,7 +49,7 @@ class PasswordController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return back()->with('status', 'password-updated');
+        return back()->with('success', $successMessage);
     }
 
 }
