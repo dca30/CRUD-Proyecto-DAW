@@ -26,11 +26,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcome2', function () {
-    return view('welcome2');
-});
-
-
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -59,6 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/balance/{balance}/update', [BalanceController::class, 'update'])->name('balance.update');
     //Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
     Route::get('/balance/{balance}/ticket', [BalanceController::class, 'ticket'])->name('balance.ticket');
+    Route::get('/balance/{year}/createTicket', [BalanceController::class, 'createTicket'])->name('balance.createTicket');
+    Route::post('/balance', [BalanceController::class, 'storeTicket'])->name('balance.storeTicket');
+    Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
+
     //Chart
     Route::get('/balance/chart', [BalanceController::class, 'chart'])->name('balance.chart');
     Route::get('/balance/{balance}/info', [BalanceController::class, 'infoChart'])->name('balance.info');
@@ -79,17 +78,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/search', [AdminController::class, 'search'])->name('admin.search');
     Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::get('/admin/edit/{id}', [AdminController::class, 'editUser'])->name('admin.editUser');
+    Route::put('/admin/edit/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+
     Route::delete('/admin/edit/{id}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
-
-
-    Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
-
-
     Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
-
     Route::put('/admin/edit/{id}/password', [PasswordController::class, 'updateAdmin'])
         ->middleware(['auth'])
         ->name('password.updateAdmin');
+
+
+
+
+
 
 });
 

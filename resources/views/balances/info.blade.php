@@ -8,11 +8,21 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Balance') }} > {{$balance->year}}
             </h2>
-            <a href="{{ route('balance.ticket', ['balance' => $balance],['ticket' => $ticket] ) }}">
-                <x-button-info class="ml-3">
-                    {{ __('Info tickets') }}
-                </x-button-info>
-            </a>
+            <div>
+                @if ($hasTicketsData)
+                    <a href="{{ route('balance.ticket', ['balance' => $balance]) }}">
+                        <x-button-info class="ml-3">
+                            {{ __('Info tickets') }}
+                        </x-button-info>
+                    </a>
+                @else
+                    <a href="{{ route('balance.createTicket', ['year' => $balance->year]) }}">
+                        <x-button-add class="ml-3">
+                            {{ __('Add tickets') }}
+                        </x-button-add>
+                    </a>
+                @endif
+            </div>
         </div>
     </x-slot>
     <div class="pt-10 pb-5">

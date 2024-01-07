@@ -23,6 +23,51 @@ class BalanceController extends Controller
     {
         return view('balances.create');
     }
+
+    public function createTicket(Request $request, $year)
+    {
+        return view('balances.create-ticket', ['year' => $year]);
+    }
+
+    public function storeTicket(Request $request)
+    {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Ticket creado con éxito' : 'Balance created succesffully';
+
+        $data = $request->validate([
+            'tickets_totales_cubata' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_cubata' => 'required|integer|digits_between:1,5',
+            'precio_ticket_cubata' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'tickets_totales_cerveza' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_cerveza' => 'required|integer|digits_between:1,5',
+            'precio_ticket_cerveza' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'tickets_totales_agua_refresco' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_agua_refresco' => 'required|integer|digits_between:1,5',
+            'precio_ticket_agua_refresco' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'tickets_totales_bocadillo' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_bocadillo' => 'required|integer|digits_between:1,5',
+            'precio_ticket_bocadillo' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'tickets_totales_copa' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_copa' => 'required|integer|digits_between:1,5',
+            'precio_ticket_copa' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'tickets_totales_litro_cerveza' => 'required|integer|digits_between:1,5',
+            'tickets_vendidos_litro_cerveza' => 'required|integer|digits_between:1,5',
+            'precio_ticket_litro_cerveza' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
+            'year' => 'required|integer|digits:4',
+
+        ]);
+
+        try {
+            $newTicket = Ticket::create($data);
+        } catch (\Exception $e) {
+            // Si hay un error al intentar crear el balance, maneja el error aquí
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+        return redirect(route('balance.index'))->with('success', $successMessage);
+
+    }
+
     public function store(Request $request)
     {
         $locale = $request->session()->get('locale');
@@ -57,7 +102,6 @@ class BalanceController extends Controller
         }
 
         return redirect(route('balance.index'))->with('success', $successMessage);
-
 
     }
 
@@ -109,7 +153,6 @@ class BalanceController extends Controller
 
         return redirect(route('balance.index'))->with('success', $successMessage);
 
-
     }
     public function chart(Request $request, BalanceTotalChart $chart)
     {
@@ -141,19 +184,19 @@ class BalanceController extends Controller
             'Discomovil',
             'Juegos para niños',
         ] :
-            [
-                'Total value evolution',
-                'Balances total values through time',
-                'Drinks & Food',
-                'Association',
-                'Chapas',
-                'Guinote',
-                'Sponsors',
-                'Awards',
-                'Tickets',
-                'Mobile DJ',
-                'Games for kids'
-            ];
+        [
+            'Total value evolution',
+            'Balances total values through time',
+            'Drinks & Food',
+            'Association',
+            'Chapas',
+            'Guinote',
+            'Sponsors',
+            'Awards',
+            'Tickets',
+            'Mobile DJ',
+            'Games for kids',
+        ];
 
         return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b, $ingreso_aso, $ingreso_chapas, $ingreso_guinote, $ingreso_patrocinio, $gasto_premios, $gasto_tickets, $gasto_c_b, $gasto_disco, $gasto_juegos, $labels)]);
     }
@@ -173,6 +216,8 @@ class BalanceController extends Controller
         $locale = $request->session()->get('locale');
 
         $ticket = Ticket::where('year', $balance->year)->first();
+
+        $hasTicketsData = !is_null($ticket);
         $gastos = [
             abs($balance->gasto_premios),
             abs($balance->gasto_tickets),
@@ -189,9 +234,9 @@ class BalanceController extends Controller
             abs($balance->ingreso_patrocinio),
         ];
         $labelsGastos = ($locale === 'es') ? ['Premios', 'Tickets', 'Bebida', 'Discomovil', 'Juegos infantiles']
-            : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
+        : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
         $labelsIngresos = ($locale === 'es') ? ['Bebida', 'Asociacion', 'Chapas', 'Guiñote', 'Patrocinadores']
-            : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
+        : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
 
         $titleGastos = ($locale === 'es') ? 'GASTOS' : 'EXPENSES';
         $titleIngresos = ($locale === 'es') ? 'INGRESOS' : 'PROFITS';
@@ -200,6 +245,7 @@ class BalanceController extends Controller
         return view('balances.info', [
             'balance' => $balance,
             'ticket' => $ticket,
+            'hasTicketsData' => $hasTicketsData,
             'chart1' => $chart1->build($ingresos, $labelsIngresos, $titleIngresos),
             'chart2' => $chart2->build($gastos, $labelsGastos, $titleGastos),
         ]);

@@ -61,6 +61,7 @@
     "Create a new user with a generic password":"Crear un nuevo usuario con una contraseña generica.",
     "Insert your search":"Inserte su búsqueda",
     "There is an error in the form. Check the fields.":"Hay errores en el formulario. Revisa los campos.",
+    "Tickets Sold":"Tickets Vendidos",
 
 
     "(and :count more error)": "(y :count error más)",

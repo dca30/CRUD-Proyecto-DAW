@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Symfony\Component\Process\Process;
-use Illuminate\Support\Facades\View;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
 {
@@ -27,6 +25,26 @@ class AdminController extends Controller
         $user = User::find($id); // Lógica para obtener el usuario según el $id, por ejemplo, User::find($id);
 
         return view('admin.edit-user', ['user' => $user]);
+    }
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        // Validación de datos del formulario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            // Agrega otras reglas de validación según tus necesidades
+        ]);
+
+        // Actualizar datos del usuario
+        $user->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            // Actualiza otros campos según tus necesidades
+        ]);
+
+        return redirect()->route('admin.editUser', $id)->with('success', 'User updated successfully');
     }
 
     public function store(Request $request)
@@ -49,7 +67,6 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index')->with('success', $successMessage);
     }
-
 
     public function destroy(Request $request, $id)
     {

@@ -41,7 +41,7 @@
                             @endif
                         </div>
 
-
+                        @if (auth()->id() !== 1)
                         <div class="">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#addNewModal">
                                 <x-button-add>
@@ -49,6 +49,7 @@
                                 </x-button-add>
                             </a>
                         </div>
+                        @endif
                     </div>
 
                     <div class="row ">

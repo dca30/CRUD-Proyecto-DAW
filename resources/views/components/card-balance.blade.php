@@ -1,7 +1,8 @@
 @push('styles')
 <link href="{{ asset('resources/css/card-balance.css') }}" rel="stylesheet">
 @endpush
-@if($title==2023)
+
+                                @if($maxYear==$balance->year)
 <div class="card card-important p-3 mb-4">
 
     @else

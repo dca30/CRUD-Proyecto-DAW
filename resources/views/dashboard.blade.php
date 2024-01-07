@@ -19,17 +19,20 @@
                         <div class="row row-cols-1 row-cols-md-2 g-4">
                             @foreach($balances as $key => $balance)
                             @php
-                            $nextBalance = ($key < $balancesCount - 1) ? $balances[$key + 1] : null; @endphp <div
-                                class="col">
-                                <x-card-balance :title="$balance->year" :beneficio="$balance->ingreso_c_b"
-                                    :total="$balance->total" :balance="$balance" :nextBalance="$nextBalance" />
+                            $nextBalance = ($key < $balancesCount - 1) ? $balances[$key + 1] : null;
+                                $highestYearBalance=max($balances->pluck('year')->all());
+                                @endphp
+                                <div class="col">
+                                    <x-card-balance :title="$balance->year" :beneficio="$balance->ingreso_c_b"
+                                        :total="$balance->total" :balance="$balance" :nextBalance="$nextBalance"
+                                        :maxYear="$highestYearBalance" />
+                                </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <x-floating-card :chartData="$chart"></x-floating-card>
 </x-app-layout>
