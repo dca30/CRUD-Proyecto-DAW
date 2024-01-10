@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     //Route::get('/balance/{balance}/info', [BalanceController::class, 'info'])->name('balance.info');
     Route::get('/balance/{balance}/ticket', [BalanceController::class, 'ticket'])->name('balance.ticket');
     Route::get('/balance/{year}/createTicket', [BalanceController::class, 'createTicket'])->name('balance.createTicket');
-    Route::post('/balance', [BalanceController::class, 'storeTicket'])->name('balance.storeTicket');
+    Route::post('/balance/{balance}', [BalanceController::class, 'storeTicket'])->name('balance.storeTicket');
     Route::get('/balance/create', [BalanceController::class, 'create'])->name('balance.create');
 
     //Chart
