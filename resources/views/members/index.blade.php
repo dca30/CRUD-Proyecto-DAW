@@ -15,12 +15,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Phone</th>
+                                    <th scope="col">{{ __('First Name') }}</th>
+                                    <th scope="col">{{ __('Last Name') }}</th>
+                                    <th scope="col">{{ __('Phone') }}</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Domicilio</th>
-                                    <th scope="col">Fee (€/6 months)</th>
+                                    <th scope="col">{{ __('Residence') }}</th>
+                                    <th scope="col">{{ __('Fee (€/6 months)') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

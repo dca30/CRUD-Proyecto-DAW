@@ -18,7 +18,7 @@ class LineChartFloating
         return $this->chart->lineChart()
             ->setHeight(300)
             ->setTitle("Total Balances (€)")
-            ->addData('', $total)
+            ->addData('', array_reverse($total))
             ->setGrid()
             ->setColors(['#960404'])
             ->setXAxis(['2014', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '2023']);

@@ -35,6 +35,9 @@
                                         <x-input-label>{{ __('Date') }}</x-input-label>
                                         <x-text-input class="mb-3" name="fechas" placeholder="" />
                                         <x-input-error :messages="$errors->get('fechas')" class="mt-2" />
+
+                                        <input type="hidden" name="incremento" value="0.00">
+                                        
                                     </div>
                                     <div class="bg-white sm:rounded-lg p-4 mt-3 sombra-negra">
                                         <h3 class="text-lg font-semibold">{{ __('NOTES') }}</h3>

@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('balances', function (Blueprint $table) {
-            $table->decimal('incremento', 6, 2)->default(0.00);
+            $table->decimal('incremento', 6, 2)->nullable(); // Agregando nullable()
         });
 
         \DB::table('balances')->orderBy('year')->get()->each(function ($balance) {

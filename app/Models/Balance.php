@@ -21,6 +21,7 @@ class Balance extends Model
         'gasto_juegos',
         'notas',
         'year',
-        'fechas'
+        'fechas',
+        'incremento'
     ];
 }

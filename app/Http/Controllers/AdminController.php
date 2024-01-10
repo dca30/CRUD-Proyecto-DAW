@@ -28,44 +28,56 @@ class AdminController extends Controller
     }
     public function updateUser(Request $request, $id)
     {
+        $locale = $request->session()->get('locale');
+        $successMessage = ($locale === 'es') ? 'Usuario actualizado con éxito' : 'User updated successfully';
+        $errorMessage = ($locale === 'es') ? 'El usuario no se pudo actualizar correctamente' : 'User could not be updated';
+
         $user = User::findOrFail($id);
 
         // Validación de datos del formulario
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            // Agrega otras reglas de validación según tus necesidades
         ]);
 
-        // Actualizar datos del usuario
+        
+        try {
+            // Actualizar datos del usuario
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            // Actualiza otros campos según tus necesidades
         ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('success', $errorMessage);
+        }
 
-        return redirect()->route('admin.editUser', $id)->with('success', 'User updated successfully');
+        return redirect()->route('admin.editUser', $id)->with('success', $successMessage);
     }
 
     public function store(Request $request)
     {
         $locale = $request->session()->get('locale');
         $successMessage = ($locale === 'es') ? 'Usuario creado con éxito' : 'User created successfully';
+        $errorMessage = ($locale === 'es') ? 'El usuario no se pudo crear correctamente' : 'User could not be created';
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'username' => 'required',
             'password' => 'required',
         ]);
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-        ]);
+        try {
+            User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'username' => $request->input('username'),
+                'password' => $request->input('password'),
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('success', $errorMessage);
+        }
 
-        return redirect()->route('admin.index')->with('success', $successMessage);
+        return redirect(route('balance.index'))->with('success', $successMessage);
     }
 
     public function destroy(Request $request, $id)

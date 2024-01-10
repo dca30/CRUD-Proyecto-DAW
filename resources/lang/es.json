@@ -62,6 +62,11 @@
     "Insert your search":"Inserte su búsqueda",
     "There is an error in the form. Check the fields.":"Hay errores en el formulario. Revisa los campos.",
     "Tickets Sold":"Tickets Vendidos",
+    "First Name":"Nombre",
+    "Last Name":"Apellidos",
+    "Phone":"Telefono",
+    "Residence":"Domicilio",
+    "Fee (€/6 months)":"Cuota (€/6 meses)",
 
 
     "(and :count more error)": "(y :count error más)",

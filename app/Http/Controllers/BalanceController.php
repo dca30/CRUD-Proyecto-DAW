@@ -10,6 +10,7 @@ use App\Models\Balance;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class BalanceController extends Controller
 {
@@ -87,12 +88,33 @@ class BalanceController extends Controller
             'notas' => 'nullable|string',
             'year' => 'required|integer|digits:4',
             'fechas' => 'required|integer|digits:4',
+            'incremento' => 'required|numeric|regex:/^-?\d+(\.\d{1,2})?/',
 
         ]);
         $data['gasto_premios'] = -abs($data['gasto_premios']);
         $data['gasto_tickets'] = -abs($data['gasto_tickets']);
         $data['gasto_c_b'] = -abs($data['gasto_c_b']);
         $data['gasto_disco'] = -abs($data['gasto_disco']);
+
+        // Realiza el cálculo del incremento para el nuevo balance
+        $currentYear = $data['year'];
+        $previousYear = $currentYear - 1;
+
+        $previousBalance = Balance::where('year', $previousYear)->first();
+
+        $incremento = 0; // Valor predeterminado si no hay balance del año anterior
+
+        if ($previousBalance) {
+            $total = $data['ingreso_c_b'] + $data['ingreso_aso'] + $data['ingreso_chapas'] + $data['ingreso_guinote'] + $data['ingreso_patrocinio']
+                - abs($data['gasto_premios']) - abs($data['gasto_tickets']) - abs($data['gasto_c_b']) - abs($data['gasto_disco']) - abs($data['gasto_juegos']);
+
+            $totalAnterior = intval($previousBalance->total);
+
+            $incremento = ($totalAnterior != 0) ? round(($total - $totalAnterior) * 100 / abs($totalAnterior), 2) : 0;
+        }
+
+        // Agrega el valor de incremento a los datos antes de crear el nuevo balance
+        $data['incremento'] = $incremento;
 
         try {
             $newBalance = Balance::create($data);
@@ -184,19 +206,19 @@ class BalanceController extends Controller
             'Discomovil',
             'Juegos para niños',
         ] :
-        [
-            'Total value evolution',
-            'Balances total values through time',
-            'Drinks & Food',
-            'Association',
-            'Chapas',
-            'Guinote',
-            'Sponsors',
-            'Awards',
-            'Tickets',
-            'Mobile DJ',
-            'Games for kids',
-        ];
+            [
+                'Total value evolution',
+                'Balances total values through time',
+                'Drinks & Food',
+                'Association',
+                'Chapas',
+                'Guinote',
+                'Sponsors',
+                'Awards',
+                'Tickets',
+                'Mobile DJ',
+                'Games for kids',
+            ];
 
         return view('balances.chart', ['chart' => $chart->build($total, $years, $ingreso_c_b, $ingreso_aso, $ingreso_chapas, $ingreso_guinote, $ingreso_patrocinio, $gasto_premios, $gasto_tickets, $gasto_c_b, $gasto_disco, $gasto_juegos, $labels)]);
     }
@@ -234,9 +256,9 @@ class BalanceController extends Controller
             abs($balance->ingreso_patrocinio),
         ];
         $labelsGastos = ($locale === 'es') ? ['Premios', 'Tickets', 'Bebida', 'Discomovil', 'Juegos infantiles']
-        : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
+            : ['Awards', 'Tickets', 'Drinks', 'Mobile DJ', 'Games for kids'];
         $labelsIngresos = ($locale === 'es') ? ['Bebida', 'Asociacion', 'Chapas', 'Guiñote', 'Patrocinadores']
-        : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
+            : ['Drinks', 'Association', 'Chapas', 'Guiñote', 'Sponsors']; //Añadir beneficio bingo
 
         $titleGastos = ($locale === 'es') ? 'GASTOS' : 'EXPENSES';
         $titleIngresos = ($locale === 'es') ? 'INGRESOS' : 'PROFITS';

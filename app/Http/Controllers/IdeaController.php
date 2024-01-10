@@ -28,6 +28,7 @@ class IdeaController extends Controller
     {
         $locale = $request->session()->get('locale');
         $successMessage = ($locale === 'es') ? 'Idea almacenada exitosamente' : 'Idea stored succesffully';
+        $errorMessage = ($locale === 'es') ? 'La idea no se pudo almacenar' : 'Idea could not be created';
 
         $request->validate([
             'titulo' => 'required|string|max:30',
@@ -38,14 +39,18 @@ class IdeaController extends Controller
         $creador = auth()->user()->username;
         $anonimo = $request->has('anonimo') ? 'S' : 'N';
 
-        $idea = Idea::create([
-            'titulo' => $request->input('titulo'),
-            'descripcion' => $request->input('descripcion'),
-            'tematica' => $request->input('tematica'),
-            'creador' => $creador,
-            'vista' => 'N',
-            'anonimo' => $anonimo,
-        ]);
+        try {
+            $idea = Idea::create([
+                'titulo' => $request->input('titulo'),
+                'descripcion' => $request->input('descripcion'),
+                'tematica' => $request->input('tematica'),
+                'creador' => $creador,
+                'vista' => 'N',
+                'anonimo' => $anonimo,
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('success', $errorMessage);
+        }
         return redirect()->route('idea.index')->with('success', $successMessage);
     }
 

@@ -78,11 +78,9 @@ class TaskController extends Controller
                 'descripcion' => $request->input('descripcion'),
                 'dificultad' => $request->input('dificultad'),
                 'responsables' => '',
-                // Cadena vacía por defecto
             ]);
         } catch (\Exception $e) {
-            // Si hay un error al intentar crear el balance, maneja el error aquí
-            return redirect()->route('task.index')->with('error', 'Hola');
+            return redirect()->route('task.index')->with('success', 'Error');
         }
         return redirect()->route('task.index')->with('success', $successMessage);
     }
